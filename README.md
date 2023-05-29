@@ -1,2 +1,5 @@
-# Videa - Video Game Release Tracker 
-Improvised version two of my first website, [Game Release](https://github.com/catfishsoup/game_releasev1), made with React, SCSS, Firebase, and everything in between that may be needed to build the application! 
+# Videa - Game Release V2 
+Improvised version two of my first website, [Game Release](https://github.com/catfishsoup/game_releasev1), made with React, SCSS, Firebase, and everything in between that may be needed to build the application!
+
+## About
+The web application purpose is helping user keep track of game releases and managing their library. 
