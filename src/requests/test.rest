@@ -1,0 +1,3 @@
+POST https://id.twitch.tv/oauth2/token?client_id=p1z48o6odmhts47q80jm7x223997um&client_secret=b2eyzdnl3p93ku3e4uzmv5ja41e4fe&grant_type=client_credentials
+###
+POST https://pms1osvm52.execute-api.us-west-2.amazonaws.com/production/v4/games

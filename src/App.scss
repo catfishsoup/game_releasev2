@@ -1,0 +1,222 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+
+// 
+// Variables
+$basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
+// 
+// Universal Settings 
+* {
+    margin: 0;
+    padding: 0;
+    font-family:'Asap', sans-serif;
+}
+
+@mixin searchbar {
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: 2px solid black;
+    background-color: #faf9f5;
+}
+
+// 
+// Header.js 
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    
+    .links-cont {
+    list-style-type: none;
+        li {
+            display: inline;
+            margin: 3em;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+        
+    }   
+
+    .logo-name {
+        font-family:  'Bungee Shade', cursive;
+        font-size: 3rem;
+        color: #695ef5;
+    }
+
+    input {
+        @include searchbar;
+    }
+    .link {
+            text-decoration: none;
+            color: black;
+        }
+}
+
+
+// 
+// Home.js 
+.home-cont {
+    position: relative;
+    .intro-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3em;
+        position: relative;
+        height: 100vh;
+        .home-title {
+        text-align: center;
+        font-family: 'Archivo Black', sans-serif;
+        font-size: 5rem;
+        span {font-family: 'Archivo Black', sans-serif;}
+        } 
+        button {
+            padding: 0.8rem;
+            border-radius: 2rem;
+            width: 40ch;
+            color: white;
+            background-color: #695ef5;
+            border: 2px solid black;
+        }
+        .decor-img, .decor-img2 {
+        position: absolute;
+        z-index: 1;
+        }   
+        .decor-img {
+        right: 7%;
+        top: 5%;
+        animation: mover 2s infinite alternate;
+        }
+        .decor-img2 {
+        left: 10%;
+        top: 50%;
+        }
+    }
+
+    .toggle-container {
+        margin: 5rem;
+        position: relative;
+        border-radius: 1em;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 1em;
+        color: white;
+        box-shadow: $basic-boxshadow;
+        .toggle-btn {
+        float: right;
+        }
+        .toggle-btn {
+            button {
+                background: none;
+                border: 1px solid white;
+                border-radius: 50%;
+                padding: 3px;
+                margin: 5px;
+                transition: 0.5s ease-in;
+                &:hover {
+                    background: #695ef5;
+                }
+            }
+        }
+
+    .discover-cont {
+            h2 {
+                color: #8e53bd;
+            }
+            .discover-img-cont {
+                overflow: hidden;
+                display: flex;
+                img {
+                    margin: 1em;
+                    border-radius: 1em;
+                }
+
+            }
+        }
+    }
+}
+
+
+// 
+// Games.js 
+.games-cont {
+        .cont-direct {
+            background: black;
+            width: fit-content;
+            padding: 0.7em;
+            width: 20ch;
+            margin: 1em;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: $basic-boxshadow;
+            font-weight: 500;
+            color: white;
+            transition: 0.2s ease-in;
+            &:hover {
+                background: #695ef5;
+            }
+        }
+}
+// 
+// Signup.js
+.sign-up-form {
+    
+}
+
+
+
+
+// 
+// Picture.js
+.picture-cont {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    .indv-pic-cont {
+        position: relative;
+            img {
+                border-radius: 1rem;
+                box-shadow: $basic-boxshadow; 
+            }
+            .img-overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                top: 0;
+                z-index: 1;
+                opacity: 0;
+                border-radius: 1rem;
+            }
+            p {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            opacity: 0;
+            font-weight: 500;
+            transition: 0.5s ease;
+            }
+            &:hover {
+                p, .img-overlay {
+                    opacity: 1;
+                    
+                }
+            }
+       }
+}
+// Animations
+@keyframes mover {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
