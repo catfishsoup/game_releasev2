@@ -7,6 +7,19 @@
 // 
 // Variables
 $basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
+$base-purple: #695ef5;
+
+
+// 
+// Reusable Themes 
+
+@mixin purple-box {
+    background: $base-purple;
+    border-radius: 1em;
+    border: 2px solid black;
+    color: white;
+}
+
 // 
 // Universal Settings 
 * {
@@ -55,6 +68,22 @@ nav {
             text-decoration: none;
             color: black;
         }
+
+    .user-sl {
+        position: relative;
+        .user-pfp {
+            margin-left: 1em;
+        }
+        .user-option-lists {
+            position: absolute;
+            list-style-type: none;
+            right: 0;
+            @include purple-box();
+            li {
+                margin: 20px;
+            }
+        }
+    }
 }
 
 
@@ -78,11 +107,9 @@ nav {
         } 
         button {
             padding: 0.8rem;
-            border-radius: 2rem;
             width: 40ch;
-            color: white;
-            background-color: #695ef5;
-            border: 2px solid black;
+            @include purple-box();
+            border-radius: 2rem;
         }
         .decor-img, .decor-img2 {
         position: absolute;
@@ -163,11 +190,10 @@ nav {
             }
         }
 }
+
+
 // 
 // Signup.js
-.sign-up-form {
-    
-}
 
 
 
