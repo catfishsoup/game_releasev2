@@ -1,5 +1,32 @@
-.profile-header {
-    border: 1px solid red;
-    height: 10vw;
+
+$basic-boxshadow: 0px 10px 8px -10px rgba(0,0,0,0.27);
+
+.profile-picture {
+    max-width: 20%;
+}
+
+.profile-picture, .user-name {
+    display: inline-block;
+}
+
+.user-name {
+    color: white;
+    font-size: 2rem;
+}
+
+.user-asset {
+    width: fit-content;
+    position: absolute;
+    bottom: 5%;
+}
+
+.user-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
     width: 100%;
+    padding: 1rem;
+    border: 1px solid white;
+    box-shadow: $basic-boxshadow;
 }

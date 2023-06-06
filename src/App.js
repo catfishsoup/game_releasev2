@@ -35,9 +35,8 @@ const App = () => {
 );
   return(
     <main>
-      <AuthContextProvider>
+
         <RouterProvider router={router} />
-      </AuthContextProvider>
         
     </main>
     

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import { UserAuth } from '../firebase/user_auth'; //Get current user from here 
 import '../styles/Profile.scss'
-import {db} from '../firebase/firebase.js'
-import { UserAuth } from '../firebase/user_auth';
-import { doc, getDoc, setDoc } from "firebase/firestore"; 
+import styled from 'styled-components'
+import userService from '../firebase/user_request'
+import cover from '../img/cover_test.jpg'
 // User Profile Page Settings
 /**
  * What should be includes: 
@@ -10,45 +11,26 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
  * Fetch data from Firebase
  */
 
-
+const ProfileHeader = styled.section`
+    background-image: url(${cover});
+    position: relative;
+    padding: 7rem;
+    width: 100vw;
+`
 const Header = () =>  {
     /**
      * Header will includes - User Profile Picture, User Name, Cover Picture. 
-     **/
-    const [userData, setuserData] = useState([])
-    const user = UserAuth()
-    const user_id = user?.user
-    useEffect(() => {
-        const userRef = doc(db, "users", user_id.uid)
-            getDoc(userRef).then((doc) => {
-                setuserData(doc.data())
-            }).catch((e) => console.log(e))
-    }, [])
-        
-    
-    console.log(userData)
+     **/    
+    const {user} = UserAuth()
     return(
-        <section className='profile-header'>
-            {/* Unable to display user profile */}
-            <img className='profile-picture' src={userData.profile_picture}/>   
-            <h1 className='user-name'>{userData.user_name}</h1>
-        </section>
+        <ProfileHeader>
+            <div className='user-asset'>
+               <img className='profile-picture' src={user?.photoURL}/>   
+                <div className='user-name'>{user?.displayName}</div> 
+            </div>
+        </ProfileHeader>
     )
 }
-
-
-const Overview = () => {
-    /**
-     * Overview will includes user list and favorites with 'View More' button.
-     * Completion Status
-     **/ 
-    return (
-        <section>
-            <div>Overview</div>
-        </section>
-    )
-}
-
 const List = () => {
     /**
      * List will includes 'Default' List and User generated Lists. 
@@ -84,12 +66,8 @@ const Settings = () => {
 
 const Profile = () => {
     const [profileTab, setProfileTab] = useState([ 
-        {   
-            name: 'Overview',
-            clicked: false,
-        }, 
         {
-            name: 'Your List',
+            name: 'Lists',
             clicked: false,
         },
         {
@@ -105,10 +83,12 @@ const Profile = () => {
         <main>
         <Header/>
         {/* Onclick change the tab down here */}
-        <Overview/>
+        <div className='user-nav'>
         <List/>
         <Favorites/>
-        <Settings/>
+        <Settings/>  
+        </div>
+        
         </main>
     )
 }

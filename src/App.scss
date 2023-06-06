@@ -71,6 +71,7 @@ nav {
 
     .user-sl {
         position: relative;
+        display: flex;
         .user-pfp {
             margin-left: 1em;
         }
@@ -78,6 +79,7 @@ nav {
             position: absolute;
             list-style-type: none;
             right: 0;
+            margin-top: 2.5em;
             @include purple-box();
             li {
                 margin: 20px;
@@ -90,6 +92,11 @@ nav {
     }
 }
 
+
+.user-pfp {
+    width: 35px;
+    height: 35px;
+}
 
 // 
 // Home.js 

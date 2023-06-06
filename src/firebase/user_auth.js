@@ -4,16 +4,20 @@ import {createUserWithEmailAndPassword,
     signInWithEmailAndPassword, 
     signOut, 
     signInWithEmailLink, 
-    onAuthStateChanged } from "firebase/auth";
-const UserContext = createContext()
+    onAuthStateChanged,
+    updateProfile } from "firebase/auth";
+
+import user_pfp from '../img/user.png'
+const UserContext = createContext("")
 
 
 export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
-
-    const createUser = (email, password) => {
-            return createUserWithEmailAndPassword(auth, email, password);
+    
+    const createUser = async(email, password, username) => {
+           await createUserWithEmailAndPassword(auth, email, password)
+            updateProfile(auth.currentUser, {displayName: username, photoURL: user_pfp})    
     }
 
     const loginUser = (email, password) => {
@@ -26,10 +30,12 @@ export const AuthContextProvider = ({children}) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currUser) => {
             setUser(currUser)
+            
             setLoading(false)
         })
         return unsubscribe
     }, [])
+
     return(
         <UserContext.Provider value={{createUser,
             loginUser,

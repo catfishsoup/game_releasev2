@@ -1,6 +1,13 @@
 import {db} from '../firebase/firebase.js'
-import { UserAuth } from '../firebase/user_auth'; //Get current user from here 
 import { doc, getDoc, setDoc } from "firebase/firestore"; 
+import { useState, useEffect } from 'react'
+
+const retrieveUserData = async(id) => {
+        const userRef = doc(db, "users", id)
+            await getDoc(userRef).then((doc) => {
+                return doc.data()
+            })
+}
 
 const retrieveData = () => {
 
@@ -22,3 +29,5 @@ const setGameStatus = () => {
 const getGameStatus = () => {
     
 }
+
+export default {retrieveUserData}

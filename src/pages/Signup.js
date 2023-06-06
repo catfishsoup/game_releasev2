@@ -7,16 +7,12 @@ const Signup = () => {
     const emailRef = useRef()
     const userNameRef = useRef()
     // When you use {createUser} with a bracket, you are defining an object without any values. Therefore, it will throw "undefined" error. It is best to use without bracket. 
-    const createUser = UserAuth()
+    const {createUser} = UserAuth()
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
             e.preventDefault()
-            try {
-                    await createUser(emailRef.current.value, passwordRef.current.value)
-            } catch(e) {
-                console.log(e)
-            }
+            createUser(emailRef.current.value, passwordRef.current.value, userNameRef.current.value)
     }
     return(
         <form onSubmit={handleSubmit} className="sign-up-form">

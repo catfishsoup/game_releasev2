@@ -2,6 +2,7 @@ import Logo from './Logo'
 import { UserAuth } from "../firebase/user_auth"
 import { NavLink, Link, Outlet } from "react-router-dom";
 import { useState } from 'react';
+import '../App.scss'
 const UserOption = ({open, handleLogOut}) => {
     if(open === true) {
         return(
@@ -41,7 +42,7 @@ const AuthHeader = () => {
                     <li><NavLink to='/about' className='link'>About</NavLink></li>
                 </ul>
                 <div className='user-sl'><input placeholder='Search...'/> 
-                <span onClick={openUserTab} className='user-pfp'>{user && user.email}</span>
+                <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/>
                 <UserOption open={openUP} handleLogOut={handleLogOut}/>
                 </div> 
             </nav>
