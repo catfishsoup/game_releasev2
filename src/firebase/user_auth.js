@@ -14,7 +14,7 @@ const UserContext = createContext("")
 export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
-    
+
     const createUser = async(email, password, username) => {
            await createUserWithEmailAndPassword(auth, email, password)
             updateProfile(auth.currentUser, {displayName: username, photoURL: user_pfp})    
@@ -30,7 +30,6 @@ export const AuthContextProvider = ({children}) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currUser) => {
             setUser(currUser)
-            
             setLoading(false)
         })
         return unsubscribe

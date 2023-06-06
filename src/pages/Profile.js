@@ -31,35 +31,93 @@ const Header = () =>  {
         </ProfileHeader>
     )
 }
-const List = () => {
+
+const Overview = ({click}) => {
     /**
      * List will includes 'Default' List and User generated Lists. 
      **/ 
-    return (
+
+    if(click === 1) {
+      return (
+        <section className=''>
+            <section>
+                Your List
+                {/* Render all of user lists here */}
+            </section>
+            <section>
+                Favorited Games
+                {/* Render top 10 recent games here */}
+            </section>
+        </section>
+    )  
+    }
+    
+}
+
+
+const List = ({click}) => {
+    /**
+     * List will includes 'Default' List and User generated Lists. 
+     **/ 
+
+    if(click === 2 ) {
+      return (
         <section>
             <div>Lists</div>
         </section>
-    )
+    )  
+    }
+    
 }
 
-const Favorites = () => {
+const Favorites = ({click}) => {
     /**
      * Display all the games that user marked as 'Favorite' 
      */
-    return (
+    if(click === 3) {
+       return (
         <section>
             <div>Favorites</div>
         </section>
-    )
+    ) 
+    }
+    
 }
 
-const Settings = () => {
+const Settings = ({click}) => {
     /**
      * Allow user to: change user name, profile picture, email, password, delete the account. 
      **/
-    return (
-        <section>Settings</section>
-    )
+    if(click === 4) {
+      return (
+        <section>
+            <form>
+                <div>
+                    Account Settings
+                    <label>Username</label>
+                    <input/>
+
+                    <label>Email</label>
+                    <input/>
+
+                    <label>Change Password</label>
+                    <input placeholder='New Password'/>
+                    <input placeholder='Confirm New Password'/>
+                </div>
+                
+                <div>
+                    Profile
+                    <label>Change Profile Picture</label>
+                    <input type="file"/>
+
+                    <label>Change Cover Picture</label>
+                    <input type="file"/>
+                </div>
+            </form>
+        </section>
+    )  
+    }
+    
 }
 
 
@@ -67,28 +125,42 @@ const Settings = () => {
 const Profile = () => {
     const [profileTab, setProfileTab] = useState([ 
         {
+            name: 'Overview',
+            id: 1, 
+        },
+        {
             name: 'Lists',
-            clicked: false,
+            id: 2, 
         },
         {
             name: 'Favorites',
-            clicked: false,
+            id: 3, 
         }, 
         {
             name: 'Settings',
-            clicked: false,
+            id: 4, 
+        }])
+
+    const [active, setActive] = useState(1)
+
+        const openNav = (id) => {
+           setActive(id)
         }
-    ])
     return(
         <main>
         <Header/>
         {/* Onclick change the tab down here */}
         <div className='user-nav'>
-        <List/>
-        <Favorites/>
-        <Settings/>  
+            {profileTab.map((tab) => {
+               return(<div key={tab.id} onClick={() => openNav(tab.id)}>{tab.name}</div>) 
+            })}
         </div>
-        
+
+        {/* Tidy this up later */}
+        <Overview click={active}/>
+        <List click={active}/>
+        <Favorites click={active}/>
+        <Settings click={active}/>
         </main>
     )
 }

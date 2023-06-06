@@ -3,6 +3,7 @@ import { UserAuth } from "../firebase/user_auth"
 import { NavLink, Link, Outlet } from "react-router-dom";
 import { useState } from 'react';
 import '../App.scss'
+import SearchBar from './SearchBar'
 const UserOption = ({open, handleLogOut}) => {
     if(open === true) {
         return(
@@ -41,7 +42,7 @@ const AuthHeader = () => {
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
                     <li><NavLink to='/about' className='link'>About</NavLink></li>
                 </ul>
-                <div className='user-sl'><input placeholder='Search...'/> 
+                <div className='user-sl'><SearchBar/>
                 <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/>
                 <UserOption open={openUP} handleLogOut={handleLogOut}/>
                 </div> 

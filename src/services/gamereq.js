@@ -66,5 +66,8 @@ async function getCurrent(id) {
   }
 }
 
+async function searchGame(name) {
+  
+}
 
-export default {getPopular, getTrending, getReleased, getCurrent}
+export default {getPopular, getTrending, getReleased, getCurrent, searchGame}

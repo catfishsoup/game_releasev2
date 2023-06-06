@@ -12,7 +12,7 @@ import Games from './pages/Games'
 import Home from './pages/Home'
 import Template from './pages/Template'
 import Profile from './pages/Profile'
-
+import Search from './pages/Search'
 
 
 
@@ -30,6 +30,7 @@ const App = () => {
     <Route path="games/:id" element={<Template />}/>
     <Route path="signup" element={<Signup />}/>
     <Route path="profile" element={<Profile />}/>
+    <Route path="search/:name" element={<Search />}/>
   </Route>
 )
 );
