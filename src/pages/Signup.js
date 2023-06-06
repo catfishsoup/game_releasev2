@@ -21,13 +21,13 @@ const Signup = () => {
     return(
         <form onSubmit={handleSubmit} className="sign-up-form">
             <label>Username</label>
-            <input type='text' ref={userNameRef}/>
+            <input type='text' ref={userNameRef} required/>
             <label>Email</label>
-            <input type='email' ref={emailRef}/>
+            <input type='email' ref={emailRef} required/>
             <label>Password</label>
-            <input  type='password' ref={passwordRef}/>
+            <input  type='password' ref={passwordRef} required/>
             <label>Confirm Password</label>
-            <input  type='password' ref={confirmPassword}/>
+            <input  type='password' ref={confirmPassword} required/>
             <button type='submit'>Sign Up</button>
             <label>Or Login Using:</label>
             {/* Google Email */}

@@ -1,15 +1,15 @@
 import Logo from './Logo'
 import { UserAuth } from "../firebase/user_auth"
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Link, Outlet } from "react-router-dom";
 import { useState } from 'react';
 const UserOption = ({open, handleLogOut}) => {
     if(open === true) {
         return(
             <ul className='user-option-lists'>
-                <li>Profile</li>
-                <li>Bookmark</li>
-                <li>Settings</li>
-                <li><button onClick={handleLogOut}>Log Out</button></li>
+                {/* Improvement Needed: Only authorized / logged in user can access these links. */}
+                <li><Link to='/profile'>Profile</Link></li>
+                <li><Link>Bookmark</Link></li>
+                <li><button onClick={handleLogOut} className='log_out_btn'>Log Out</button></li>
             </ul>
         )
     }
@@ -27,7 +27,6 @@ const AuthHeader = () => {
 
     const openUserTab = () => {
         setopenUP(!openUP)
-        console.log(openUP)
     }
 
 

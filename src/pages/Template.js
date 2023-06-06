@@ -71,6 +71,11 @@ const Template = () => {
                     })}
                 </ul>
             </section>
+
+            <section>
+                <button> ❤️ Add as Favorite</button>
+                <button> + Add to List</button>
+            </section>
         </main>
     )
 }
