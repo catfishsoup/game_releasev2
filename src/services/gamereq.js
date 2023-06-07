@@ -31,7 +31,7 @@ let getTrendingconfig = {
   data : 'fields name, hypes, cover.url; where hypes >= 150; sort hypes asc;'
 };
 
-const getTrending = () => axios.request(getTrendingconfig)
+const getTrending = async() => await axios.request(getTrendingconfig)
 .then((response) => {
  return (response.data);
 })
@@ -67,6 +67,21 @@ async function getCurrent(id) {
 }
 
 async function searchGame(name) {
+
+  try {
+    const res = await axios.request({
+      method: 'post',
+      url: baseUrl,
+      headers: {
+        'x-api-key': x_api_key,
+        'Content-Type': 'text/plain'
+      },
+      data: `fields name, cover.url; search *"${name}"*; limit 500; where version_parent = null & platforms = (6, 7, 8, 9, 48, 49, 130, 167, 169);`
+    });
+    return (res.data);
+  } catch(e) {
+    console.log(e);
+  }
   
 }
 

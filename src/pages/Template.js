@@ -13,12 +13,6 @@ const Screenshot = ({data}) => {
         <img key={data.id} src={data.url}/>
     )
 }
-
-const Status = ({logged}) => {
-    // If user is not logged in, display the 'Log In to Bookmark' 
-    // Else, check the bookmark status of this game from the user profile. 
-
-}
 const Template = () => {
 
     // Use Params - take in the param in the URL as data to use. Have to use the same param  define in path. 

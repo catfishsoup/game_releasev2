@@ -15,7 +15,7 @@ const Trending = () => {
             <section className='picture-cont'>
                 {trending.map((data) => {
                     if('cover' in data) {
-                        return (<Picture key={data.id} data={data}/>)
+                        return (<Picture key={data.id} data={data} text={'t_cover_big'}/>)
                     }
                 })}
             </section>
@@ -40,7 +40,7 @@ const Upcoming = () => {
             <section className='picture-cont'>
                {released.map((data) => {
                     if('cover' in data) {
-                        return (<Picture key={data.id} data={data}/>)
+                        return (<Picture key={data.id} data={data} text={'t_cover_big'}/>)
                     }
                 })} 
             </section>

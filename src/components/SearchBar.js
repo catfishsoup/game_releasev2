@@ -5,12 +5,10 @@ const SearchBar = () => {
     const navigate = useNavigate()
     const directPage = (e) => {
         if(e.key === 'Enter') {
-            console.log(inputRef)
-            navigate(`../search/${inputRef}`)
+            navigate(`../search/${inputRef.current.value}`)
         }
         
     }
-
 
     return(
         <input placeholder='Search...' ref={inputRef} onKeyDown={(e) => directPage(e)}/>
