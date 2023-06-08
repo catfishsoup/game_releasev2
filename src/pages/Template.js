@@ -2,6 +2,10 @@ import {useParams} from "react-router-dom";
 import { useEffect, useState } from 'react'
 import gameService from '../services/gamereq.js'
 import '../styles/Template.scss'
+import {db} from '../firebase/firebase.js'
+import { doc, setDoc, collection, getDoc, deleteDoc } from "firebase/firestore"; 
+import {auth} from '../firebase/firebase.js'
+import { deleteApp } from "firebase/app";
 const List = ({data}) => {
     return(
         <li key={data.key}>{data.name}</li>
@@ -19,16 +23,51 @@ const Template = () => {
     let { id } = useParams();
     const [info, setInfo] = useState([])
     const [loading, setLoading] = useState(true)
-
+    const [favorited, setFavorited] = useState(false)
+    const userRef = doc(collection(db, 'users'), `${auth.currentUser.uid}`, 'favorites', id)
+    // Loads game data
     useEffect(() => {
         gameService.getCurrent(id).then(data => {
          setInfo(data)
          setLoading(false)
         })
       }, [])
+
+    // Check if the document is favorited by user. 
+    useEffect(() => {
+        const favoriteCheck = async() => {
+            await getDoc(userRef).then((doc) => {
+                if(doc.data() !== undefined) {
+                    setFavorited(doc.data().favorite)
+                } 
+            })
+        }
+        return favoriteCheck
+    }, [])
     // Once we get the id, fetch the data to display under here 
     if(loading) {
         return <>Loading...</>
+    }
+
+    const addFavorite = async() => {
+          // Path: [collection] users -> [document] currentUser.uid -> [collections] favorites -> new entry with game id
+          if(favorited === false) {
+             await setDoc(userRef, {
+            id: id,
+            name: `${info[0].name}`,
+            url: `${info[0].cover.url}`,
+            favorite: true, 
+            })  
+            setFavorited(true)
+            } else if(favorited === true) {
+                await deleteDoc(userRef)
+                setFavorited(false)
+            }
+          }
+         
+
+    const openList = () => {
+
     }
     return(
         <main className="game-info">
@@ -67,8 +106,8 @@ const Template = () => {
             </section>
 
             <section>
-                <button> ❤️ Add as Favorite</button>
-                <button> + Add to List</button>
+                <button onClick={addFavorite}>{favorited === false ? 'Not Favorite' : 'Favorited'}</button>
+                <button onClick={openList}> + Add to List</button>
             </section>
         </main>
     )

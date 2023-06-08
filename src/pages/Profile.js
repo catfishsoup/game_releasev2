@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { UserAuth } from '../firebase/user_auth'; //Get current user from here 
 import '../styles/Profile.scss'
 import styled from 'styled-components'
-import userService from '../firebase/user_request'
 import cover from '../img/cover_test.jpg'
 // User Profile Page Settings
 /**

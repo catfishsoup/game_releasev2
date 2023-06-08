@@ -18,13 +18,17 @@ const Search = () => {
         return <>Loading...</>
     }
         return (
+            <> 
+            <h1>Search result: {name}</h1>
             <section className='search-cont'>
                {game.map((data) => {
                     if('cover' in data) {
-                        return (<Picture key={data.id} data={data} text={'t_logo_med'}/>)
+                        return (<Picture key={data.id} data={data} text={'t_cover_big'}/>)
                     }
                 })}
             </section>
+            </>
+           
         )
 }
 

@@ -17,16 +17,15 @@ const postData = ({id, action}) => {
     
 }
 
-
-const markGame = ({id, action}) => {
-    
+// Take in currUser authentication id 
+const markGame = async({id, action, }) => {
+    await setDoc(doc(db, 'users', `${id}/favorites`), {
+        cover_url: '',
+        name: '', 
+    })
 }
 
 const setGameStatus = () => {
-    
-}
-
-const getGameStatus = () => {
     
 }
 

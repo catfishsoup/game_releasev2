@@ -67,7 +67,6 @@ async function getCurrent(id) {
 }
 
 async function searchGame(name) {
-
   try {
     const res = await axios.request({
       method: 'post',
@@ -82,7 +81,6 @@ async function searchGame(name) {
   } catch(e) {
     console.log(e);
   }
-  
 }
 
 export default {getPopular, getTrending, getReleased, getCurrent, searchGame}

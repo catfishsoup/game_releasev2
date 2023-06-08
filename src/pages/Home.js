@@ -4,7 +4,7 @@ import Picture from '../components/Picture.js'
 
 
 
-const Discover = ({page}) => {
+const Discover = () => {
     const [gamePicture, setGamePicture] = useState([])
     useEffect(() => {
         gameService.getPopular().then(data=> {
@@ -18,7 +18,7 @@ const Discover = ({page}) => {
             <section className='discover-img-cont'>
                 {gamePicture.map((data) => {
                     if('cover' in data) {
-                        return (<Picture data={data} key={data.id}/>)
+                        return (<Picture data={data} key={data.id} text={'t_cover_big'}/>)
                     }
                 })}
             </section>

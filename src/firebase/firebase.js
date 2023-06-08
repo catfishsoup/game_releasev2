@@ -12,7 +12,9 @@ const firebaseConfig = {
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
   }
 
-  const app = initializeApp(firebaseConfig);
+  const app = initializeApp(firebaseConfig, {
+    ignoreUndefinedProperties: true,
+  });
 
   // Exporting the variables to use in another part of the application.
   export const auth = getAuth(app) //Contain the API KEY, AUTH_DOMAIN, and appName

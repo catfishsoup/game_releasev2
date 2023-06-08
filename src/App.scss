@@ -253,6 +253,7 @@ nav {
             opacity: 0;
             font-weight: 500;
             transition: 0.5s ease;
+            text-overflow: ellipsis;
             }
             &:hover {
                 p, .img-overlay {
@@ -267,7 +268,7 @@ nav {
 // Search.js 
 .search-cont {
     display: grid;
-    grid-template-columns: repeat(5, 0.1fr);
+    grid-template-columns: repeat(5, 1fr);
     place-items: center;
     justify-content: center;
     gap: 1em;
