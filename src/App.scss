@@ -273,6 +273,65 @@ nav {
     justify-content: center;
     gap: 1em;
 }
+
+
+// 
+// GameLog.js
+.modal-tab {
+    padding: 1rem;
+    position: relative;
+    border-radius: 5px;
+    border: none;
+    .mini-title {
+        font-size: 1.5rem;
+    }
+    .fav-btn {
+            padding: 0.5em 2em 0.5em 2em;
+            background: #D83E4F;
+            color: #f3f3f3;
+            border-radius: 0.5em;
+            border: 2px solid black;
+            display: inline-block;
+        }
+    form {
+        display: flex;
+        gap: 2em;
+        button {
+            display: block;
+            padding: 0.5em;
+        }
+        select {
+            display: block;
+            padding: 0.5em 2em 0.5em 5px;
+            margin-bottom: 1em;
+            border-radius: 0.5em;
+        }
+
+        img {
+            margin-top: 1em;
+            border-radius: 0.5em;
+            box-shadow: $basic-boxshadow;
+        }
+        div {
+            margin-top: 1em;
+        }
+    }
+    .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+        }
+    .two-btn {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
 // Animations
 @keyframes mover {
             0% { transform: translateY(0); }

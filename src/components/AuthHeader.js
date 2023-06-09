@@ -10,7 +10,7 @@ const UserOption = ({open, handleLogOut}) => {
             <ul className='user-option-lists'>
                 {/* Improvement Needed: Only authorized / logged in user can access these links. */}
                 <li><Link to='/profile'>Profile</Link></li>
-                <li><Link>Bookmark</Link></li>
+                <li><Link>Settings</Link></li>
                 <li><button onClick={handleLogOut} className='log_out_btn'>Log Out</button></li>
             </ul>
         )
