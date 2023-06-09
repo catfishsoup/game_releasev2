@@ -7,7 +7,7 @@ import { doc, setDoc, collection, getDoc, deleteDoc, updateDoc } from "firebase/
 
 
 
-const GameLog = ({modalValue, info, id, setOpen, setFavorite, postData, userData }) => {
+const GameLog = ({modalValue, info, setOpen, setFavorite, postData, userData}) => {
 
 
     // Initializing variables 
@@ -16,7 +16,8 @@ const GameLog = ({modalValue, info, id, setOpen, setFavorite, postData, userData
     ])
     const [gamestatus, setGameStatus] = useState(userData.status || '')
     const statuses = [ 
-        {id: 1, text: 'Interested'}, {id: 2,text: 'On Hold'}, {id: 3, text: 'Dropped'}, {id: 4, text: 'In Progress'}, {id: 5, text: 'Completed'}, 
+        {id: 1, text: 'Interested'}, {id: 2,text: 'On Hold'}, {id: 3, text: 'Dropped'}, 
+        {id: 4, text: 'In Progress'}, {id: 5, text: 'Completed'}, 
     ]
     // 
     const modal = useRef()
@@ -44,15 +45,15 @@ const GameLog = ({modalValue, info, id, setOpen, setFavorite, postData, userData
             <form method="">
                 <img src={`${info[0].cover.url.replace('t_thumb', 't_logo_med')}`}></img>
                 <div>
-                        <label><small>Status</small></label>
-                        <select name="game-status" onChange={handleGameStatus} defaultValue={gamestatus}>
-                           {statuses.map((status) => <option key={status.id} 
+                    <label><small>Status</small></label>
+                    <select name="game-status" onChange={handleGameStatus} defaultValue={gamestatus}>
+                        {statuses.map((status) => <option key={status.id} 
                            value={status.text}>{status.text}</option>)}
-                        </select>
-                        <label><small>Start Date</small></label>
-                        <input type="date" name="startdate" defaultValue={`${dates[0].startdate}`} onChange={handleDate}></input>
-                        <br/><label><small>End Date</small></label>
-                        <input type="date" name="enddate" defaultValue={`${dates[0].enddate}`} onChange={handleDate}></input>
+                    </select>
+                    <label><small>Start Date</small></label>
+                    <input type="date" name="startdate" defaultValue={`${dates[0].startdate}`} onChange={handleDate}></input>
+                    <br/><label><small>End Date</small></label>
+                    <input type="date" name="enddate" defaultValue={`${dates[0].enddate}`} onChange={handleDate}></input>
                 </div>
             </form>
             <div className='two-btn'><button className='fav-btn' onClick={() => setFavorite()}>Favorite</button> <button onClick={() => postData(gamestatus, dates)}>Save</button></div>

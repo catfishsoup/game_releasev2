@@ -29,7 +29,7 @@ const App = () => {
     <Route path="login" element={<Login />}/>
     <Route path="games/:id" element={<Template />}/>
     <Route path="signup" element={<Signup />}/>
-    <Route path="profile" element={<Profile />}/>
+    <Route path="profile/:user_name" element={<Profile />}/>
     <Route path="search/:name" element={<Search />}/>
   </Route>
 )

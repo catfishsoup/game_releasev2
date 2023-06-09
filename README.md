@@ -3,3 +3,4 @@ Improvised version two of my first website, [Game Release](https://github.com/ca
 
 ## About
 The web application purpose is helping user keep track of game releases and managing their library. 
+Check out the demo of Game Release version 2, Videa, to demonstrate my growth as a developer:

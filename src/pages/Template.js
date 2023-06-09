@@ -1,4 +1,5 @@
 import {useParams} from "react-router-dom";
+import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import gameService from '../services/gamereq.js'
 import GameLog from '../components/GameLog.js'
@@ -17,6 +18,16 @@ const Screenshot = ({data}) => {
         <img key={data.id} src={data.url}/>
     )
 }
+
+const ProfileHeader = styled.section`
+    background-image: url(${props => props.$cover || "#BF4F74"});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 5rem;
+    width: 100%;
+`
 const Template = () => {
     const [loading, setLoading] = useState(true)
     let { id } = useParams();
@@ -41,6 +52,7 @@ const Template = () => {
                 // Check the information about the game
                 if(doc.data() !== undefined) {
                     setuserData(doc.data())
+                    setFavorited(doc.data().favorite)
                     setContained(true)
                 }
             })
@@ -51,18 +63,14 @@ const Template = () => {
     if(loading) {
         return <>Loading...</>
     }
-// Use Params - take in the param in the URL as data to use. Have to use the same param  define in path. 
-    
-    
-    
-    
-    
+// Use Params - take in the param in the URL as data to use. Have to use the same param  define in path.    
     async function favoriteGame() {
         // If data is contained and favorite is false. 
+        console.log('clicked')
         if(contained === true) {
-            setFavorited(!userData.favorite)
+            setFavorited(!favorited)
             await updateDoc(userRef, {
-                favorite: favorited
+                favorite: !favorited
             }, {merge: true})
         } else {
             await setDoc(userRef, {
@@ -73,6 +81,8 @@ const Template = () => {
 
     async function postData(gamestatus, dates) {
         await setDoc(userRef, {
+            name: info[0].name,
+            url: info[0].cover.url,
             status: `${gamestatus}` || '',
             start_date: `${dates.startdate}` || '',
             finish_date: `${dates.enddate}` || '',
@@ -81,8 +91,11 @@ const Template = () => {
     return(
         <>
         <main className="game-info">
-            <img className="game_cover" src={`${info[0].cover.url.replace('t_thumb', 't_screenshot_huge')}`} alt="game_cover"/>
-            <img className="game_thumbnail" src={`${info[0].cover.url.replace('t_thumb', 't_cover_big')}`} alt="game_thumbnail"/>
+            <ProfileHeader $cover={`${info[0].screenshots[0]?.url.replace('t_thumb', 't_screenshot_huge')}`}>
+                <img className="game_thumbnail" src={`${info[0].cover.url.replace('t_thumb', 't_cover_big')}` || ''} alt="game_thumbnail"/>
+            </ProfileHeader>
+                
+            
             <h1>{info[0].name}</h1>
             <p>{info[0].summary}</p>
             <section className="genre">
@@ -118,11 +131,10 @@ const Template = () => {
             <section>
                 <small>Manage Game</small>
                <button onClick={() => setopenModal(true)}>Log {`${info[0].name}`}</button> 
-               <button onClick={favoriteGame}>Favorite</button>
-               <button> + Add to List</button>
+               {/* Render on click, not on page refresh */}
+               <button onClick={favoriteGame}>{favorited === true ? 'Favorited' : 'Not Favorited'}</button>
+               {/* <button> + Add to List</button> Implementing 'Lists' feature later */}
             </section>
-                    
-            
         </main>
         <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
         </>

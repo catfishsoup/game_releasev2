@@ -4,12 +4,12 @@ import { NavLink, Link, Outlet } from "react-router-dom";
 import { useState } from 'react';
 import '../App.scss'
 import SearchBar from './SearchBar'
-const UserOption = ({open, handleLogOut}) => {
+const UserOption = ({open, handleLogOut, displayName}) => {
     if(open === true) {
         return(
             <ul className='user-option-lists'>
                 {/* Improvement Needed: Only authorized / logged in user can access these links. */}
-                <li><Link to='/profile'>Profile</Link></li>
+                <li><Link to={`/profile/${displayName}`}>Profile</Link></li>
                 <li><Link>Settings</Link></li>
                 <li><button onClick={handleLogOut} className='log_out_btn'>Log Out</button></li>
             </ul>
@@ -44,7 +44,7 @@ const AuthHeader = () => {
                 </ul>
                 <div className='user-sl'><SearchBar/>
                 <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/>
-                <UserOption open={openUP} handleLogOut={handleLogOut}/>
+                <UserOption open={openUP} handleLogOut={handleLogOut} displayName={`${user.displayName}`}/>
                 </div> 
             </nav>
         </header>
