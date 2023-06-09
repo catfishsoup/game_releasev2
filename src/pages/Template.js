@@ -73,9 +73,9 @@ const Template = () => {
 
     async function postData(gamestatus, dates) {
         await setDoc(userRef, {
-            status: `${gamestatus}`,
-            start_date: `${dates.startdate}`,
-            finish_date: `${dates.enddate}`,
+            status: `${gamestatus}` || '',
+            start_date: `${dates.startdate}` || '',
+            finish_date: `${dates.enddate}` || '',
         }, {merge: true})
     }
     return(
@@ -124,7 +124,7 @@ const Template = () => {
                     
             
         </main>
-        <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData}/>
+        <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
         </>
         
     )
