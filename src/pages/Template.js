@@ -15,18 +15,23 @@ const List = ({data}) => {
 
 const Screenshot = ({data}) => {
     return (
-        <img key={data.id} src={data.url}/>
+        <img key={data.id} src={data.url.replace('t_thumb', 't_screenshot_med')} className="screenshots"/>
     )
 }
 
-const ProfileHeader = styled.section`
+const ProfileHeader = styled.div`
     background-image: url(${props => props.$cover || "#BF4F74"});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
-    padding: 5rem;
+    position: absolute;
+    opacity: 2;
+    top: 0;
+    left: 0;
+    padding: 10rem;
     width: 100%;
+    display: inline-block;
+    z-index: -1;
 `
 const Template = () => {
     const [loading, setLoading] = useState(true)
@@ -90,52 +95,65 @@ const Template = () => {
     }
     return(
         <>
-        <main className="game-info">
-            <ProfileHeader $cover={`${info[0].screenshots[0]?.url.replace('t_thumb', 't_screenshot_huge')}`}>
+        <body className="game-info">
+            <section className="header-cont">
+                <ProfileHeader $cover={`${info[0].screenshots[0]?.url.replace('t_thumb', 't_screenshot_huge')}`} className="game-header"></ProfileHeader> 
+                <div className="header-cont-2">
                 <img className="game_thumbnail" src={`${info[0].cover.url.replace('t_thumb', 't_cover_big')}` || ''} alt="game_thumbnail"/>
-            </ProfileHeader>
+                <h1>{info[0].name}</h1>
+               
+                </div>
+            </section>
+           
+                <section className="info-body">
+                    <aside className="left-section">
+                        <section className="manage-games">
+                            <small>Manage Game</small>
+                            <button onClick={() => setopenModal(true)}>Log {`${info[0].name}`}</button> 
+                    {/* Render on click, not on page refresh */}
+                            <button onClick={favoriteGame}>{favorited === true ? 'Favorited' : 'Not Favorited'}</button>
+                    {/* <button> + Add to List</button> Implementing 'Lists' feature later */}
+                        </section>
                 
-            
-            <h1>{info[0].name}</h1>
-            <p>{info[0].summary}</p>
-            <section className="genre">
-                <ul>
-                    {info[0].genres.map((genre) => {
-                        return(<List data={genre}/>)
-                    })}
-                </ul>
-            </section>
+                        <section className="platforms">
+                            <small>Platforms</small>
+                            <ul>
+                                {info[0].platforms.map((platform) => {
+                                return(<List data={platform}/>)
+                                })}
+                            </ul>
+                        </section> 
+                
+                        <section className="developers">
+                            <small>Created By:</small>
+                            <ul>
+                                {info[0].involved_companies.map((curr_company) => {
+                                return(<List data={curr_company.company}/>)
+                                })}
+                            </ul>
+                        </section>
+                    </aside>
+                    {/*********/}
+                    <section className="main-section">
+                        
+                        <section className="genre">
+                            <ul> {info[0].genres.map((genre) => {return(<List data={genre}/>)})}
+                            </ul>
+                        </section>
 
-            <section className="screenshots">
-                    {info[0].screenshots.map((picture) => {
-                        return(<Screenshot data={picture}/>)
-                    })}
-            </section>
-
-            <section className="platforms">
-                <ul>
-                    {info[0].platforms.map((platform) => {
-                        return(<List data={platform}/>)
-                    })}
-                </ul>
-            </section>
-
-            <section className="developers">
-                <ul>
-                    {info[0].involved_companies.map((curr_company) => {
-                        return(<List data={curr_company.company}/>)
-                    })}
-                </ul>
-            </section>
-
-            <section>
-                <small>Manage Game</small>
-               <button onClick={() => setopenModal(true)}>Log {`${info[0].name}`}</button> 
-               {/* Render on click, not on page refresh */}
-               <button onClick={favoriteGame}>{favorited === true ? 'Favorited' : 'Not Favorited'}</button>
-               {/* <button> + Add to List</button> Implementing 'Lists' feature later */}
-            </section>
-        </main>
+                        <section className="desc">
+                            <small>Description</small>
+                            <p>{info[0].summary}</p>   
+                        </section>
+                        
+                        <section className="screenshots"> 
+                            {info[0].screenshots.map((picture) => {
+                            return(<Screenshot data={picture}/>)
+                            })}
+                        </section>
+                    </section>
+                </section> 
+        </body>
         <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
         </>
         

@@ -1,5 +1,87 @@
+$basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
+
+
 * {
-    overflow-x: hidden;
     padding: 0;
     margin: 0;
+    list-style-type: none;
+}
+
+
+.header-cont {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .header-cont-2 {
+        .game_thumbnail, h1 {
+            display: inline-block;
+        }
+        .game_thumbnail {
+            margin: 2em 2em 0em 2em;
+            box-shadow: $basic-boxshadow;
+            border-radius: 5px;
+        }
+        h1 {
+            font-family: 'Archivo Black', sans-serif;
+            vertical-align: bottom;
+            font-size: 3rem;
+        }
+        p {
+            border: 1px solid red;
+            width: 75%;
+        }
+    }
+    
+   
+}
+.info-body {
+    display: flex;
+    flex-direction: row;
+}
+// Aside section
+.left-section {
+    display: flex;
+    flex-direction: column;
+    margin: 0em 2em 0em 1.5em;
+    width: fit-content;
+    padding: 1em;
+    justify-content: center;
+    flex: 20%;
+    .manage-games, .platforms, .developers {
+        border-radius: 0.5em;
+        padding: 1em;
+        margin-bottom: 0.5em;
+        box-shadow: $basic-boxshadow;
+    }
+    button {
+        display: block;
+    }
+}
+
+
+// Main section
+
+.main-section {
+    section {
+        margin-bottom: 1.5em;
+    }
+    
+    .desc {
+        width: 75%;
+    }
+    .genre {
+        li {
+            display: inline-block;
+            border: 1px solid black;
+            margin-right: 5px;
+            padding: 5px;
+            border-radius: 0.5em;
+        }
+    }
+}
+
+.screenshots {
+    margin: 1em;
+    border: 1px solid red;
 }
