@@ -1,21 +1,23 @@
 import {useParams} from "react-router-dom";
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
+import { useEffect, useState} from 'react'
 import gameService from '../services/gamereq.js'
 import GameLog from '../components/GameLog.js'
 import '../styles/Template.scss'
 import {db} from '../firebase/firebase.js'
 import { doc, setDoc, collection, getDoc, deleteDoc, updateDoc } from "firebase/firestore"; 
 import {auth} from '../firebase/firebase.js'
+import ModalImage from "react-modal-image";
 const List = ({data}) => {
     return(
         <li key={data.key}>{data.name}</li>
     )
 }
-
 const Screenshot = ({data}) => {
     return (
-        <img key={data.id} src={data.url.replace('t_thumb', 't_screenshot_med')} className="screenshots"/>
+        <ModalImage className='modal-img' 
+        small={data.url.replace('t_thumb', 't_screenshot_med')} 
+        large={data.url.replace('t_thumb', 't_screenshot_huge')}/>
     )
 }
 
@@ -95,7 +97,7 @@ const Template = () => {
     }
     return(
         <>
-        <body className="game-info">
+        <div className="game-info">
             <section className="header-cont">
                 <ProfileHeader $cover={`${info[0].screenshots[0]?.url.replace('t_thumb', 't_screenshot_huge')}`} className="game-header"></ProfileHeader> 
                 <div className="header-cont-2">
@@ -143,17 +145,21 @@ const Template = () => {
 
                         <section className="desc">
                             <small>Description</small>
-                            <p>{info[0].summary}</p>   
+                            <p className="game-desc">{info[0].summary}</p>   
                         </section>
                         
                         <section className="screenshots"> 
-                            {info[0].screenshots.map((picture) => {
+                        <small>Screenshots</small>
+                        <div className="modal-cont">
+                           {info[0].screenshots.map((picture) => {
                             return(<Screenshot data={picture}/>)
-                            })}
+                            })}  
+                        </div>
+                              
                         </section>
                     </section>
                 </section> 
-        </body>
+        </div>
         <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
         </>
         

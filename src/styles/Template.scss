@@ -1,5 +1,5 @@
 $basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
-
+$neutral-bg: rgb(242,242,242);
 
 * {
     padding: 0;
@@ -7,6 +7,12 @@ $basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
     list-style-type: none;
 }
 
+@mixin neutral-bg-theme {
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    background: $neutral-bg;
+}
 
 .header-cont {
     position: relative;
@@ -35,24 +41,20 @@ $basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
     
    
 }
+
 .info-body {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 0.22fr 1fr;
 }
 // Aside section
 .left-section {
     display: flex;
     flex-direction: column;
-    margin: 0em 2em 0em 1.5em;
-    width: fit-content;
-    padding: 1em;
+    margin: 1em 2.5em 0em 1.5em;
+    height: fit-content;
     justify-content: center;
-    flex: 20%;
     .manage-games, .platforms, .developers {
-        border-radius: 0.5em;
-        padding: 1em;
-        margin-bottom: 0.5em;
-        box-shadow: $basic-boxshadow;
+        @include neutral-bg-theme()
     }
     button {
         display: block;
@@ -63,12 +65,16 @@ $basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
 // Main section
 
 .main-section {
+    display: inline-block;
+    padding: 1em;
+    // overflow: hidden;
     section {
         margin-bottom: 1.5em;
     }
     
     .desc {
-        width: 75%;
+        line-height: 1.5;
+        @include neutral-bg-theme()
     }
     .genre {
         li {
@@ -79,9 +85,32 @@ $basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
             border-radius: 0.5em;
         }
     }
+.screenshots {
+    @include neutral-bg-theme();
+    position: relative;
+    div {
+        flex-shrink: 0;
+    } 
+
+    .modal-cont {
+        overflow-x: scroll;
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    
+    .modal-img {
+            margin: 1em;
+            transition: 0.5s;
+            cursor:pointer;
+            border-radius: 0.2em;  
+            display: inline;
+            
+        }
+        .modal-img:hover {
+            box-shadow: $basic-boxshadow;
+            transform: translateY(-5px);
+        } 
+       
+}
 }
 
-.screenshots {
-    margin: 1em;
-    border: 1px solid red;
-}
