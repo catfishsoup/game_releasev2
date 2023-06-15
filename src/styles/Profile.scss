@@ -80,17 +80,42 @@ main {
                 margin-right: 1em;
             }
         }
+    
         .active {
-    display: block;
-}
+            display: block;
+        }
 
-.not-active {
-    display: none;
-}
+        .not-active {
+            display: none;
+        }
     }
 }
 
 
+.game-sect {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
 
-// Active / Not-active promise
+    // 
+    .filter-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    // 
+    .game-display-sect {
+        .game-display-table {
+            border-collapse: collapse;
+            .table-header-row {
+                border: 1px solid red;
+            }
+            .indv-game-row {
+                td {
+                    border: 1px solid red;
+                }
+            }
+        }
+    }
+}
 

@@ -84,10 +84,6 @@ const Overview = ({click, favoriteGame}) => {
         setDone(true)
     }, [statusList])
     
-
-    
-
-
     useEffect(() => {
         fetchCount()
     }, [])
@@ -121,7 +117,7 @@ const Overview = ({click, favoriteGame}) => {
                 <section className='picture-cont'>
                     {favoriteGame.map((game) => {
                         return(
-                            <Picture data={game} text={'t_cover_small'}/>
+                            <Picture data={game} text={'t_cover_small'} key={game.id}/>
                         )
                     })}
                 </section>
@@ -133,14 +129,81 @@ const Overview = ({click, favoriteGame}) => {
     }
     
 }
+const Game = ({click}) => {
 
+    const [games, setGames] = useState([])
+    useEffect(() => {
+        const fetchGame = async() => {
+            await getDocs(collection(db, 'users', `${auth.currentUser?.uid}`, 'games')).then((docs) => {
+                docs.forEach((data) => {
+                    setGames(game => [...game, data.data()])
+                })
+            }).catch(e => {
+                console.log(e)
+            })
+        }
+
+        return fetchGame
+    }, [])
+    if(click === 2) {
+       return (
+        <section className='game-sect'>
+            <aside className='filter-list'>
+                <section>
+                    <h2>Search Bar</h2>
+                    <input/>
+                </section>
+                
+                <section>
+                    <h2>Status</h2>
+                    <ul>
+                        <li>In Progress</li>
+                        <li>On Hold</li>
+                        <li>Completed</li>
+                        <li>Dropped</li>
+                    </ul>
+                </section>
+            </aside>
+            <section>
+                <table>
+                    <tbody>
+                       <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Start Date</th>
+                            <th>Finish Date</th>
+                            <th>Action</th>
+                        </tr> 
+
+                        {games.map((game) => {
+                            return(
+                                <tr key={game.id}>
+                                    <td><img src={game.url.replace('t_thumb', 't_micro')}/></td>
+                                    <td>{game.name}</td>
+                                    <td>{game.status}</td>
+                                    <td>{game.start_date || '-'}</td>
+                                    <td>{game.finish_date || '-'}</td>
+                                    <td><button></button></td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </section>
+        </section>
+        
+    ) 
+    }
+    
+}
 
 const List = ({click}) => {
     /**
      * List will includes 'Default' List and User generated Lists. 
      **/ 
 
-    if(click === 2 ) {
+    if(click === 3 ) {
       return (
         <section>
             <div>Lists</div>
@@ -154,7 +217,7 @@ const Favorites = ({click}) => {
     /**
      * Display all the games that user marked as 'Favorite' 
      */
-    if(click === 3) {
+    if(click === 4) {
        return (
         <section>
             <div>Favorites</div>
@@ -172,13 +235,17 @@ const Profile = () => {
             id: 1, 
         },
         {
-            name: 'Lists',
+            name: 'Games',
             id: 2, 
         },
         {
-            name: 'Favorites',
+            name: 'Lists',
             id: 3, 
-        },])
+        },
+        {
+            name: 'Favorites',
+            id: 4, 
+        }])
     const [active, setActive] = useState(1)
     const [favoriteGame, setFavoriteGame] = useState([])
         const openNav = (id) => {
@@ -187,7 +254,7 @@ const Profile = () => {
 
 
     useEffect(() => {
-        const fetchFavorite =  async () => {
+        const fetchFavorite = async() => {
             const q = query(collection(db, 'users', `${auth.currentUser?.uid}`, 'games'), where('favorite', '==', true))
             const queryGames = await getDocs(q)
                 queryGames.forEach((doc) => {
@@ -213,6 +280,7 @@ const Profile = () => {
 
         {/* Tidy this up later */}
         <Overview click={active} favoriteGame={favoriteGame}/>
+        <Game click={active}/>
         <List click={active}/>
         <Favorites click={active}/>
         </main>
