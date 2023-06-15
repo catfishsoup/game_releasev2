@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import cover from '../img/cover_test.jpg'
 import { doc, setDoc, getDoc, getDocs, updateDoc, collection, query, where, collectionGroup, getCountFromServer } from "firebase/firestore"; 
 import {auth, db} from '../firebase/firebase.js'
-
+import Picture from '../components/Picture'
 
 // User Profile Page Settings
 /**
@@ -43,7 +43,7 @@ const StatusStyle = styled.div`
     color: white;
     text-align: center;
 `
-const Overview = ({click}) => {
+const Overview = ({click, favoriteGame}) => {
     /**
      * List will includes 'Default' List and User generated Lists. 
      **/ 
@@ -73,23 +73,26 @@ const Overview = ({click}) => {
             color: '#E44D2E'
         },
     ])
-    const userRef = collection(db, 'users', `${auth.currentUser?.uid}`, 'games')
     const [done, setDone] = useState(false)
     const fetchCount = useCallback(async() => { 
         for(let x = 0; x < statusList.length; x++) {
-                const q = query(userRef, where('status', '==', statusList[x].name))
+                const q = query(collection(db, 'users', `${auth.currentUser?.uid}`, 'games'), where('status', '==', statusList[x].name))
                 await getCountFromServer(q).then((snapshot) => {
                     statusList[x].count = snapshot.data().count
                 })
             }
         setDone(true)
     }, [statusList])
-           
+    
+
+    
+
+
     useEffect(() => {
         fetchCount()
     }, [])
 
-    if(click === 1 && done === true) {
+    if(click === 1) {
       return (
         <section className='overview-sect'>
             <section className='list-overview'>
@@ -101,7 +104,7 @@ const Overview = ({click}) => {
             <section className='backlog-overview'>
                 <h2>Backlog Status</h2>
                 {/* Count games by their completion status. */}
-                <section>
+                <section className={done === true ? 'active' : 'not-active'}>
                     <ul className='game-status-list'>
                         {statusList.map((status) => {
                             return(<li key={status.id}>
@@ -115,8 +118,12 @@ const Overview = ({click}) => {
 
             <section className='favorite-overview'>
                 <h2>Favorited Games</h2><button>+</button>
-                <section>
-                    
+                <section className='picture-cont'>
+                    {favoriteGame.map((game) => {
+                        return(
+                            <Picture data={game} text={'t_cover_small'}/>
+                        )
+                    })}
                 </section>
             </section>
 
@@ -173,11 +180,27 @@ const Profile = () => {
             id: 3, 
         },])
     const [active, setActive] = useState(1)
-
+    const [favoriteGame, setFavoriteGame] = useState([])
         const openNav = (id) => {
            setActive(id)
         }
-        
+
+
+    useEffect(() => {
+        const fetchFavorite =  async () => {
+            const q = query(collection(db, 'users', `${auth.currentUser?.uid}`, 'games'), where('favorite', '==', true))
+            const queryGames = await getDocs(q)
+                queryGames.forEach((doc) => {
+                    const gameObject = {
+                        id: doc.id,
+                        name: doc.data().name,
+                        url: doc.data().url
+                    }
+                    setFavoriteGame(game => [...game, gameObject])
+                })
+        }
+        return fetchFavorite
+    }, [])
     return(
         <main>
         <Header/>
@@ -189,7 +212,7 @@ const Profile = () => {
         </div>
 
         {/* Tidy this up later */}
-        <Overview click={active}/>
+        <Overview click={active} favoriteGame={favoriteGame}/>
         <List click={active}/>
         <Favorites click={active}/>
         </main>

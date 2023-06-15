@@ -31,6 +31,7 @@ main {
     width: fit-content;
     position: absolute;
     bottom: 5%;
+    left: 5%;
 }
 
 .user-nav {
@@ -79,5 +80,17 @@ main {
                 margin-right: 1em;
             }
         }
+        .active {
+    display: block;
+}
+
+.not-active {
+    display: none;
+}
     }
 }
+
+
+
+// Active / Not-active promise
+
