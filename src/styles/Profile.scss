@@ -93,26 +93,54 @@ main {
 
 
 .game-sect {
-    display: flex;
+    padding: 1em;
+    display:flex;
     flex-direction: row;
     gap: 2rem;
-
+    align-items: center;
+    justify-content: center;
     // 
     .filter-list {
         display: flex;
         flex-direction: column;
+        @include neutral-bg-theme();
     }
 
     // 
     .game-display-sect {
+        @include neutral-bg-theme();
         .game-display-table {
-            border-collapse: collapse;
+            th, td {
+                padding: 1.5rem 0rem 1rem 1.5rem;
+            }
+            border-collapse: separate;
+            
+            // 
             .table-header-row {
                 border: 1px solid red;
+                text-align: left;
+
             }
+
+            // 
             .indv-game-row {
-                td {
-                    border: 1px solid red;
+                border: 1px dashed plum;
+                .name-col {
+                    width: 50ch;
+                }
+                .img-col {
+                    img{border-radius: 2px;}
+                }
+
+                .action-col {
+                    button {
+                        background: none; 
+                        border: none;
+                    }
+                }
+
+                .start-col, .end-col {
+                    text-align: center;
                 }
             }
         }

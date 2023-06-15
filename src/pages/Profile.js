@@ -164,10 +164,10 @@ const Game = ({click}) => {
                     </ul>
                 </section>
             </aside>
-            <section>
-                <table>
+            <section className='game-display-sect'>
+                <table className='game-display-table'>
                     <tbody>
-                       <tr>
+                       <tr className='table-header-row'>
                             <th></th>
                             <th>Name</th>
                             <th>Status</th>
@@ -178,13 +178,18 @@ const Game = ({click}) => {
 
                         {games.map((game) => {
                             return(
-                                <tr key={game.id}>
-                                    <td><img src={game.url.replace('t_thumb', 't_micro')}/></td>
-                                    <td>{game.name}</td>
-                                    <td>{game.status}</td>
-                                    <td>{game.start_date || '-'}</td>
-                                    <td>{game.finish_date || '-'}</td>
-                                    <td><button></button></td>
+                                <tr key={game.id} className='indv-game-row'>
+                                    <td className='img-col'><img src={game.url.replace('t_thumb', 't_micro')}/></td>
+                                    <td className='name-col'>{game.name}</td>
+                                    <td className='status-col'>{game.status}</td>
+                                    <td className='start-col'>{game.start_date == 'undefined' ? '-': game.start_date}</td>
+                                    <td className='end-col'>{game.finish_date == 'undefined' ? '-' : game.finish_date}</td>
+                                    <td className='action-col'><button><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                                        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="7" cy="7" r="6.5"/><circle cx="7" cy="7" r=".5"/><circle cx="4" cy="7" r=".5"/>
+                                        <circle cx="10" cy="7" r=".5"/></g></svg>
+                                        </button>
+                                    </td>
                                 </tr>
                             )
                         })}
