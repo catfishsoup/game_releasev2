@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import { Link, Redirect, Navigate, useNavigate } from "react-router-dom";
 const SearchBar = () => {
     const inputRef = useRef()

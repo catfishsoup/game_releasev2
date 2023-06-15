@@ -1,6 +1,19 @@
 
 $basic-boxshadow: 0px 10px 8px -10px rgba(0,0,0,0.27);
+$neutral-bg: rgb(242,242,242);
 
+
+// Mixin themes
+@mixin neutral-bg-theme {
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    background: $neutral-bg;
+}
+
+main {
+    overflow: hidden;
+}
 .profile-picture {
     max-width: 20%;
 }
@@ -29,4 +42,42 @@ $basic-boxshadow: 0px 10px 8px -10px rgba(0,0,0,0.27);
     padding: 1rem;
     border: 1px solid white;
     box-shadow: $basic-boxshadow;
+    div {
+        cursor: pointer;
+        &:hover {
+            color: purple;
+        }
+    }
+}
+
+
+
+// Overview sect 
+.overview-sect {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1em;
+    gap: 1em;
+    section {
+        h2 {
+            font-size: 1em;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+        section {
+          @include neutral-bg-theme();  
+        }
+        
+    }
+
+    // 
+    .backlog-overview {
+        .game-status-list {
+            text-align: center;
+            li {
+                display: inline-block;
+                margin-right: 1em;
+            }
+        }
+    }
 }

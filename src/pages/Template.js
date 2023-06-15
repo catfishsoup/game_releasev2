@@ -4,9 +4,8 @@ import { useEffect, useState} from 'react'
 import gameService from '../services/gamereq.js'
 import GameLog from '../components/GameLog.js'
 import '../styles/Template.scss'
-import {db} from '../firebase/firebase.js'
-import { doc, setDoc, collection, getDoc, deleteDoc, updateDoc } from "firebase/firestore"; 
-import {auth} from '../firebase/firebase.js'
+import { doc, setDoc, collection, getDoc, updateDoc } from "firebase/firestore"; 
+import {auth, db} from '../firebase/firebase.js'
 import ModalImage from "react-modal-image";
 const List = ({data}) => {
     return(
@@ -50,7 +49,7 @@ const Template = () => {
     const [userData, setuserData] = useState([])
     const [openModal, setopenModal] = useState(false)
     const [favorited, setFavorited] = useState(false)
-    const userRef = doc(collection(db, 'users'), `${auth.currentUser.uid}`, 'games', id)
+    const userRef = doc(collection(db, 'users'), `${auth.currentUser?.uid}`, 'games', id)
     // Loads game data from IDGB
     useEffect(() => {
         gameService.getCurrent(id).then(data => {
@@ -88,7 +87,9 @@ const Template = () => {
             }, {merge: true})
         } else {
             await setDoc(userRef, {
-                favorite: true
+                favorite: true,
+                name: info[0].name,
+                url: info[0].cover.url,
             }, {merge: true})
         }
     }
@@ -117,7 +118,8 @@ const Template = () => {
                 <section className="info-body">
                     <aside className="left-section">
                         <section className="manage-games">
-                            <small>Manage Game</small>
+                            {/* Only allow log in user to perform action down here.  */}
+                            <h2>Manage Game</h2>
                             <button onClick={() => setopenModal(true)} className="log-btn">Log {`${info[0].name}`}</button> 
                     {/* Render on click, not on page refresh */}
                             <FavoriteBtn onClick={favoriteGame}><svg xmlns="http://www.w3.org/2000/svg" width="24" 
@@ -130,7 +132,7 @@ const Template = () => {
                         </section>
                 
                         <section className="platforms">
-                            <small>Platforms</small>
+                            <h2>Platforms</h2>
                             <ul>
                                 {info[0].platforms.map((platform) => {
                                 return(<List data={platform}/>)
@@ -139,7 +141,7 @@ const Template = () => {
                         </section> 
                 
                         <section className="developers">
-                            <small>Created By:</small>
+                            <h2>Created By:</h2>
                             <ul>
                                 {info[0].involved_companies.map((curr_company) => {
                                 return(<List data={curr_company.company}/>)
@@ -156,12 +158,12 @@ const Template = () => {
                         </section>
 
                         <section className="desc">
-                            <small>Description</small>
+                            <h2>Description</h2>
                             <p className="game-desc">{info[0].summary}</p>   
                         </section>
                         
                         <section className="screenshots"> 
-                        <small>Screenshots</small>
+                        <h2>Screenshots</h2>
                         <div className="modal-cont">
                            {info[0].screenshots.map((picture) => {
                             return(<Screenshot data={picture}/>)

@@ -23,12 +23,12 @@ const GameLog = ({modalValue, info, setOpen, setFavorite, postData, userData}) =
     const modal = useRef()
         if(modalValue === true) {
             modal.current?.removeAttribute('open')
-            modal.current.showModal()
+            modal.current?.showModal()
         }
 
         const closeModal = (e) => {
             e.preventDefault()
-            modal.current.close()
+            modal.current?.close()
             setOpen(false)
         }
 

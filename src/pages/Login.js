@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { UserAuth } from "../firebase/user_auth"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const Login = () => {
     const passwordRef = useRef()
     const emailRef = useRef()
 
-    const {loginUser} = UserAuth()
-
+    const {loginUser, user} = UserAuth()
+    const [isLogged, setLogged] = useState(false)
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -15,10 +15,18 @@ const Login = () => {
          } catch(e) {
             console.log(e)
         }
-
     }
+    useEffect(() => {
+            if(user) {
+                setLogged(true)
+            } else {
+                setLogged(false)
+            }
+        }, [])
     return(
         <>
+        {/* Improve: Navigate to previous location */}
+        {isLogged && <Navigate to="/home" replace={true}/>}
         <form onSubmit={handleSubmit}>
             <label>Email</label>
             <input type='email' ref={emailRef}/>
@@ -32,8 +40,9 @@ const Login = () => {
             </Link>
         </form>
 
-        <small>For demo purposes:
-            User name: test@gmail.com
+        <small>
+            For demo purposes:
+            User name: demo@gmail.com
             Password: 123456
         </small>
         </>

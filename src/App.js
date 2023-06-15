@@ -14,10 +14,11 @@ import Template from './pages/Template'
 import Profile from './pages/Profile'
 import Search from './pages/Search'
 
-
+import {Warning, Empty} from './pages/Warning'
 
 const App = () => {
   const user = UserAuth()
+
   const router = createBrowserRouter( 
   createRoutesFromElements(
     // If user is not null (check for null `?`), then render one of the two header options
@@ -29,8 +30,12 @@ const App = () => {
     <Route path="login" element={<Login />}/>
     <Route path="games/:id" element={<Template />}/>
     <Route path="signup" element={<Signup />}/>
-    <Route path="profile/:user_name" element={<Profile />}/>
+    <Route element={user.user !== null ? <Profile/> : <Warning/>}>
+      <Route path="profile/:user_name" element={<Profile />}/>
+    </Route>
+    
     <Route path="search/:name" element={<Search />}/>
+    <Route path="*" element={<Empty />} />
   </Route>
 )
 );

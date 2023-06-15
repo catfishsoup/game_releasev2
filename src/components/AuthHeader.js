@@ -1,6 +1,6 @@
 import Logo from './Logo'
 import { UserAuth } from "../firebase/user_auth"
-import { NavLink, Link, Outlet } from "react-router-dom";
+import { NavLink, Link, Outlet, Navigate, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import '../App.scss'
 import SearchBar from './SearchBar'
@@ -11,7 +11,7 @@ const UserOption = ({open, handleLogOut, displayName}) => {
                 {/* Improvement Needed: Only authorized / logged in user can access these links. */}
                 <li><Link to={`/profile/${displayName}`}>Profile</Link></li>
                 <li><Link>Settings</Link></li>
-                <li><button onClick={handleLogOut} className='log_out_btn'>Log Out</button></li>
+                <li><button onClick={() => handleLogOut()} className='log_out_btn'>Log Out</button></li>
             </ul>
         )
     }
@@ -19,9 +19,12 @@ const UserOption = ({open, handleLogOut, displayName}) => {
 const AuthHeader = () => {
     const {user, logout} = UserAuth()
     const [openUP, setopenUP] = useState(false)
+    const [isLogged, setLogged] = useState(true)
+    const nav = useNavigate()
     const handleLogOut = async() => {
         try {
             await logout()
+            nav('/login', {replace: true})
         } catch (e) {
             console.log(e)
         }
@@ -31,7 +34,7 @@ const AuthHeader = () => {
         setopenUP(!openUP)
     }
 
-
+    
     return(
         <>
         <header>
