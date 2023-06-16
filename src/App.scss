@@ -22,7 +22,11 @@
     border-radius: 10px;
 }     
 
-
+html{
+    position: relative;
+    min-height: 100%;
+    max-height: auto;
+}
 // 
 // Header.js 
 nav {
@@ -213,7 +217,7 @@ nav {
         align-items: center;
         gap: 2.5em;
         position: relative;
-        height: 100vh;
+        padding: 5rem;
         .home-title {
         text-align: center;
         font-family: 'Archivo Black', sans-serif;
@@ -243,11 +247,11 @@ nav {
 
     .toggle-container {
         margin: 0rem 5rem 5rem 5rem;
-        position: relative;
         border-radius: 1em;
         background: rgba(0, 0, 0, 0.95);
         padding: 1em;
         color: white;
+
         box-shadow: $basic-boxshadow;
         .toggle-btn {
         float: right;
@@ -437,6 +441,8 @@ nav {
     align-items: center;
     gap: 1em;
     height: 100vh;
+    background: url(img/mhk_21.jpg);
+
     h1, h2 {
         font-family: 'Archivo Black', sans-serif;
     }
@@ -466,7 +472,16 @@ nav {
     }
 }
 
-
+footer {
+    overflow: hidden;
+    background: black;
+    position:absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+}
 // Animations
 @keyframes mover {
             0% { transform: translateY(0); }

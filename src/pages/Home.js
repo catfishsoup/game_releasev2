@@ -43,7 +43,7 @@ const Book = ({page}) => {
 const Home = () => {
     const [page, setPage] = useState(0) 
        return(
-        <main className='home-cont'>
+        <section className='home-cont'>
             <section className='intro-cont'>
                 <img src={require('../img/gamepad.png')} alt="console-picture" className='decor-img'/>
                 <img src={require('../img/console.png')} alt="console-picture" className='decor-img2'/>
@@ -53,14 +53,14 @@ const Home = () => {
                 <button>Get Started</button>
             </section>
             
-            <section className='toggle-container'>
+            <div className='toggle-container'>
                 <div className='toggle-btn'><button><img src={require('../img/arrow_left.png')} alt="left-arrow"/></button> 
                     <button><img src={require('../img/arrow-right.png')} alt="right-arrow"/></button>
                 </div>
                 <Discover page={page}/>
                 <Book page={page}/>
-            </section>
-        </main>
+            </div>
+        </section>
     ) 
     
 }
