@@ -34,7 +34,7 @@ const Login = () => {
         {isLogged && <Navigate to="/home" replace={true}/>}
         <section>
             
-            <form onSubmit={handleSubmit} className="login-form">
+            <form onSubmit={handleSubmit} className="user-form">
                 <h1>Nice seeing you again</h1>
                 
             <div>
@@ -54,7 +54,7 @@ const Login = () => {
             </div>
             <section className="demo-account">
                 <small style={{display: 'block', textAlign: 'center'}}>Or login with</small>
-                <button className="btn" onClick={() => demoLogin()}>Demo Account</button>
+                <button type="button" className="btn" onClick={() => demoLogin()}>Demo Account</button>
                 <button type="button">Google</button>
             </section>
             

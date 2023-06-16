@@ -15,19 +15,33 @@ const Signup = () => {
             createUser(emailRef.current.value, passwordRef.current.value, userNameRef.current.value)
     }
     return(
-        <form onSubmit={handleSubmit} className="sign-up-form">
-            <label>Username</label>
-            <input type='text' ref={userNameRef} required/>
-            <label>Email</label>
-            <input type='email' ref={emailRef} required/>
-            <label>Password</label>
-            <input  type='password' ref={passwordRef} required/>
-            <label>Confirm Password</label>
-            <input  type='password' ref={confirmPassword} required/>
-            <button type='submit'>Sign Up</button>
-            <label>Or Login Using:</label>
-            {/* Google Email */}
+        <section>
+            <form onSubmit={handleSubmit} className="user-form">
+            <h1>Sign Up</h1>
+            <div>
+                <label>Username</label>
+                <input type='text' ref={userNameRef} required/>   
+            </div>
+            
+            <div>
+                <label>Email</label>
+                <input type='email' ref={emailRef} required/>   
+            </div>
+            
+            <div>
+              <label>Password</label>
+                <input  type='password' ref={passwordRef} required/>  
+            </div>
+            
+            <div>
+              <label>Confirm Password</label>
+                <input  type='password' ref={confirmPassword} required/>  
+            </div>
+            
+            <button type='submit' className="submit-btn">Sign Up</button>
         </form>
+        </section>
+        
     )
 }
 
