@@ -42,9 +42,9 @@ const AuthHeader = () => {
                 
                 <ul className='links-cont'>
                     <li><Logo/></li>
-                    <li className='link'>Home</li>
+                    <li className='link'><NavLink to='/home' className='link'>Home</NavLink></li>
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
-                    <li className='link'>Contact</li>
+                    <li className='link'><NavLink to='/contact' className='link'>Contact</NavLink></li>
                 </ul>
                 <div className='user-sl'>
                 <SearchBar/>

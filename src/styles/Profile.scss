@@ -14,12 +14,6 @@ $neutral-bg: rgb(242,242,242);
     margin: 0;
 }
 
-h2 {
-    @include section-title;
-        &:after {
-            @include purple-underline;
-        }
-}
 
 main {
     overflow: hidden;
@@ -71,9 +65,11 @@ main {
     gap: 1em;
     section {
         h2 {
+            @include section-title;
             display: inline-block;
             margin-right: 5px;
             &:after {
+                @include purple-underline;
               width: 50%;  
             }
             
@@ -121,7 +117,9 @@ main {
             @include neutral-bg-theme();
         }
         h2 {
+            @include section-title;
             &:after {
+                @include purple-underline;
                 width: 20%;
             }
         }

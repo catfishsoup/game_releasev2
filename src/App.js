@@ -1,7 +1,6 @@
 import './App.scss';
 import { createBrowserRouter, Route, RouterProvider, createRoutesFromElements} from 'react-router-dom';
-import { AuthContextProvider, UserAuth } from './firebase/user_auth';
-import {auth} from './firebase/firebase.js'
+import { UserAuth } from './firebase/user_auth';
 import Header from './components/Header'
 import AuthHeader from './components/AuthHeader'
 import About from './pages/About'
@@ -22,19 +21,23 @@ const App = () => {
   const router = createBrowserRouter( 
   createRoutesFromElements(
     // If user is not null (check for null `?`), then render one of the two header options
-  <Route path="/" element={user?.user !== null ? <AuthHeader/> : <Header/>}>
-    <Route index element={<Home />} />
-    <Route path="home" element={<Home />} />
-    <Route path="about" element={<About />}/>
-    <Route path="games" element={<Games />}/>
-    <Route path="login" element={<Login />}/>
-    <Route path="games/:id" element={<Template />}/>
-    <Route path="signup" element={<Signup />}/>
+  <Route path="/" >
+    <Route element={user?.user !== null ? <AuthHeader/> : <Header/>}>
+      <Route index element={<Home />} />
+      <Route path="home" element={<Home />} />
+      <Route path="about" element={<About />}/>
+      <Route path="games" element={<Games />}/>
+      <Route path="login" element={<Login />}/>
+      <Route path="games/:id" element={<Template />}/>
+      <Route path="signup" element={<Signup />}/>
+
     <Route element={user.user !== null ? <Profile/> : <Warning/>}>
       <Route path="profile/:user_name" element={<Profile />}/>
     </Route>
-    
+
     <Route path="search/:name" element={<Search />}/>
+
+    </Route>
     <Route path="*" element={<Empty />} />
   </Route>
 )
