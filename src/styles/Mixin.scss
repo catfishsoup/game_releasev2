@@ -1,0 +1,27 @@
+
+//Variables 
+$basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
+$neutral-bg: rgb(242,242,242);
+$base-purple: #695ef5;
+
+
+@mixin neutral-bg-theme {
+    border-radius: 0.5em;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    background: $neutral-bg;
+}
+
+@mixin purple-box {
+    background: $base-purple;
+    border-radius: 1em;
+    border: 2px solid black;
+    color: white;
+}
+
+@mixin flex-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+}

@@ -1,8 +1,6 @@
+//Imports 
+@import 'Mixin.scss';
 
-@import '../App.scss';
-
-$basic-boxshadow: 10px 10px 13px -8px rgba(0,0,0,0.27);
-$neutral-bg: rgb(242,242,242);
 
 * {
     padding: 0;
@@ -10,12 +8,6 @@ $neutral-bg: rgb(242,242,242);
     list-style-type: none;
 }
 
-@mixin neutral-bg-theme {
-    border-radius: 0.5em;
-    padding: 1em;
-    margin-bottom: 0.5em;
-    background: $neutral-bg;
-}
 
 .header-cont {
     position: relative;
@@ -48,7 +40,7 @@ $neutral-bg: rgb(242,242,242);
 .info-body {
     display: grid;
     grid-template-columns: 0.21fr 1fr;
-    small {
+    h2 {
         font-weight: 500;
         font-size: 1em;
         display: inline-block;
