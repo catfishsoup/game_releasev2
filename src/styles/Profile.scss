@@ -1,5 +1,4 @@
 // Imports
-@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 @import 'Mixin.scss';
 
 // Variables 
@@ -121,11 +120,11 @@ main {
         }
 
         h2 {
-            font-size: 1em;
-            margin-bottom: 1em;
-            letter-spacing: 1px;
-            color: rgba(0,0,0,0.8);
-            font-family: 'Abel', sans-serif;
+            @include section-title;
+            &:after {
+                @include purple-underline;
+                width: 20%;
+            }
         }
 
 

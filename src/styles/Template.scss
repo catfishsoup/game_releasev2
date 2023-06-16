@@ -41,10 +41,8 @@
     display: grid;
     grid-template-columns: 0.21fr 1fr;
     h2 {
-        font-weight: 500;
-        font-size: 1em;
+        @include section-title;
         display: inline-block;
-        margin-bottom: 1em;
         &:after {
             content: '';
             display: block;
