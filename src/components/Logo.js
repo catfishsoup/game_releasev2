@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const Logo = () => {
     return(
         <div >
-            <NavLink to='/home' className='logo-name'>Videa</NavLink>
+            <NavLink to='/home' className='logo-name'>VIDEA</NavLink>
         </div>
     )
 }

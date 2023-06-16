@@ -32,8 +32,9 @@ $base-purple: #695ef5;
 }
 
 @mixin searchbar {
-    padding: 0.5rem;
-    border-radius: 1rem;
+    padding: 0.7rem;
+    width: 25ch;
+    border-radius: 3px;
     border: 2px solid black;
     background-color: #faf9f5;
 }

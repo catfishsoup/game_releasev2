@@ -39,11 +39,15 @@ const AuthHeader = () => {
         <>
         <header>
             <nav>
-                <Logo/>
+                
                 <ul className='links-cont'>
+                    <li><Logo/></li>
+                    <li className='link'>Home</li>
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
+                    <li className='link'>Contact</li>
                 </ul>
-                <div className='user-sl'><SearchBar/>
+                <div className='user-sl'>
+                <SearchBar/>
                 <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/>
                 <UserOption open={openUP} handleLogOut={handleLogOut} displayName={`${user.displayName}`}/>
                 </div> 
