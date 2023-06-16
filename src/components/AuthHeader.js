@@ -41,9 +41,7 @@ const AuthHeader = () => {
             <nav>
                 <Logo/>
                 <ul className='links-cont'>
-                    <li><NavLink to='/home' className='link'>Home</NavLink></li>
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
-                    <li><NavLink to='/about' className='link'>About</NavLink></li>
                 </ul>
                 <div className='user-sl'><SearchBar/>
                 <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/>

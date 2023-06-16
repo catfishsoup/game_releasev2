@@ -1,5 +1,4 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Asap:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 @import './styles/Mixin.scss';
@@ -13,7 +12,16 @@
     padding: 0;
     font-family:'Asap', sans-serif;
 }
-
+::-webkit-scrollbar {
+    height: 10px;             
+    width: 10px;
+    border-radius: 1em;             
+    border: 1px solid #d5d5d5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.90);
+    border-radius: 10px;
+}     
 // 
 // Header.js 
 nav {
@@ -34,9 +42,19 @@ nav {
     }   
 
     .logo-name {
-        font-family:  'Bungee Shade', cursive;
-        font-size: 3rem;
-        color: #695ef5;
+        font-family: 'Archivo Black', sans-serif;
+        letter-spacing: 5px;
+        padding: 0.2em;
+        font-size: 2rem;
+        border-radius: 5px;
+        box-shadow: $basic-boxshadow;
+        text-decoration: none;
+        color: white;
+        background: black;
+        transition: 0.1s ease-in;
+        &:hover {
+            color: $base-purple;
+        }
     }
 
     input {

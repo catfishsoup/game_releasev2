@@ -13,6 +13,14 @@ $neutral-bg: rgb(242,242,242);
     padding: 0;
     margin: 0;
 }
+
+h2 {
+    @include section-title;
+        &:after {
+            @include purple-underline;
+        }
+}
+
 main {
     overflow: hidden;
 }
@@ -63,9 +71,12 @@ main {
     gap: 1em;
     section {
         h2 {
-            font-size: 1em;
-            margin-bottom: 5px;
-            font-weight: normal;
+            display: inline-block;
+            margin-right: 5px;
+            &:after {
+              width: 50%;  
+            }
+            
         }
         section {
           @include neutral-bg-theme();  
@@ -109,7 +120,11 @@ main {
         section {
             @include neutral-bg-theme();
         }
-
+        h2 {
+            &:after {
+                width: 20%;
+            }
+        }
         .search-bar {
             padding: 1em;
             border: none;
@@ -119,14 +134,7 @@ main {
             padding-top: 12px;
         }
 
-        h2 {
-            @include section-title;
-            &:after {
-                @include purple-underline;
-                width: 20%;
-            }
-        }
-
+        
 
     }
 

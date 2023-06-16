@@ -1,6 +1,12 @@
+
+
+import { NavLink } from "react-router-dom";
+
 const Logo = () => {
     return(
-        <div className='logo-name'>Videa</div>
+        <div >
+            <NavLink to='/home' className='logo-name'>Videa</NavLink>
+        </div>
     )
 }
 
