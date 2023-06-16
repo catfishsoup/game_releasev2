@@ -23,28 +23,46 @@ const Login = () => {
                 setLogged(false)
             }
         }, [])
+
+        const demoLogin = () => {
+            emailRef.current.value = 'demo@gmail.com'
+            passwordRef.current.value = '123456'
+        }
     return(
         <>
         {/* Improve: Navigate to previous location */}
         {isLogged && <Navigate to="/home" replace={true}/>}
-        <form onSubmit={handleSubmit}>
-            <label>Email</label>
-            <input type='email' ref={emailRef}/>
+        <section>
+            
+            <form onSubmit={handleSubmit} className="login-form">
+                <h1>Nice seeing you again</h1>
+                
+            <div>
+                <label>Email</label>
+                <input type='email' ref={emailRef} placeholder='Email' required/>  
+            </div>
+            
+            <div>
+                <label>Password</label>
+                <input ref={passwordRef} type='password' placeholder="Password" required/>   
+            </div>
+            
+            <button type="submit" className="submit-btn"><span>Login</span></button>
 
-            <label>Password</label>
-            <input ref={passwordRef} type='password'/>
-            <button type="submit">Login</button>
-
-            <Link to="/signup">
-            <button>Sign Up</button>
-            </Link>
+            <div className="sign-up-sect">
+            <div>Don't have an account? <Link to="/signup">Sign Up</Link></div>
+            </div>
+            <section className="demo-account">
+                <small style={{display: 'block', textAlign: 'center'}}>Or login with</small>
+                <button className="btn" onClick={() => demoLogin()}>Demo Account</button>
+                <button type="button">Google</button>
+            </section>
+            
         </form>
+        </section>
+        
 
-        <small>
-            For demo purposes:
-            User name: demo@gmail.com
-            Password: 123456
-        </small>
+        
         </>
         
     )

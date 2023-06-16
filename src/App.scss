@@ -21,6 +21,8 @@
     background: rgba(0,0,0,1);
     border-radius: 10px;
 }     
+
+
 // 
 // Header.js 
 nav {
@@ -39,16 +41,16 @@ nav {
             
         }
         
-        .link {
-            text-decoration: none;
-            color: black;
+       
+        
+    }   
+    .link {
+        text-decoration: none;
+        color: black;
             &:hover {
                 color: $base-purple;
             }
-        }
-        
-    }   
-
+    }
     .logo-name {
         font-family: 'Archivo Black', sans-serif;
         letter-spacing: 5px;
@@ -68,11 +70,15 @@ nav {
     input {
         @include searchbar;
         background: url(img/search-thin.svg) no-repeat scroll 7px 10px $base-purple;
-        color: white;
         border: none;
         padding-left: 30px;
+        border: black 2px solid;
         &::placeholder {
-            color: rgba(0, 0, 0, 0.5);
+            color: black;
+        }
+
+        &:focus {
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
         }
     }
     
@@ -98,14 +104,103 @@ nav {
             background: none;
             border: none;
         }
+
+        .login-btn {
+            @include searchbar;
+            margin-left: 1em;
+            text-decoration: none;
+            color: white;
+            background-color: black;
+            border: none;
+            width: fit-content;
+            transition: 0.2s ease-in;
+            &:hover {
+                transform: translate(-5px, -5px);
+                box-shadow: 5px 5px 0 -3px white, 5px 5px $base-purple,
+            }
+        }
     }
 }
+
 
 
 .user-pfp {
     width: 35px;
     height: 35px;
 }
+
+
+// 
+// Login.js 
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem 4rem 1rem;
+    gap: 1em;
+    div {
+        label {
+            display: block;
+            @include section-title;
+            margin-bottom: 0.8em;
+            &::after{
+                @include purple-underline;
+                width: 10%;
+            }
+        }
+
+        input {
+            padding: 1em;
+            width: 35ch;
+            border: 3px solid black;
+            border-radius: 3px;
+        }
+    }
+    .submit-btn {
+        @include searchbar;
+        text-align: center;
+        color: white;
+        background-color: $base-purple;
+        width: 40ch;
+        margin-top: 1em;
+        span {
+            font-size: 1rem;
+        }
+        &:hover {
+            box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+    }
+    .sign-up-sect {
+        border-bottom: 1px solid gray;
+        width: 35ch;
+        text-align: center;
+        div {
+            margin-bottom: 1em;
+            font-size: 0.8rem;
+        }
+    }
+    .demo-account {
+        button {
+            @include searchbar;
+            width: 20ch;
+            padding: 0.5em;
+            margin: 0.7em;
+            display: inline-block;
+            background: black;
+            color: white;
+            transition: 0.2s ease-in;
+            cursor: pointer;
+            &:hover {
+                transform: translate(-5px, -5px);
+                box-shadow: 5px 5px 0 -3px white, 5px 5px $base-purple,
+            }
+        }
+    }
+}
+
+
 
 // 
 // Home.js 

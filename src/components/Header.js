@@ -7,11 +7,16 @@ const Header = () => {
         <>
         <header>
             <nav>
-                <Logo/>
                 <ul className='links-cont'>
+                    <li><Logo/></li>
+                    <li className='link'><NavLink to='/home' className='link'>Home</NavLink></li>
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
+                    <li className='link'><NavLink to='/contact' className='link'>Contact</NavLink></li>
                 </ul>
-                <div className='user-sl'><SearchBar/> <NavLink to='/login' className='link'>Login</NavLink></div> 
+                <div className='user-sl'>
+                    <SearchBar/> 
+                    <NavLink to='/login' className='login-btn'>Login</NavLink>
+                </div> 
             </nav>
         </header>
         <Outlet/>
