@@ -46,7 +46,6 @@ const Home = () => {
         <section className='home-cont'>
             <section className='intro-cont'>
                 <img src={require('../img/gamepad.png')} alt="console-picture" className='decor-img'/>
-                <img src={require('../img/console.png')} alt="console-picture" className='decor-img2'/>
                 <h1 className='home-title'><span style={{color: '#d83e4f'}}>Track</span> new games<br/> and <br/> <span style={{color: '#b34886'}}>reduce</span> your backlog</h1>
                 <p><small>Tired of keeping track of games via multiple platform? Or your games backlog is getting bigger every year? Don't worry we got your back.</small>
                 </p>
