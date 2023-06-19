@@ -26,10 +26,27 @@ html{
     position: relative;
     min-height: 100%;
     max-height: auto;
-    padding-bottom: 10rem;
+    padding-bottom: 20rem;
 }
 // 
 // Header.js 
+.logo-name {
+        font-family: 'Archivo Black', sans-serif;
+        letter-spacing: 5px;
+        padding: 0.2em;
+        font-size: 2rem;
+        border-radius: 5px;
+        box-shadow: $basic-boxshadow;
+        text-decoration: none;
+        color: white;
+        background: black;
+        transition: 0.1s ease-in;
+        &:hover {
+            color: $base-purple;
+        }
+}
+
+
 nav {
     display: flex;
     flex-direction: row;
@@ -56,21 +73,7 @@ nav {
                 color: $base-purple;
             }
     }
-    .logo-name {
-        font-family: 'Archivo Black', sans-serif;
-        letter-spacing: 5px;
-        padding: 0.2em;
-        font-size: 2rem;
-        border-radius: 5px;
-        box-shadow: $basic-boxshadow;
-        text-decoration: none;
-        color: white;
-        background: black;
-        transition: 0.1s ease-in;
-        &:hover {
-            color: $base-purple;
-        }
-    }
+    
 
     input {
         @include searchbar;
@@ -218,6 +221,7 @@ nav {
         align-items: center;
         gap: 2.5em;
         position: relative;
+        height: 100vh;
         padding: 5rem;
         .home-title {
         text-align: center;
@@ -474,14 +478,71 @@ nav {
 }
 
 footer {
-    overflow: hidden;
     background: black;
     position:absolute;
-    display: inline-block;
     bottom: 0;
     left: 0;
     right: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: 1em;
+    .footer-content {
+        
+        border-top: 3px solid $base-purple;
+        margin: 1em;
+        width: 85%;
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+        border-top-right-radius: 1px;
+        border-top-left-radius: 1px;
+        padding-top: 1rem;
+        .site-address {
+            text-align: left;
+            padding: 1em;
+            .contact-num {
+                display: inline-block;
+            }
+
+            .contact-num-2 {
+                float: right;
+            }
+            .socials {
+              display: flex;
+              align-items: center;
+              gap: 1em;
+            }
+        }
+    }
+
+    .footer-nav {
+        width: 85%;
+        border-top: 2px solid rgba(210, 215, 211, 0.1) ;
+        display: flex;
+        justify-content: space-between;
+
+        small {
+            padding: 1em;
+            color: rgba(210, 215, 211, 0.5);
+        }
+    }
+    
+    ul {
+        list-style-type: none; 
+        width: fit-content;
+            li {
+                display: inline-block; 
+                padding: 1em;
+                text-transform: uppercase;
+            }
+    }
+
+
 }
 // Animations
 @keyframes mover {
