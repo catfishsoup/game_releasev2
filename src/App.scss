@@ -17,7 +17,7 @@
     width: 10px;
     border-radius: 1em;             
   }
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: rgba(0,0,0,1);
     border-radius: 10px;
 }     
@@ -210,105 +210,6 @@ nav {
 
 
 
-// 
-// Home.js 
-.home-cont {
-    position: relative;
-    .intro-cont {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2.5em;
-        position: relative;
-        height: 100vh;
-        padding: 5rem;
-        .home-title {
-        text-align: center;
-        font-family: 'Archivo Black', sans-serif;
-        font-size: 5rem;
-        span {font-family: 'Archivo Black', sans-serif;}
-        } 
-        button {
-            padding: 0.8rem;
-            width: 40ch;
-            @include purple-box();
-            border-radius: 2rem;
-        }  
-        .decor-img {
-        left: 20%;
-        top: 15%;
-        position: absolute;
-        z-index: 1;
-        animation: mover 2s infinite alternate;
-        }
-    }
-
-    .toggle-container {
-        margin: 0rem 5rem 5rem 5rem;
-        border-radius: 1em;
-        background: rgba(0, 0, 0, 0.95);
-        padding: 1em;
-        color: white;
-
-        box-shadow: $basic-boxshadow;
-        .toggle-btn {
-        float: right;
-        }
-        .toggle-btn {
-            button {
-                background: none;
-                border: 1px solid white;
-                border-radius: 50%;
-                padding: 3px;
-                margin: 5px;
-                transition: 0.5s ease-in;
-                &:hover {
-                    background: #695ef5;
-                }
-            }
-        }
-
-    .discover-cont {
-            h2 {
-                color: #8e53bd;
-            }
-            .discover-img-cont {
-                overflow: hidden;
-                display: flex;
-                img {
-                    margin: 1em;
-                    border-radius: 1em;
-                }
-
-            }
-        }
-    }
-}
-
-
-// 
-// Games.js 
-.games-cont {
-        .cont-direct {
-            background: black;
-            width: fit-content;
-            padding: 0.7em;
-            width: 20ch;
-            margin: 1em;
-            border-radius: 1rem;
-            display: flex;
-            justify-content: space-between;
-            box-shadow: $basic-boxshadow;
-            font-weight: 500;
-            color: white;
-            transition: 0.2s ease-in;
-            &:hover {
-                background: #695ef5;
-            }
-        }
-}
-
 
 
 // 
@@ -459,75 +360,6 @@ nav {
     height: 100vh;
     @include error-page;
 }
-
-// 
-// Footer.js
-footer {
-    background: black;
-    position:absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 1em;
-    .footer-content {
-        
-        border-top: 3px solid $base-purple;
-        margin: 1em;
-        width: 85%;
-        text-align: center;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        flex-direction: row;
-        border-top-right-radius: 1px;
-        border-top-left-radius: 1px;
-        padding-top: 1rem;
-        .site-address {
-            text-align: left;
-            padding: 1em;
-            .contact-num {
-                display: inline-block;
-            }
-
-            .contact-num-2 {
-                float: right;
-            }
-            .socials {
-              display: flex;
-              align-items: center;
-              gap: 1em;
-            }
-        }
-    }
-
-    .footer-nav {
-        width: 85%;
-        border-top: 2px solid rgba(210, 215, 211, 0.1) ;
-        display: flex;
-        justify-content: space-between;
-
-        small {
-            padding: 1em;
-            color: rgba(210, 215, 211, 0.5);
-        }
-    }
-    
-    ul {
-        list-style-type: none; 
-        width: fit-content;
-        li {
-            display: inline-block; 
-            padding: 1em;
-            text-transform: uppercase;
-        }
-    }
-}
-
 
 // 
 // Contact.js 

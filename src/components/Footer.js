@@ -3,7 +3,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Logo from './Logo'
 import styled from 'styled-components'
-import '../App.scss'
+import '../styles/Footer.scss'
 import marker from '../img/address-marker.svg'
 import printer from '../img/printer-fill.svg'
 import phone from '../img/round-phone.svg'

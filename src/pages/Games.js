@@ -11,7 +11,7 @@ const Trending = () => {
       }, [])
     return(
         <section className='trending-cont'>
-            <div className='cont-direct'>Trending <img src={require('../img/arrow-right.png')} alt="right-arrow"/></div>
+            <div className='cont-direct'>Trending Games <img src={require('../img/arrow-right.png')} alt="right-arrow"/></div>
             <section className='picture-cont'>
                 {trending.map((data) => {
                     if('cover' in data) {

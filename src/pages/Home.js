@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import gameService from '../services/gamereq.js'
 import Picture from '../components/Picture.js'
-
+import '../styles/Home.scss'
 
 
 const Discover = () => {
