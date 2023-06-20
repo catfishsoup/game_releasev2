@@ -1,6 +1,7 @@
 import axios from 'axios'
 const baseUrl = process.env.REACT_APP_BASE_URL
 const x_api_key = process.env.REACT_APP_X_API_KEY
+let currDate = Math.round(new Date().setHours(0, 0, 0 , 0) / 1000) - 14400;
 
 // 
 let getPopularconfig = {
@@ -37,7 +38,7 @@ const getTrending = async() => await axios.request(getTrendingconfig)
 })
 
 
-let currDate = Math.round(new Date().setHours(0, 0, 0 , 0) / 1000) - 14400;
+
 let getReleasedconfig = {
   method: 'post',
   url: baseUrl,
@@ -48,6 +49,26 @@ let getReleasedconfig = {
   data : `fields name, release_dates.date, release_dates.human, cover.url; where release_dates.date = ${currDate}; sort release_dates.date asc; limit 5;`
 }
 const getReleased = () => axios.request(getReleasedconfig).then((res) => {return (res.data)})
+
+
+async function getIncoming() {
+  try {
+    const res = await axios.request({
+      method: 'post',
+      url: baseUrl,
+      headers: {
+        'x-api-key': x_api_key,
+        'Content-Type': 'text/plain'
+      },
+      data: `fields name, release_dates.date, release_dates.human, cover.url; where release_dates.date > ${currDate}; sort release_dates.date asc; limit 5;`
+  });
+    return (res.data);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+
 
 async function getCurrent(id) {
   try {
@@ -83,4 +104,4 @@ async function searchGame(name) {
   }
 }
 
-export default {getPopular, getTrending, getReleased, getCurrent, searchGame}
+export default {getPopular, getTrending, getReleased, getCurrent, searchGame, getIncoming}

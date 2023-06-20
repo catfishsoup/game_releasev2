@@ -26,7 +26,7 @@ html {
     position: relative;
     min-height: 100%;
     max-height: auto;
-    padding-bottom: calc(10vw + 5%) ;
+    padding-bottom: calc(15vw + 5%) ;
 }
 // 
 // Header.js 
@@ -222,11 +222,12 @@ nav {
 .indv-pic-cont {
         position: relative;
         width: fit-content;
-        height: fit-content;
+        
             img {
                 border-radius: 5px;
                 box-shadow: $basic-boxshadow; 
                 vertical-align: bottom;
+                height: 312px;
             }
             .img-overlay {
                 position: absolute;
@@ -264,9 +265,10 @@ nav {
 // Search.js 
 .search-cont {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: auto auto auto auto auto;
     place-items: center;
     justify-content: center;
+    column-gap: 0em;
     gap: 1em;
 }
 

@@ -1,14 +1,16 @@
+@import './Mixin.scss';
+
+
 .games-cont {
     display: flex;
     flex-direction: column;
     padding: 1em;
-    margin: auto;
     align-items: center;
+    gap: 3em;
 }
 
 // Trending section
 .trending-cont {
-
     .trending-img {
     display: grid;
     grid-template-columns: 1fr;
@@ -48,12 +50,15 @@
 
 // Platform Sect 
 .platform-sect {
-
+    h1 {
+        text-align: center;
+    }
     .platform-card-sect {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        white-space: nowrap;
         .platform-card {
             
             background: black;
@@ -84,14 +89,14 @@
             .card-link {
                 bottom: 10%;
                 text-decoration: none;
-                color: black;
+                color: rgba(0, 0, 0, 0.7);
                 display: inline-block;
                 img {
                     vertical-align: bottom;
                 }
-
                 &:hover {
-                    animation: mover 0.55s infinite alternate;
+                    transform: scale(2); zoom: 1;
+                    animation: movers 0.45s infinite alternate;
                 }
             }
 
@@ -107,8 +112,17 @@
     
 }
 
+.release-sect, .upcoming-sect {
+    section {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+    }
+}
 
-@keyframes mover {
+
+// Animations
+@keyframes movers {
     0% { transform: translateX(0); }
     20% { transform: translateX(-1px); }
     40% { transform: translateX(-2px); }

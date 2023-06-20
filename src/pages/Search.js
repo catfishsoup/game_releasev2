@@ -23,7 +23,7 @@ const Search = () => {
             <section className='search-cont'>
                {game.map((data) => {
                     if('cover' in data) {
-                        return (<Picture key={data.id} data={data} text={'t_cover_big'}/>)
+                        return (<Picture key={data.id} data={data} text={'t_cover_med_2x'}/>)
                     }
                 })}
             </section>

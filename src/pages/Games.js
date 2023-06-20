@@ -9,32 +9,19 @@ import switch_con from '../img/switch-fill.svg'
 import xbox from '../img/xbox-fill.svg'
 import playstation from '../img/playstation-fill.svg'
 import arrow from '../img/arrow.svg'
-const Child_4 = styled.div`
-    height: 175px;
-    background: url(${props => props.$image}) no-repeat;
-    background-size: contain;
-    border-radius: 5px;
-`
 const Trending = ({trending}) => {
-
-    
-
          return(
         <section className='trending-cont'>
             <h1 className='cont-direct'>Trending Games <img src={require('../img/arrow-right.png')} alt="right-arrow"/></h1>
             <section className='trending-img'>
                 <div className='child-1'>
                     <img src={trending[0].cover.url.replace('t_thumb', 't_cover_big')}/>
-                    
                 </div>
                 <div className='child-3'>See More</div>
                 <div className='child-2'>
                 <img src={trending[3].cover.url.replace('t_thumb', 't_cover_big')}/>
                 <img src={trending[1].cover.url.replace('t_thumb', 't_cover_big')}/>
                 </div>
-
-                
-
                 <div className='child-4'>
                     <img src={trending[5].cover.url.replace('t_thumb', 't_screenshot_med')}/>
                 </div>
@@ -46,10 +33,21 @@ const Trending = ({trending}) => {
    
 }
 
-const Upcoming = () => {
+const Upcoming = ({upcoming}) => {
     return (
-        <section className='upcoming-cont'>
-            <h1 className='cont-direct'>Upcoming <img src={require('../img/arrow-right.png')} alt="right-arrow"/></h1>    
+        <section className='upcoming-sect'>
+            <h1>Upcoming</h1> 
+            <section>
+            {upcoming.map((picture, index) => {
+                    if(index === 0) {
+                        return(<Picture data={picture} text={'t_screenshot_med_2x'}/>)
+                    } else {
+                        return(<Picture data={picture} text={'t_cover_big_2x'}/>)
+                    }
+                }
+                    
+                )}
+            </section>
         </section>
     )
 }
@@ -90,13 +88,19 @@ const Platform = () => {
 }
 
 const Release = ({release}) => {
-
-      
       return (
-        <section>
-            <h1 className='cont-direct'>Recently Released <img src={require('../img/arrow-right.png')} alt="right-arrow"/></h1> 
-            <section>
-                {release.map((picture) => <img src={picture.cover.url}/>)}
+        <section className='release-sect'>
+            <h1>Recently Released</h1> 
+            <section >
+                {release.map((picture, index) => {
+                    if(index === 0) {
+                        return(<Picture data={picture} text={'t_screenshot_med_2x'}/>)
+                    } else {
+                        return(<Picture data={picture} text={'t_cover_big_2x'}/>)
+                    }
+                }
+                    
+                )}
             </section>
         </section>
         
@@ -110,7 +114,7 @@ const Games = () => {
     const [trending, setTrending] = useState([])
     const [released, setReleased] = useState([])
     const [loading, setLoading] = useState(true)
-    // const [upcoming, setUpcoming] = useState([])
+    const [upcoming, setUpcoming] = useState([])
     // const [platform, setPlatform] = useState([])
 
    async function fetchData() {
@@ -121,7 +125,11 @@ const Games = () => {
             setReleased(value)
         })
 
-        const results = await Promise.all([getReleased, getTrending]).then(() => {
+        const getUpcoming = gameService.getIncoming().then((value) => {
+            setUpcoming(value)
+        })
+
+        const results = await Promise.all([getReleased, getTrending, getUpcoming]).then(() => {
                 setLoading(false)
                 console.log('Done :3')
         }).catch((e) => console.log(e))
@@ -139,7 +147,7 @@ if(loading === false ) {
         <section className="games-cont">
         <Trending trending={trending}/>
         <Release release={released}/>
-        <Upcoming/>
+        <Upcoming upcoming={upcoming}/>
         <Platform/>
         
         </section>

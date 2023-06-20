@@ -107,7 +107,7 @@ const Template = () => {
         <>
         <div className="game-info">
             <section className="header-cont">
-                <ProfileHeader $cover={`${info[0].screenshots[0]?.url.replace('t_thumb', 't_screenshot_huge')}`} className="game-header"></ProfileHeader> 
+                <ProfileHeader $cover={`${info[0].screenshots[0]?.url.replace('t_thumb', 't_screenshot_huge_2x')}`} className="game-header"></ProfileHeader> 
                 <div className="header-cont-2">
                 <img className="game_thumbnail" src={`${info[0].cover.url.replace('t_thumb', 't_cover_big')}` || ''} alt="game_thumbnail"/>
                 <h1>{info[0].name}</h1>

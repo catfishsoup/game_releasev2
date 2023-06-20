@@ -6,7 +6,10 @@ const SearchBar = () => {
     const directPage = (e) => {
         if(e?.key === 'Enter') {
             navigate(`../search/${inputRef.current.value}`)
+            inputRef.current.value = ''
         }
+
+        
         
     }
 
