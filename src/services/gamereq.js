@@ -45,7 +45,7 @@ let getReleasedconfig = {
     'x-api-key': x_api_key, 
     'Content-Type': 'text/plain'
   },
-  data : `fields name, release_dates.date, release_dates.human, cover.url; where release_dates.date = ${currDate}; sort release_dates.date asc;`
+  data : `fields name, release_dates.date, release_dates.human, cover.url; where release_dates.date = ${currDate}; sort release_dates.date asc; limit 5;`
 }
 const getReleased = () => axios.request(getReleasedconfig).then((res) => {return (res.data)})
 

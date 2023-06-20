@@ -1,0 +1,117 @@
+.games-cont {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: auto;
+    align-items: center;
+}
+
+// Trending section
+.trending-cont {
+
+    .trending-img {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .child-4 {
+        grid-column-start: 2;
+        margin-left: 1em;
+        grid-column-end: 3;
+        
+    }
+
+    .child-3 {
+        text-align: center;
+        background-color: #b34886;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        border-radius: 3px;
+    }
+
+    .child-2 {
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        margin: 0em 1em 1em 1em;
+        img {
+            margin-right: 1.5em;
+        }
+    }
+    img {
+        vertical-align: bottom;
+        border-radius: 3px;
+    }
+}
+}
+
+
+// Platform Sect 
+.platform-sect {
+
+    .platform-card-sect {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        .platform-card {
+            
+            background: black;
+            max-width: 5ch;
+            height: 10ch;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            padding: 6rem;
+            margin: 1em;
+            border-radius: 1em;
+            h2 {
+                font-family: 'Archivo Black', sans-serif;
+                color: black;
+            }
+
+            .card-count, .card-icon, .card-title, .card-link {
+                position: absolute;
+                left: 10%;
+            }
+
+            .card-title {
+                bottom: 20%;
+                left: 10%;
+            }
+
+            .card-link {
+                bottom: 10%;
+                text-decoration: none;
+                color: black;
+                display: inline-block;
+                img {
+                    vertical-align: bottom;
+                }
+
+                &:hover {
+                    animation: mover 0.55s infinite alternate;
+                }
+            }
+
+            .card-count {
+                top: 5%;
+            }
+
+            .card-icon {
+                bottom: 35%;
+            }
+        }
+    }
+    
+}
+
+
+@keyframes mover {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-1px); }
+    40% { transform: translateX(-2px); }
+    60% { transform: translateX(-3px); }
+    100% { transform: translateX(-5px); }
+}
