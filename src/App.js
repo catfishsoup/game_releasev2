@@ -13,7 +13,7 @@ import Home from './pages/Home'
 import Template from './pages/Template'
 import Profile from './pages/Profile'
 import Search from './pages/Search'
-
+import Settings from './pages/Settings'
 import {Warning, Empty} from './pages/Warning'
 
 const App = () => {
@@ -32,6 +32,7 @@ const App = () => {
       <Route path="games/:id" element={<Template />}/>
       <Route path="signup" element={<Signup />}/>
       <Route path="contact" element={<Contact />}/>
+      <Route path="settings" element={<Settings />}/>
     <Route element={user.user !== null ? <Profile/> : <Warning/>}>
       <Route path="profile/:user_name" element={<Profile />}/>
     </Route>

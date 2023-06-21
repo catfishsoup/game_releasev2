@@ -1,0 +1,31 @@
+
+@import './Mixin.scss';
+.settings {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.profile-setting-sect, .acct-setting-sect {
+    @include neutral-bg-theme();
+
+}
+
+label {
+    @include section-title;
+    padding-top: 1em;
+    display: block;
+    &::after {
+        @include purple-underline;
+    }
+}
+
+input {
+    @include searchbar;
+    display: block;
+}
+
+h1 {
+    padding-bottom: 1em;
+}
