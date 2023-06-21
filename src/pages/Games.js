@@ -15,27 +15,27 @@ const Trending = ({trending}) => {
             <h1 className='cont-direct'>Trending Games</h1>
             <section className='trending-img'>
                 <div className='child-1'>
-                        <Picture data={trending[0]} text={'t_cover_big_2x'}/>
+                        <Picture data={trending[0]} text={'t_cover_big_2x'} alt='game-cover'/>
                 
                     <div>
-                     <Picture data={trending[1]} text={'t_cover_big_2x'}/>   
+                     <Picture data={trending[1]} text={'t_cover_big_2x'} alt='game-cover'/>   
                     </div>
                     
                     
                 </div>
                  <div className='child-2'>
-                 <Picture data={trending[2]} text={'t_screenshot_med_2x'}/>  
+                 <Picture data={trending[2]} text={'t_screenshot_med_2x'} alt='game-cover'/>  
                 </div> 
                  
                  
 
                  
                 <div className='child-4'>
-                  <Picture data={trending[3]} text={'t_screenshot_med_2x'}/>  
+                  <Picture data={trending[3]} text={'t_screenshot_med_2x'} alt='game-cover'/>  
                 </div>
                 
                 <div className='child-5'>
-                  <Picture data={trending[4]} text={'t_cover_big_2x'}/> 
+                  <Picture data={trending[4]} text={'t_cover_big_2x'} alt='game-cover'/> 
                   <Link className='see-more-cont'>
                     <p>See More</p>
                     <img src={arrow} alt="arrow"/>
@@ -58,7 +58,7 @@ const Upcoming = ({upcoming}) => {
             <section>
             {upcoming.map((picture, index) => {
                     if(index === 0) {
-                        return(<Picture data={picture} text={'t_screenshot_med_2x'}/>)
+                        return(<Picture data={picture} text={'t_screenshot_med_2x'} alt='game-cover'/>)
                     } else if(index === upcoming.length-1) {
                         return(<Link className='see-more-cont'>
                         <p>See More</p>
@@ -67,7 +67,7 @@ const Upcoming = ({upcoming}) => {
                     }
                     
                     else {
-                        return(<Picture data={picture} text={'t_cover_big_2x'}/>)
+                        return(<Picture data={picture} text={'t_cover_big_2x'} alt='game-cover'/>)
                     }
                 }
                     
@@ -86,25 +86,25 @@ const Platform = () => {
                 <img className='card-icon' src={xbox} alt='platform-icon'/>
                     <small className='card-count'>01</small>
                     <h2 className='card-title'>Xbox</h2>
-                    <Link className='card-link' to='/games/PC'>View More <img src={arrow}/></Link>   
+                    <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/></Link>   
                 </Link>
                 <Link style={{background: '#8e53bd'}} className='platform-card'>
                 <img className='card-icon' src={playstation} alt='platform-icon'/>
                     <small className='card-count'>02</small>
                    <h2 className='card-title'>Playstation</h2> 
-                   <Link className='card-link' to='/games/PC'>View More <img src={arrow}/></Link> 
+                   <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/></Link> 
                 </Link>
                 <Link style={{background: '#b34886'}} className='platform-card'>
                     <small className='card-count'>03</small>
                     <img className='card-icon' src={switch_con} alt='platform-icon' />
                     <h2 className='card-title'>Switch</h2>
-                    <Link className='card-link' to='/games/PC'>View More <img src={arrow}/></Link> 
+                    <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/></Link> 
                 </Link>
                 <Link style={{background: '#d83e4f'}} className='platform-card'>
                     <small className='card-count'>04</small>
                     <img className='card-icon' src={computer} alt='platform-icon'/>
                     <h2 className='card-title'>PC</h2>
-                    <Link className='card-link' to='/games/PC'>View More <img src={arrow}/> </Link>           
+                    <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/> </Link>           
                 </Link>  
             </section>
             

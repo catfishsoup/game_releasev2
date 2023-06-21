@@ -219,15 +219,25 @@ const List = ({click}) => {
     
 }
 
-const Favorites = ({click}) => {
+const Favorites = ({click, favoriteGame}) => {
     /**
      * Display all the games that user marked as 'Favorite' 
      */
     if(click === 4) {
        return (
-        <section>
-            <div>Favorites</div>
+        <section className='fav-sect'>
+            <h1>Favorite Games</h1>
+           <section className='favorite-main-sect'>
+            
+           {favoriteGame.map((game) => {
+                        return(
+                            <Picture data={game} text={'t_cover_small'} key={game.id}/>
+                        )
+                    })}
+        </section> 
         </section>
+       
+        
     ) 
     }
     
@@ -288,7 +298,7 @@ const Profile = () => {
         <Overview click={active} favoriteGame={favoriteGame}/>
         <Game click={active}/>
         <List click={active}/>
-        <Favorites click={active}/>
+        <Favorites click={active} favoriteGame={favoriteGame}/>
         </main>
     )
 }

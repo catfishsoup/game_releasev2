@@ -77,6 +77,12 @@ main {
         section {
           @include neutral-bg-theme();  
         }
+
+        .picture-cont {
+            img {
+                height: auto;
+            }
+        }
         
     }
 
@@ -175,3 +181,22 @@ main {
     }
 }
 
+
+
+// Favorite Main Sect 
+.fav-sect {
+    h1 {
+        margin-left: 7rem;
+        margin-top: 1em;
+    }
+   .favorite-main-sect {
+    @include neutral-bg-theme;
+    display: flex;
+    margin: 1em 7rem 0em 7rem;
+    gap: 1em;
+    img {
+        height: auto;
+    }
+
+} 
+}
