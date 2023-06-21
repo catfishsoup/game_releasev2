@@ -91,14 +91,29 @@ const Overview = ({click, favoriteGame}) => {
     if(click === 1) {
       return (
         <section className='overview-sect'>
-            <section className='list-overview'>
+            <section className='overview-sect-left'>
                 <h2>Your List</h2><button>+</button>
+              <section className='list-overview'>
+                
                 <section></section>
                 {/* Render all of user lists here */}
+            </section>  
+            <h2>Favorited Games</h2><button>+</button>
+            <section className='favorite-overview'>
+                
+                <section className='picture-cont'>
+                    {favoriteGame.map((game) => {
+                        return(
+                            <Picture data={game} text={'t_cover_small'} key={game.id}/>
+                        )
+                    })}
+                </section>
+            </section>
             </section>
             
-            <section className='backlog-overview'>
+            <section className='overview-sect-right'>
                 <h2>Backlog Status</h2>
+                <section className='backlog-overview'>
                 {/* Count games by their completion status. */}
                 <section className={done === true ? 'active' : 'not-active'}>
                     <ul className='game-status-list'>
@@ -111,17 +126,19 @@ const Overview = ({click, favoriteGame}) => {
                     </ul>
                 </section>
             </section>
-
-            <section className='favorite-overview'>
-                <h2>Favorited Games</h2><button>+</button>
-                <section className='picture-cont'>
-                    {favoriteGame.map((game) => {
-                        return(
-                            <Picture data={game} text={'t_cover_small'} key={game.id}/>
-                        )
-                    })}
+            {/**/}
+            <h2>Game Activity</h2>
+                <section className='backlog-overview'>
+                {/* Count games by their completion status. */}
+                <section>
+                    
                 </section>
+            </section>           
+
             </section>
+           
+
+            
 
             
         </section>

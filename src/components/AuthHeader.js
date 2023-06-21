@@ -2,17 +2,21 @@ import Logo from './Logo'
 import { UserAuth } from "../firebase/user_auth"
 import { NavLink, Link, Outlet, Navigate, useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import { motion } from "framer-motion"
 import '../App.scss'
 import SearchBar from './SearchBar'
 const UserOption = ({open, handleLogOut, displayName}) => {
     if(open === true) {
         return(
-            <ul className='user-option-lists'>
+
+              <ul className='user-option-lists'>
                 {/* Improvement Needed: Only authorized / logged in user can access these links. */}
                 <li><Link to={`/profile/${displayName}`}>Profile</Link></li>
                 <li><Link>Settings</Link></li>
-                <li><button onClick={() => handleLogOut()} className='log_out_btn'>Log Out</button></li>
-            </ul>
+                <li onClick={() => handleLogOut()}>Log Out</li>
+            </ul>  
+
+            
         )
     }
 }
@@ -48,7 +52,9 @@ const AuthHeader = () => {
                 </ul>
                 <div className='user-sl'>
                 <SearchBar/>
-                <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/>
+                <div>
+                   <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/> 
+                </div>
                 <UserOption open={openUP} handleLogOut={handleLogOut} displayName={`${user.displayName}`}/>
                 </div> 
             </nav>

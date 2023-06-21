@@ -9,6 +9,7 @@
     "axios": "^1.4.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.22.1",
+    "framer-motion": "^10.12.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal-image": "^2.6.0",

@@ -62,8 +62,18 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 1em;
-    gap: 1em;
-    section {
+    gap: 3rem;
+    .overview-sect-left, .overview-sect-right {
+        section {
+        @include neutral-bg-theme;
+       }
+    }
+    .overview-sect-left {
+        
+       margin-left: 7rem; 
+       
+    }
+
         h2 {
             @include section-title;
             display: inline-block;
@@ -74,20 +84,17 @@ main {
             }
             
         }
-        section {
-          @include neutral-bg-theme();  
-        }
 
         .picture-cont {
             img {
                 height: auto;
             }
         }
-        
-    }
-
     // 
-    .backlog-overview {
+
+    .overview-sect-right {
+        margin-right: 7rem;
+        .backlog-overview {
         .game-status-list {
             text-align: center;
             li {
@@ -104,16 +111,18 @@ main {
             display: none;
         }
     }
+    }
+    
 }
 
 
 .game-sect {
-    padding: 3em 1em 1em 1em;
-    display:flex;
-    flex-direction: row;
+    padding: 1em 7rem 1em 7rem;
+    display:grid;
+    grid-template-columns: 1fr 5fr;
     gap: 2rem;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     // 
     .filter-list {
         display: flex;
@@ -159,9 +168,6 @@ main {
 
             // 
             .indv-game-row {
-                .name-col {
-                    width: 50ch;
-                }
                 .img-col {
                     img{border-radius: 2px;}
                 }
@@ -188,11 +194,18 @@ main {
     h1 {
         margin-left: 7rem;
         margin-top: 1em;
+        @include section-title;
+            display: inline-block;
+            margin-right: 5px;
+            &:after {
+                @include purple-underline;
+              width: 50%;  
+            }
     }
    .favorite-main-sect {
     @include neutral-bg-theme;
     display: flex;
-    margin: 1em 7rem 0em 7rem;
+    margin: 0em 7rem 0em 7rem;
     gap: 1em;
     img {
         height: auto;
