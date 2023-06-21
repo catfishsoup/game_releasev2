@@ -95,10 +95,8 @@ nav {
     .user-sl {
         position: relative;
         display: flex;
-        
         .user-pfp {
             margin-left: 1em;
-            
         }
         .user-option-lists {
             position: absolute;
@@ -145,6 +143,7 @@ nav {
             background-color: black;
             border: none;
             width: fit-content;
+            height: fit-content;
             transition: 0.2s ease-in;
             &:hover {
                 transform: translate(-5px, -5px);
@@ -170,7 +169,6 @@ nav {
     justify-content: center;
     align-items: center;
     padding: 4rem 1rem 4rem 1rem;
-    gap: 1em;
     div {
         label {
             display: block;
@@ -196,6 +194,7 @@ nav {
         background-color: $base-purple;
         width: 40ch;
         margin-top: 1em;
+        margin-bottom: 1em;
         span {
             font-size: 1rem;
         }
@@ -214,6 +213,9 @@ nav {
         }
     }
     .demo-account {
+        small {
+            margin-top: 1em;
+        }
         button {
             @include searchbar;
             width: 20ch;

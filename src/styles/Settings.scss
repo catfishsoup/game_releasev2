@@ -18,12 +18,14 @@ label {
     display: block;
     &::after {
         @include purple-underline;
+        width: 15%;
     }
 }
 
 input {
     @include searchbar;
     display: block;
+    margin-bottom: 1em;
 }
 
 h1 {

@@ -1,11 +1,15 @@
 
 import '../styles/Settings.scss'
-
+import {useRef} from 'react'; 
 const Settings = () => {
     /**
      * Allow user to: change user name, profile picture, email, password, delete the account. 
      **/
+    const usernameRef = useRef()
+    const emailRef = useRef()
+    const passwordRef = useRef()
 
+    
       return (
         <section className="settings">
             <section className='acct-setting-sect'>
