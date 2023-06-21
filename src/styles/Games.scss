@@ -1,52 +1,69 @@
 @import './Mixin.scss';
 
+@mixin color-card {
+    width: 235px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    flex-direction: column;
+    background-color: #695ef5;
+    box-shadow: $basic-boxshadow;
+    text-decoration: none;
+    color: black;
+    p {
+        font-size: 1.5rem;
+        vertical-align: center;
+        text-align: center;
+        
+        &:hover {
+            transform: scale(2); zoom: 1;
+            animation: movers 0.45s infinite alternate;
+        }
+    }
+}    
+.see-more-cont{
+        @include color-card()
+}
+
 
 .games-cont {
     display: flex;
     flex-direction: column;
     padding: 1em;
     align-items: center;
-    gap: 3em;
+    gap: 4em;
 }
 
 // Trending section
 .trending-cont {
     .trending-img {
     display: grid;
-    grid-template-columns: 1fr;
-
-    .child-4 {
-        grid-column-start: 2;
-        margin-left: 1em;
-        grid-column-end: 3;
-        
-    }
-
+    grid-template-columns: repeat(3, auto);
+    row-gap: 1em;
+    column-gap: 1em;
     .child-3 {
-        text-align: center;
-        background-color: #b34886;
-        grid-column-start: 1;
-        grid-column-end: 1;
-        grid-row-start: 2;
-        border-radius: 3px;
+      grid-column-start: 3;
     }
 
-    .child-2 {
-        grid-column-start: 2;
-        grid-column-end: 4;
-        grid-row-start: 1;
-        margin: 0em 1em 1em 1em;
-        img {
-            margin-right: 1.5em;
+    .child-1, .child-5 {
+        display: flex;
+        gap: 1em;
+    }
+
+    .child-2, .child-4 {
+        div {
+            width: 485px;
         }
     }
-    img {
-        vertical-align: bottom;
-        border-radius: 3px;
+    .child-4 {
+        grid-column-start: 1;
+        grid-column-end: 2;
     }
-}
-}
 
+
+}
+}
 
 // Platform Sect 
 .platform-sect {
@@ -116,7 +133,7 @@
     section {
         display: flex;
         gap: 1em;
-        flex-wrap: wrap;
+        overflow-x: scroll;
     }
 }
 

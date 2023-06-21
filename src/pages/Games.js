@@ -12,20 +12,37 @@ import arrow from '../img/arrow.svg'
 const Trending = ({trending}) => {
          return(
         <section className='trending-cont'>
-            <h1 className='cont-direct'>Trending Games <img src={require('../img/arrow-right.png')} alt="right-arrow"/></h1>
+            <h1 className='cont-direct'>Trending Games</h1>
             <section className='trending-img'>
                 <div className='child-1'>
-                    <img src={trending[0].cover.url.replace('t_thumb', 't_cover_big')}/>
+                        <Picture data={trending[0]} text={'t_cover_big_2x'}/>
+                
+                    <div>
+                     <Picture data={trending[1]} text={'t_cover_big_2x'}/>   
+                    </div>
+                    
+                    
                 </div>
-                <div className='child-3'>See More</div>
-                <div className='child-2'>
-                <img src={trending[3].cover.url.replace('t_thumb', 't_cover_big')}/>
-                <img src={trending[1].cover.url.replace('t_thumb', 't_cover_big')}/>
-                </div>
-                <div className='child-4'>
-                    <img src={trending[5].cover.url.replace('t_thumb', 't_screenshot_med')}/>
-                </div>
+                 <div className='child-2'>
+                 <Picture data={trending[2]} text={'t_screenshot_med_2x'}/>  
+                </div> 
+                 
+                 
 
+                 
+                <div className='child-4'>
+                  <Picture data={trending[3]} text={'t_screenshot_med_2x'}/>  
+                </div>
+                
+                <div className='child-5'>
+                  <Picture data={trending[4]} text={'t_cover_big_2x'}/> 
+                  <Link className='see-more-cont'>
+                    <p>See More</p>
+                    <img src={arrow} alt="arrow"/>
+                    </Link> 
+                </div>
+                
+                
                 
             </section>
         </section>
@@ -34,14 +51,22 @@ const Trending = ({trending}) => {
 }
 
 const Upcoming = ({upcoming}) => {
+    console.log(upcoming.length)
     return (
         <section className='upcoming-sect'>
-            <h1>Upcoming</h1> 
+            <h1 className='cont-direct'>Upcoming</h1> 
             <section>
             {upcoming.map((picture, index) => {
                     if(index === 0) {
                         return(<Picture data={picture} text={'t_screenshot_med_2x'}/>)
-                    } else {
+                    } else if(index === upcoming.length-1) {
+                        return(<Link className='see-more-cont'>
+                        <p>See More</p>
+                        <img src={arrow} alt="arrow"/>
+                    </Link>)
+                    }
+                    
+                    else {
                         return(<Picture data={picture} text={'t_cover_big_2x'}/>)
                     }
                 }
@@ -55,32 +80,32 @@ const Upcoming = ({upcoming}) => {
 const Platform = () => {
     return(
         <section className='platform-sect'>
-            <h1>Browse by Platform</h1>
+            <h1 className='cont-direct'>Browse by Platform</h1>
             <section className='platform-card-sect'>
-                <div style={{background: '#695ef5'}} className='platform-card'>
+                <Link style={{background: '#695ef5'}} className='platform-card'>
                 <img className='card-icon' src={xbox} alt='platform-icon'/>
                     <small className='card-count'>01</small>
                     <h2 className='card-title'>Xbox</h2>
                     <Link className='card-link' to='/games/PC'>View More <img src={arrow}/></Link>   
-                </div>
-                <div style={{background: '#8e53bd'}} className='platform-card'>
+                </Link>
+                <Link style={{background: '#8e53bd'}} className='platform-card'>
                 <img className='card-icon' src={playstation} alt='platform-icon'/>
                     <small className='card-count'>02</small>
                    <h2 className='card-title'>Playstation</h2> 
                    <Link className='card-link' to='/games/PC'>View More <img src={arrow}/></Link> 
-                </div>
-                <div style={{background: '#b34886'}} className='platform-card'>
+                </Link>
+                <Link style={{background: '#b34886'}} className='platform-card'>
                     <small className='card-count'>03</small>
                     <img className='card-icon' src={switch_con} alt='platform-icon' />
                     <h2 className='card-title'>Switch</h2>
                     <Link className='card-link' to='/games/PC'>View More <img src={arrow}/></Link> 
-                </div>
-                <div style={{background: '#d83e4f'}} className='platform-card'>
+                </Link>
+                <Link style={{background: '#d83e4f'}} className='platform-card'>
                     <small className='card-count'>04</small>
                     <img className='card-icon' src={computer} alt='platform-icon'/>
                     <h2 className='card-title'>PC</h2>
                     <Link className='card-link' to='/games/PC'>View More <img src={arrow}/> </Link>           
-                </div>  
+                </Link>  
             </section>
             
         </section>
@@ -90,11 +115,16 @@ const Platform = () => {
 const Release = ({release}) => {
       return (
         <section className='release-sect'>
-            <h1>Recently Released</h1> 
+            <h1 className='cont-direct'>Recently Released</h1> 
             <section >
                 {release.map((picture, index) => {
                     if(index === 0) {
                         return(<Picture data={picture} text={'t_screenshot_med_2x'}/>)
+                    } else if(index === release.length-1) {
+                        return(<Link className='see-more-cont'>
+                        <p>See More</p>
+                        <img src={arrow} alt="arrow"/>
+                    </Link>)
                     } else {
                         return(<Picture data={picture} text={'t_cover_big_2x'}/>)
                     }

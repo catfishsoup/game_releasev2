@@ -39,7 +39,7 @@
 
 .info-body {
     display: grid;
-    grid-template-columns: 0.21fr 1fr;
+    grid-template-columns: minmax(min-content, 0.21fr) 1fr;
     h2 {
         @include section-title;
         display: inline-block;
@@ -80,7 +80,7 @@
 .main-section {
     display: inline-block;
     padding: 0.1em;
-    margin: 1em;
+    margin: 1em 1em 1em 0em;
     overflow: hidden;
     section {
         margin-bottom: 1.5em;
