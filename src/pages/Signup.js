@@ -1,6 +1,6 @@
-import { createUserWithEmailAndPassword } from "firebase/auth"
 import { useRef } from "react"
 import { UserAuth } from "../firebase/user_auth"
+import { useNavigate } from "react-router-dom";
 const Signup = () => {
     const passwordRef = useRef()
     const confirmPassword = useRef()
@@ -8,11 +8,12 @@ const Signup = () => {
     const userNameRef = useRef()
     // When you use {createUser} with a bracket, you are defining an object without any values. Therefore, it will throw "undefined" error. It is best to use without bracket. 
     const {createUser} = UserAuth()
-
+    const nav = useNavigate()
 
     const handleSubmit = (e) => {
             e.preventDefault()
             createUser(emailRef.current.value, passwordRef.current.value, userNameRef.current.value)
+            nav('/home', {replace: true})
     }
     return(
         <section>

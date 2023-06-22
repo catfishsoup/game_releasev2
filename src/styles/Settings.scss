@@ -5,11 +5,16 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-
-}
-.profile-setting-sect, .acct-setting-sect {
-    @include neutral-bg-theme();
-
+    margin-top: 2em;
+    section {
+        width: 50%;
+        overflow: hidden;
+    }
+input {
+    @include searchbar;
+    display: block;
+    margin-bottom: 1em;
+    width: 95%;
 }
 
 label {
@@ -18,16 +23,46 @@ label {
     display: block;
     &::after {
         @include purple-underline;
-        width: 15%;
+        width: 5%;
     }
 }
 
-input {
-    @include searchbar;
-    display: block;
-    margin-bottom: 1em;
+.save-btn {
+    @include purple-box;
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    display: none;
+    &:hover {
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+    }
 }
 
-h1 {
-    padding-bottom: 1em;
+.save-btn.active {
+    display: block;
 }
+
+}
+.profile-setting-sect, .acct-setting-sect, .delete-setting-sect {
+    @include neutral-bg-theme();
+    div {
+        margin-left: 0.5em;
+        margin-right: 1em;
+    }
+
+}
+
+.delete-account-btn {
+    background-color: #d83e4f;
+    margin-top: 1em;
+    padding: 0.5rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+
