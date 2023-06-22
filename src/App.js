@@ -14,8 +14,8 @@ import Template from './pages/Template'
 import Profile from './pages/Profile'
 import Search from './pages/Search'
 import Settings from './pages/Settings'
-import {Warning, Empty} from './pages/Warning'
-
+import { Empty } from './pages/Warning'
+import ProtectedRoute from './components/ProtectedRoute';
 const App = () => {
   const user = UserAuth()
 
@@ -32,9 +32,10 @@ const App = () => {
       <Route path="games/:id" element={<Template />}/>
       <Route path="signup" element={<Signup />}/>
       <Route path="contact" element={<Contact />}/>
-      <Route path="settings" element={<Settings />}/>
-    <Route element={user.user !== null ? <Profile/> : <Warning/>}>
-      <Route path="profile/:user_name" element={<Profile />}/>
+      
+    <Route path='/profile' element={<ProtectedRoute/>}>
+      <Route path=":user_name" element={<Profile/>}/>
+      <Route path=":user_name/settings" element={<Settings/>}/>
     </Route>
 
     <Route path="search/:name" element={<Search />}/>

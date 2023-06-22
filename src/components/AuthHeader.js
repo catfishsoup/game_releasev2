@@ -11,8 +11,8 @@ const UserOption = ({open, handleLogOut, displayName}) => {
 
               <ul className='user-option-lists'>
                 {/* Improvement Needed: Only authorized / logged in user can access these links. */}
-                <li><Link to={`/profile/${displayName}`}>Profile</Link></li>
-                <li><Link to={'/settings'}>Settings</Link></li>
+                <li><Link to={`profile/${displayName}`}>Profile</Link></li>
+                <li><Link to={`profile/${displayName}/settings`}>Settings</Link></li>
                 <li onClick={() => handleLogOut()}>Log Out</li>
             </ul>  
 

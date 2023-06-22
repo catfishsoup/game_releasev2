@@ -7,7 +7,10 @@ import {createUserWithEmailAndPassword,
     signOut, 
     signInWithEmailLink, 
     onAuthStateChanged,
-    updateProfile } from "firebase/auth";
+    updateProfile, 
+    updateEmail,
+    updatePassword,
+    deleteUser} from "firebase/auth";
 
 import user_pfp from '../img/user.png'
 const UserContext = createContext("")
@@ -30,6 +33,9 @@ export const AuthContextProvider = ({children}) => {
     const logout = () => {
         return signOut(auth)
     }
+
+    
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currUser) => {
             setUser(currUser)
@@ -38,11 +44,34 @@ export const AuthContextProvider = ({children}) => {
         return unsubscribe
     }, [])
 
+
+    const updateuserEmail = (email) => {
+        updateEmail(user, email).then(() => {
+            console.log('Updated Email')
+        }).catch((e) => {console.log(e)})
+    }
+
+    const updateuserPassword = (password) => {
+        updatePassword(user, password).then(() => {
+            console.log('Updated Password')
+        }).catch((e) => {console.log(e)})
+    }
+
+    const delUser = () => {
+        deleteUser(user).then(() => {
+            console.log('User Deleted')
+          }).catch((e) => {console.log(e)});
+          
+    }
+
     return(
         <UserContext.Provider value={{createUser,
             loginUser,
             logout,
-            user}}>
+            user, 
+            updateuserEmail, 
+            updateuserPassword, 
+            delUser}}>
             {!loading && children}
         </UserContext.Provider>
     )
