@@ -14,6 +14,7 @@ import Template from './pages/Template'
 import Profile from './pages/Profile'
 import Search from './pages/Search'
 import Settings from './pages/Settings'
+import UserHome from './pages/UserHome'
 import { Empty } from './pages/Warning'
 import ProtectedRoute from './components/ProtectedRoute';
 const App = () => {
@@ -25,7 +26,7 @@ const App = () => {
   <Route path="/" >
     <Route element={<>{user?.user !== null ? <AuthHeader/> : <Header/>} <Footer/></>}>
       <Route index element={<Home />} />
-      <Route path="home" element={<Home />} />
+      
       <Route path="about" element={<About />}/>
       <Route path="games" element={<Games />}/>
       <Route path="login" element={<Login />}/>
@@ -33,9 +34,10 @@ const App = () => {
       <Route path="signup" element={<Signup />}/>
       <Route path="contact" element={<Contact />}/>
       
-    <Route path='/profile' element={<ProtectedRoute/>}>
-      <Route path=":user_name" element={<Profile/>}/>
-      <Route path=":user_name/settings" element={<Settings/>}/>
+    <Route path='/' element={<ProtectedRoute/>}>
+      <Route path="home" element={<UserHome/>} />
+      <Route path="profile/:user_name" element={<Profile/>}/>
+      <Route path="profile/:user_name/settings" element={<Settings/>}/>
     </Route>
 
     <Route path="search/:name" element={<Search />}/>

@@ -45,14 +45,12 @@ export const AuthContextProvider = ({children}) => {
     }, [])
 
 
-    const updateuserEmail = (email) => {
-        updateEmail(user, email).then(() => {
-            console.log('Updated Email')
-        }).catch((e) => {console.log(e)})
+    async function updateEmailForCurrentUser(email) {
+        return await updateEmail(auth.currentUser, email);
     }
 
-    const updateuserPassword = (password) => {
-        updatePassword(user, password).then(() => {
+    const updateuserPassword = async(password) => {
+        await updatePassword(auth.currentUser, password).then(() => {
             console.log('Updated Password')
         }).catch((e) => {console.log(e)})
     }
@@ -69,7 +67,7 @@ export const AuthContextProvider = ({children}) => {
             loginUser,
             logout,
             user, 
-            updateuserEmail, 
+            updateEmailForCurrentUser, 
             updateuserPassword, 
             delUser}}>
             {!loading && children}

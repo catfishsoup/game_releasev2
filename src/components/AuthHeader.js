@@ -23,7 +23,6 @@ const UserOption = ({open, handleLogOut, displayName}) => {
 const AuthHeader = () => {
     const {user, logout} = UserAuth()
     const [openUP, setopenUP] = useState(false)
-    const [isLogged, setLogged] = useState(true)
     const nav = useNavigate()
     const handleLogOut = async() => {
         try {

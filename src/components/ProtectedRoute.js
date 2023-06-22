@@ -4,7 +4,7 @@ import { Warning } from '../pages/Warning'
 
 const ProtectedRoute = () => {
     const { user } = UserAuth();
-    if(!user ) {
+    if(!user) {
         return <Warning/>;
     } else {
         return <Outlet/>
