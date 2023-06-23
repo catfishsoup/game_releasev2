@@ -15,7 +15,7 @@ import Picture from '../components/Picture'
  */
 
 const ProfileHeader = styled.section`
-    background-image: url(${cover});
+    background-image: url(${props => props.$cover_pic});
     position: relative;
     padding: 7rem;
     width: 100vw;
@@ -25,9 +25,11 @@ const Header = () =>  {
      * Header will includes - User Profile Picture, User Name, Cover Picture. 
      * Should still display the user profile picture / name / cover if they are logged out. 
      **/    
-    const { user } = UserAuth()
+    const { user, getCover } = UserAuth()
+    console.log(getCover)
+    console.log(user)
     return(
-        <ProfileHeader>
+        <ProfileHeader $cover_pic={user.photoURL || cover}>
             <div className='user-asset'>
                <img className='profile-picture' src={user?.photoURL} alt="user-profile"/>   
                 <h1 className='user-name'>{user?.displayName}</h1> 
@@ -86,7 +88,7 @@ const Overview = ({click, favoriteGame}) => {
     
     useEffect(() => {
         fetchCount()
-    }, [fetchCount])
+    }, [done])
 
     if(click === 1) {
       return (

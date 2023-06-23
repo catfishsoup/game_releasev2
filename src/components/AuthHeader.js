@@ -54,7 +54,7 @@ const AuthHeader = () => {
                 <div>
                    <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/> 
                 </div>
-                <UserOption open={openUP} handleLogOut={handleLogOut} displayName={`${user.displayName}`}/>
+                <UserOption open={openUP} handleLogOut={handleLogOut} displayName={`${user?.displayName}`}/>
                 </div> 
             </nav>
         </header>

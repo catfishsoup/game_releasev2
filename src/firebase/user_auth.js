@@ -1,5 +1,5 @@
 import {auth, db, storage } from './firebase.js'
-import { ref, uploadBytes } from "firebase/storage";
+import { getMetadata, ref, uploadBytes, getDownloadURL, } from "firebase/storage";
 import { doc, setDoc, collection, getDoc, updateDoc } from "firebase/firestore"; 
 import {createContext, useContext, useEffect, useState} from 'react'
 import {createUserWithEmailAndPassword, 
@@ -10,7 +10,7 @@ import {createUserWithEmailAndPassword,
     updateProfile, 
     updateEmail,
     updatePassword,
-    deleteUser} from "firebase/auth";
+    deleteUser, } from "firebase/auth";
 
 import user_pfp from '../img/user.png'
 const UserContext = createContext("")
@@ -49,8 +49,8 @@ export const AuthContextProvider = ({children}) => {
         return await updateEmail(auth.currentUser, email);
     }
 
-    const updateuserPassword = async(password) => {
-        await updatePassword(auth.currentUser, password).then(() => {
+    const updateuserPassword = (password) => {
+        updatePassword(auth.currentUser, password).then(() => {
             console.log('Updated Password')
         }).catch((e) => {console.log(e)})
     }
@@ -62,6 +62,17 @@ export const AuthContextProvider = ({children}) => {
           
     }
 
+    const uploadCover = (file) => {
+       uploadBytes(ref(storage, `${user.displayName}/cover/cover.jpg`), file).then((snapshot) => {
+            alert('File Uploaded')
+       }).catch((e) => {console.log(e)})
+    }
+
+    const getCover = () => {
+        getMetadata(storage, `${user.displayName}/cover/cover.jpg`).then((metadata) => {
+            console.log('metadata' + metadata)
+        })
+    }
     return(
         <UserContext.Provider value={{createUser,
             loginUser,
@@ -69,7 +80,9 @@ export const AuthContextProvider = ({children}) => {
             user, 
             updateEmailForCurrentUser, 
             updateuserPassword, 
-            delUser}}>
+            delUser,
+            uploadCover, 
+            getCover}}>
             {!loading && children}
         </UserContext.Provider>
     )
