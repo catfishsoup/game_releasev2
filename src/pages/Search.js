@@ -12,7 +12,7 @@ const Search = () => {
          setGame(data)
          setLoading(false)
         })
-      }, [])
+      }, [name])
 
       if(loading) {
         return <>Loading...</>

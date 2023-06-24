@@ -51,7 +51,6 @@ const Trending = ({trending}) => {
 }
 
 const Upcoming = ({upcoming}) => {
-    console.log(upcoming.length)
     return (
         <section className='upcoming-sect'>
             <h1 className='cont-direct'>Upcoming</h1> 

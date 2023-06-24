@@ -4,7 +4,9 @@ import '../styles/Profile.scss'
 import styled from 'styled-components'
 import cover from '../img/cover_test.jpg'
 import { getDocs, collection, query, where, getCountFromServer } from "firebase/firestore"; 
-import {auth, db} from '../firebase/firebase.js'
+import { getMetadata, ref, uploadBytes, getDownloadURL, } from "firebase/storage";
+import {auth, db, storage} from '../firebase/firebase.js'
+import user_pfp from '../img/user.png'
 import Picture from '../components/Picture'
 
 // User Profile Page Settings
@@ -15,24 +17,43 @@ import Picture from '../components/Picture'
  */
 
 const ProfileHeader = styled.section`
-    background-image: url(${props => props.$cover_pic});
+    background: url(${props => props.$cover_pic});
     position: relative;
     padding: 7rem;
-    width: 100vw;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+`
+
+const ProfilePicture = styled.div` 
+    background: url(${props => props.$pfp_pic});
+    width: 160px;
+    height: 160px;
+    background-size: contain;
+    display: inline-block;
+    margin-right: 1em;
+    vertical-align: bottom;
 `
 const Header = () =>  {
     /**
      * Header will includes - User Profile Picture, User Name, Cover Picture. 
      * Should still display the user profile picture / name / cover if they are logged out. 
      **/    
-    const { user, getCover } = UserAuth()
-    console.log(getCover)
-    console.log(user)
+    const { user, profilePiture} = UserAuth()
+    const [coverPicture, setcoverPicture] = useState()
+    useEffect(() => {
+        getDownloadURL(ref(storage, `${user.displayName}/cover/cover.jpg`)).then((url) => {
+            setcoverPicture(url)
+        })
+    }, [])
+    console.log(profilePiture)   
     return(
-        <ProfileHeader $cover_pic={user.photoURL || cover}>
+        <ProfileHeader $cover_pic={coverPicture || cover}>
             <div className='user-asset'>
-               <img className='profile-picture' src={user?.photoURL} alt="user-profile"/>   
-                <h1 className='user-name'>{user?.displayName}</h1> 
+               <ProfilePicture $pfp_pic={user.photoURL || user_pfp}/>   
+               <h1 className='user-name'>{user.displayName}</h1> 
             </div>
         </ProfileHeader>
     )

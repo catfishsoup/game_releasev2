@@ -19,9 +19,6 @@ $neutral-bg: rgb(242,242,242);
 main {
     overflow: hidden;
 }
-.profile-picture {
-    max-width: 20%;
-}
 
 .profile-picture, .user-name {
     display: inline-block;
@@ -35,7 +32,7 @@ main {
 .user-asset {
     width: fit-content;
     position: absolute;
-    bottom: 5%;
+    bottom: 0;
     left: 5%;
 }
 

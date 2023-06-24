@@ -19,11 +19,11 @@ const UserContext = createContext("")
 export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
+    const [profilePicture, setprofilePicture] = useState()
     const createUser = async(email, password, username) => {
         // Resolve promises cleaner. . .
            await createUserWithEmailAndPassword(auth, email, password)
-                updateProfile(auth.currentUser, {displayName: username, photoURL: user_pfp}) 
-                uploadBytes(ref(storage, `${username}/pfp/${user_pfp}`))       
+                updateProfile(auth.currentUser, {displayName: username})    
     }
 
     const loginUser = (email, password) => {
@@ -62,17 +62,17 @@ export const AuthContextProvider = ({children}) => {
           
     }
 
-    const uploadCover = (file) => {
-       uploadBytes(ref(storage, `${user.displayName}/cover/cover.jpg`), file).then((snapshot) => {
-            alert('File Uploaded')
+    const uploadPicture = (file, path, name) => {
+       uploadBytes(ref(storage, `${user.displayName}/${path}/${name}`), file).then(() => {  
+        if(path === 'pfp') {
+            getDownloadURL(ref(storage, `${user.displayName}/pfp/pfp.jpg`)).then((url) => {
+            updateProfile(user, {photoURL: url})
+        })
+        }
        }).catch((e) => {console.log(e)})
     }
 
-    const getCover = () => {
-        getMetadata(storage, `${user.displayName}/cover/cover.jpg`).then((metadata) => {
-            console.log('metadata' + metadata)
-        })
-    }
+    
     return(
         <UserContext.Provider value={{createUser,
             loginUser,
@@ -81,8 +81,8 @@ export const AuthContextProvider = ({children}) => {
             updateEmailForCurrentUser, 
             updateuserPassword, 
             delUser,
-            uploadCover, 
-            getCover}}>
+            uploadPicture, 
+            profilePicture}}>
             {!loading && children}
         </UserContext.Provider>
     )

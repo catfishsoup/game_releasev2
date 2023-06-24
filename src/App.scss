@@ -97,6 +97,10 @@ nav {
         display: flex;
         .user-pfp {
             margin-left: 1em;
+            width: 35px;
+            vertical-align: bottom;
+            border-radius: 5px;
+            height: 35px;
         }
         .user-option-lists {
             position: absolute;

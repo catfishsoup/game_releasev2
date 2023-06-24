@@ -3,6 +3,7 @@ import { UserAuth } from "../firebase/user_auth"
 import { NavLink, Link, Outlet, Navigate, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import { motion } from "framer-motion"
+import user_pfp from '../img/user.png'
 import '../App.scss'
 import SearchBar from './SearchBar'
 const UserOption = ({open, handleLogOut, displayName}) => {
@@ -21,7 +22,7 @@ const UserOption = ({open, handleLogOut, displayName}) => {
     }
 }
 const AuthHeader = () => {
-    const {user, logout} = UserAuth()
+    const {user, logout, profilePicture} = UserAuth()
     const [openUP, setopenUP] = useState(false)
     const nav = useNavigate()
     const handleLogOut = async() => {
@@ -52,7 +53,7 @@ const AuthHeader = () => {
                 <div className='user-sl'>
                 <SearchBar/>
                 <div>
-                   <img onClick={openUserTab} className='user-pfp' src={user && user.photoURL}/> 
+                   <img onClick={openUserTab} className='user-pfp' src={user.photoURL || user_pfp}/> 
                 </div>
                 <UserOption open={openUP} handleLogOut={handleLogOut} displayName={`${user?.displayName}`}/>
                 </div> 

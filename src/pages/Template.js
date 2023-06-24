@@ -43,7 +43,7 @@ const FavoriteBtn = styled.button`
 `
 const Template = () => {
     const [loading, setLoading] = useState(true)
-    let { id } = useParams();
+    const { id } = useParams();
     const [contained, setContained] = useState(false)
     const [info, setInfo] = useState([])
     const [userData, setuserData] = useState([])
