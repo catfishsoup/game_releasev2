@@ -79,7 +79,6 @@ const Template = () => {
 // Use Params - take in the param in the URL as data to use. Have to use the same param  define in path.    
     async function favoriteGame() {
         // If data is contained and favorite is false. 
-        console.log('clicked')
         if(contained === true) {
             setFavorited(!favorited)
             await updateDoc(userRef, {

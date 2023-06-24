@@ -170,7 +170,7 @@ const Games = () => {
 if(loading) {
     return <>Loading...</>
 }
-if(loading === false ) {
+if(!loading) {
      return(
         <section className="games-cont">
         <Trending trending={trending}/>

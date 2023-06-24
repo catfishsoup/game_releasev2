@@ -10,16 +10,18 @@ import {createUserWithEmailAndPassword,
     updateProfile, 
     updateEmail,
     updatePassword,
-    deleteUser, } from "firebase/auth";
+    deleteUser,
+    sendEmailVerification, } from "firebase/auth";
 
 import user_pfp from '../img/user.png'
+
+import {SettingAlert} from '../components/Alert.js'
 const UserContext = createContext("")
 
 
 export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(true)
-    const [profilePicture, setprofilePicture] = useState()
     const createUser = async(email, password, username) => {
         // Resolve promises cleaner. . .
            await createUserWithEmailAndPassword(auth, email, password)
@@ -69,6 +71,8 @@ export const AuthContextProvider = ({children}) => {
             updateProfile(user, {photoURL: url})
         })
         }
+
+        
        }).catch((e) => {console.log(e)})
     }
 
@@ -81,8 +85,7 @@ export const AuthContextProvider = ({children}) => {
             updateEmailForCurrentUser, 
             updateuserPassword, 
             delUser,
-            uploadPicture, 
-            profilePicture}}>
+            uploadPicture,}}>
             {!loading && children}
         </UserContext.Provider>
     )

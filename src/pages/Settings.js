@@ -3,6 +3,7 @@ import '../styles/Settings.scss'
 import { useRef, useState } from 'react'; 
 import { UserAuth } from "../firebase/user_auth"
 import { updateProfile } from "firebase/auth"
+import {SettingAlert} from '../components/Alert.js'
 const Settings = () => {
     /**
      * Allow user to: change user name, profile picture, email, password, delete the account. 
@@ -21,7 +22,8 @@ const Settings = () => {
 
     const [profileImage, setProfileImage] = useState()
     const [coverImage, setCoverImage] = useState()
-
+    const [alertText, setalertText] = useState('')
+    const [openAlert, setopenAlert] = useState(false)
 
     const toggleButton = (id) => {
         const newArray = activeButton.map(button => {
@@ -39,24 +41,32 @@ const Settings = () => {
         e.preventDefault()
         switch(id) {
             case 1: 
-            updateProfile(user, {displayName: usernameRef.current.value})
-            break;
-
+            updateProfile(user, {displayName: usernameRef.current.value}); 
+            setalertText('User name')
             case 2: 
             updateEmailForCurrentUser(emailRef.current.value)
+            setalertText('Email')
             break;
 
             case 3: 
             updateuserPassword(confirmpasswordRef.current.value)
+            setalertText('Passoword')
             break;
 
             case 4: 
-            uploadPicture(profileImage, 'pfp', 'user_pfp.jpg')
+            uploadPicture(profileImage, 'pfp', 'user_pfp.jpg');
+            setalertText('Profile picture')
             break;
 
-            case 5: uploadPicture(coverImage, 'cover', 'user_cover.jpg')
+            case 5: uploadPicture(coverImage, 'cover', 'user_cover.jpg');
+            setalertText('Cover picture')
             break;
         }
+        setopenAlert(true)
+
+        setTimeout(() => {
+            setopenAlert(false)
+        }, 2000)
     }
 
     const delUserProfile = (e) => {
@@ -64,8 +74,6 @@ const Settings = () => {
         // Create a pop-up confirmation. 
         delUser()
     }
-
-    console.log(coverImage)
       return (
         <section className="settings">
             <section className='acct-setting-sect'>
@@ -116,7 +124,7 @@ const Settings = () => {
                     <button type="button" onClick={(e) => delUserProfile(e)} className='delete-account-btn' >Delete User Account</button>
  
                 </section>
-            
+                {openAlert && <SettingAlert text={alertText}/>}
         </section>
     )  
     }
