@@ -51,10 +51,10 @@ const Settings = () => {
             break;
 
             case 4: 
-            uploadPicture(profileImage, 'pfp', 'pfp.jpg')
+            uploadPicture(profileImage, 'pfp', 'user_pfp.jpg')
             break;
 
-            case 5: uploadPicture(coverImage, 'cover', 'cover.jpg')
+            case 5: uploadPicture(coverImage, 'cover', 'user_cover.jpg')
             break;
         }
     }

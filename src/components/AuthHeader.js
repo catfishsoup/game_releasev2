@@ -53,7 +53,7 @@ const AuthHeader = () => {
                 <div className='user-sl'>
                 <SearchBar/>
                 <div>
-                   <img onClick={openUserTab} className='user-pfp' src={user.photoURL || user_pfp}/> 
+                   <img onClick={openUserTab} className='user-pfp' src={user.photoURL !== undefined ? user.photoURL : user_pfp}/> 
                 </div>
                 <UserOption open={openUP} handleLogOut={handleLogOut} displayName={`${user?.displayName}`}/>
                 </div> 

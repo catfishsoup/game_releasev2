@@ -160,7 +160,6 @@ const Games = () => {
 
         const results = await Promise.all([getReleased, getTrending, getUpcoming]).then(() => {
                 setLoading(false)
-                console.log('Done :3')
         }).catch((e) => console.log(e))
     }
 

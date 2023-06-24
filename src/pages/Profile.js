@@ -35,6 +35,7 @@ const ProfilePicture = styled.div`
     display: inline-block;
     margin-right: 1em;
     vertical-align: bottom;
+    border-radius: 5px 5px 0px 0px;
 `
 const Header = () =>  {
     /**
@@ -44,11 +45,10 @@ const Header = () =>  {
     const { user, profilePiture} = UserAuth()
     const [coverPicture, setcoverPicture] = useState()
     useEffect(() => {
-        getDownloadURL(ref(storage, `${user.displayName}/cover/cover.jpg`)).then((url) => {
+        getDownloadURL(ref(storage, `${user.uid}/cover/user_cover.jpg`)).then((url) => {
             setcoverPicture(url)
-        })
+        }).catch((e) => {console.log(e)})
     }, [])
-    console.log(profilePiture)   
     return(
         <ProfileHeader $cover_pic={coverPicture || cover}>
             <div className='user-asset'>

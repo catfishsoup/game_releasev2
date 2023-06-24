@@ -23,7 +23,7 @@ export const AuthContextProvider = ({children}) => {
     const createUser = async(email, password, username) => {
         // Resolve promises cleaner. . .
            await createUserWithEmailAndPassword(auth, email, password)
-                updateProfile(auth.currentUser, {displayName: username})    
+                updateProfile(auth.currentUser, {displayName: username, photoURL: user_pfp})    
     }
 
     const loginUser = (email, password) => {
@@ -63,9 +63,9 @@ export const AuthContextProvider = ({children}) => {
     }
 
     const uploadPicture = (file, path, name) => {
-       uploadBytes(ref(storage, `${user.displayName}/${path}/${name}`), file).then(() => {  
+       uploadBytes(ref(storage, `${user.uid}/${path}/${name}`), file).then(() => {  
         if(path === 'pfp') {
-            getDownloadURL(ref(storage, `${user.displayName}/pfp/pfp.jpg`)).then((url) => {
+            getDownloadURL(ref(storage, `${user.uid}/pfp/user_pfp.jpg`)).then((url) => {
             updateProfile(user, {photoURL: url})
         })
         }
