@@ -22,7 +22,7 @@ const UserOption = ({open, handleLogOut, displayName}) => {
     }
 }
 const AuthHeader = () => {
-    const {user, logout, profilePicture} = UserAuth()
+    const {user, logout} = UserAuth()
     const [openUP, setopenUP] = useState(false)
     const nav = useNavigate()
     const handleLogOut = async() => {
@@ -46,7 +46,7 @@ const AuthHeader = () => {
                 
                 <ul className='links-cont'>
                     <li><Logo/></li>
-                    <li className='link'><NavLink to='/home' className='link'>Home</NavLink></li>
+                    <li className='link'><NavLink to={`profile/${user?.displayName}`} className='link'>Profile</NavLink></li>
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
                     <li className='link'><NavLink to='/contact' className='link'>Contact</NavLink></li>
                 </ul>

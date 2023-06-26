@@ -30,8 +30,7 @@ const Login = () => {
         }
     return(
         <>
-        {/* Improve: Navigate to previous location */}
-        {isLogged && <Navigate to="/home" replace={true}/>}
+        {isLogged && <Navigate to={`../profile/${user?.displayName}`} replace={true}/>}
         <section>
             
             <form onSubmit={handleSubmit} className="user-form">

@@ -115,13 +115,13 @@ const Overview = ({click, favoriteGame}) => {
       return (
         <section className='overview-sect'>
             <section className='overview-sect-left'>
-                <h2>Your List</h2><button>+</button>
+                <h2>Your List</h2><button>View More</button>
               <section className='list-overview'>
                 
                 <section></section>
                 {/* Render all of user lists here */}
             </section>  
-            <h2>Favorited Games</h2><button>+</button>
+            <h2>Favorited Games</h2><button>View More</button>
             <section className='favorite-overview'>
                 
                 <section className='picture-cont'>

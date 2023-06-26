@@ -31,6 +31,7 @@ const App = () => {
       <Route path="games" element={<Games />}/>
       <Route path="login" element={<Login />}/>
       <Route path="games/:id" element={<Template />}/>
+      <Route path="games/:platforms" element={<Template />}/>
       <Route path="signup" element={<Signup />}/>
       <Route path="contact" element={<Contact />}/>
       

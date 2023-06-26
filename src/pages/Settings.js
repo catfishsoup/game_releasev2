@@ -37,7 +37,8 @@ const Settings = () => {
 
     // User Func down here
     const userSettings = (e, id) => {
-        // Re-authenticate the user first then switch. 
+        // * Re-authenticate the user first then switch. 
+        // * Validate user input
         e.preventDefault()
         switch(id) {
             case 1: 

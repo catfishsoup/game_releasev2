@@ -22,7 +22,7 @@ export const AddedFavorite = ({favoriteStatus}) => {
 }
 
 
-export const SettingAlert = ({text, openAlert}) => {
+export const SettingAlert = ({text}) => {
       return(
         <PositiveAlert>{text} updated!</PositiveAlert>
     )  
