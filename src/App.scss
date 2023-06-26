@@ -3,9 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 @import './styles/Mixin.scss';
 
-// 
-// Reusable Themes 
-// 
 // Universal Settings 
 * {
     margin: 0;
@@ -451,7 +448,48 @@ nav {
     }
 }
 
+.create-list-modal {
+    z-index: 5;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    
+    background-color: rgba(0, 0, 0, 0.5);
+    .create-list-modal-main {
+        margin-top: 20vh;
+        background-color: white;
+        padding: 2rem;
+        height: 10ch;
+        width: 25ch;
+        position: relative;
+        border-radius: 5px;
+        input {
+            @include searchbar;
+        }
+        
+        .save-btn {
+            display: block;
+            position: absolute;
+            right: 5%;
+            bottom: 5%;
+            @include purple-box;
+            color: black;
+            border-radius: 5px;
+            padding: 0.5em;
+        }
 
+        .close-btn {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+        }
+    }
+}
 
 // Animations
 @keyframes mover {

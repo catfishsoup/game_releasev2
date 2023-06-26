@@ -7,7 +7,7 @@ import '../styles/Template.scss'
 import { doc, setDoc, collection, getDoc, updateDoc } from "firebase/firestore"; 
 import {auth, db} from '../firebase/firebase.js'
 import ModalImage from "react-modal-image";
-
+import ListModal from '../components/ListModal.js'
 // 
 // Styled components
 const ProfileHeader = styled.div`
@@ -120,11 +120,6 @@ const Template = () => {
             start_date: `${dates.startdate}` || '',
             finish_date: `${dates.enddate}` || '',
         }, {merge: true})
-    }
-
-    const addNewList = () => {
-        const userListRef = doc(db, `users/${auth.currentUser?.uid}/lists/list_1`)
-
     }
 
     const addtoList = (list) => {
@@ -255,6 +250,7 @@ const Template = () => {
                 </section> 
         </div>
         <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
+        {newList && <ListModal/>}
         </>
         
     )

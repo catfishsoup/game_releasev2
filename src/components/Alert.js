@@ -7,7 +7,7 @@ const PositiveAlert = styled.p`
     top: 5%; 
     z-index: 2;
     padding: 1rem;
-    width: 20ch;
+    width: fit-content;
     border-radius: 5px;
 `
 
@@ -25,9 +25,13 @@ export const AddedFavorite = ({favoriteStatus}) => {
 export const SettingAlert = ({text}) => {
       return(
         <PositiveAlert>{text} updated!</PositiveAlert>
-    )  
+    )    
+}
 
-    
+export const ListAlert = ({text}) => {
+    return(
+      <PositiveAlert>List '{text}' created successfully!</PositiveAlert>
+  )    
 }
 
 export const SettingFailedAlert = ({text}) => {
