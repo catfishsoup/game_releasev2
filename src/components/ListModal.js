@@ -2,21 +2,28 @@
 import { useRef, useState } from 'react'
 import { doc, setDoc, addDoc} from "firebase/firestore"; 
 import {auth, db} from '../firebase/firebase.js'
-import {ListAlert} from './Alert.js'
+import {ListAlert, FailedAlert} from './Alert.js'
 import '../App.scss'
 const ListModal = ({click}) => {
 
     const listName = useRef()
     const [finish, setFinish] = useState(false)
     const [alert, setAlert] = useState(false)
-    const createList = () => {
-        const userListRef = doc(db, `users/${auth.currentUser?.uid}/lists/${listName.current.value}`)
+    const [falsealert, setfalseAlert] = useState(false)
+    const createList = (e) => {
+        e.preventDefault()
+        if(listName.current.value !== '') {
+           const userListRef = doc(db, `users/${auth.currentUser?.uid}/lists/${listName.current.value}`)
         setDoc(userListRef, {
             exist: true,
         }).then(() => {
             setFinish(true)
             setAlert(true)
-        })
+        }).catch((e) => console.log(e)) 
+        } else {
+            setfalseAlert(true)
+        }
+        
     }
 
     if(finish) {
@@ -26,6 +33,8 @@ const ListModal = ({click}) => {
         setTimeout(() => {
             window.location.reload();
         }, 2000)
+    } else if(falsealert) {
+        setTimeout(() => {setfalseAlert(false)}, 1500)
     }
 
     return (
@@ -34,10 +43,11 @@ const ListModal = ({click}) => {
              <h1>New List</h1>
              <label>New list name</label>
              <input type="text" placeholder="List name" ref={listName} required/>
-             <button onClick={() => createList()} className="save-btn">Save</button>
+             <button onClick={(e) => createList(e)} className="save-btn" >Save</button>
              <button className="close-btn" onClick={() => click(false)}>Close</button>   
             </section>
             {alert && <ListAlert text={listName.current.value}/>}
+            {falsealert && <FailedAlert text={'Unable to create list!'}/>}
         </section>
     )
 }

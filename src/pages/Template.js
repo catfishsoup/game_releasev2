@@ -4,7 +4,7 @@ import { useEffect, useState} from 'react'
 import gameService from '../services/gamereq.js'
 import GameLog from '../components/GameLog.js'
 import '../styles/Template.scss'
-import { doc, setDoc, collection, getDoc, updateDoc } from "firebase/firestore"; 
+import { doc, setDoc, collection, getDoc, updateDoc, getDocs } from "firebase/firestore"; 
 import {auth, db} from '../firebase/firebase.js'
 import ModalImage from "react-modal-image";
 import ListModal from '../components/ListModal.js'
@@ -64,6 +64,7 @@ const Template = () => {
     
     const [info, setInfo] = useState([])
     const [userData, setuserData] = useState([])
+    const [userList, setuserList] = useState([])
     const [contained, setContained] = useState(false)
     const [openModal, setopenModal] = useState(false)
     const [favorited, setFavorited] = useState(false)
@@ -89,7 +90,12 @@ const Template = () => {
                 }
             })
         // Check the list from the user
-
+            getDocs(collection(db, `users/${auth.currentUser?.uid}/lists`)).then((docs) => {
+                const tempArray = []
+                docs.forEach((data) => {tempArray.push(data.id)}
+                )
+                setuserList(tempArray)
+            })
     }, [])
     // Once we get the id, fetch the data to display under here 
     if(loading) {
@@ -169,9 +175,10 @@ const Template = () => {
                                     </svg>
                                 </div>
                                 <div className="list-holder" style={{display: openList === true ? 'block' : 'none'}}>
-                                 <div onClick={() => addtoList('wishlists')}>Wishlist</div>
-                                 {/* Generate other lists of user from here.  */}
-                                 <div onClick={() => setnewList(true)}>New list</div>   
+                                 {userList.map((data, i) => {
+                                        return(<div onClick={() => addtoList(data)}>{data}</div>)
+                                 } )}
+                                 <div onClick={() => setnewList(true)} className="new-user-list">New List</div>   
                                 </div>
                             </div>
                         </section>

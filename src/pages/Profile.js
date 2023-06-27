@@ -99,7 +99,7 @@ const Overview = ({click, favoriteGame}) => {
     const fetchCount = useCallback(async() => { 
         for(let x = 0; x < statusList.length; x++) {
                 const q = query(collection(db, 'users', `${auth.currentUser?.uid}`, 'games'), where('status', '==', statusList[x].name))
-                await getCountFromServer(q).then((snapshot) => {
+                getCountFromServer(q).then((snapshot) => {
                     statusList[x].count = snapshot.data().count
                 })
             }
