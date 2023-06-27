@@ -9,6 +9,7 @@ import {auth, db} from '../firebase/firebase.js'
 import ModalImage from "react-modal-image";
 import ListModal from '../components/ListModal.js'
 import { FailedAlert, GeneralPositiveAlert } from "../components/Alert.js";
+import { externalurl } from "../components/externalurl.js";
 // 
 // Styled components
 const ProfileHeader = styled.div`
@@ -149,6 +150,7 @@ const Template = () => {
         setaddList(false), 2000)
     }
 
+    console.log(info[0].websites)
     // 
     return(
         <>
@@ -225,11 +227,14 @@ const Template = () => {
                         </section>
                         
                         {/**/}
-                        <section className="developers">
+                        <section className="ext-links">
                             <h2>External Links</h2>
                             <ul>
-                                {info[0].involved_companies.map((curr_company) => {
-                                return(<List data={curr_company.company}/>)
+                                {info[0].websites.map((website) => {
+                                    let temp_value = externalurl.filter(data => data.id === website.category)
+                                    if(temp_value !== undefined) {
+                                        return(<li><a href={website.url} target="_blank">{temp_value[0].name}</a></li>)
+                                    }
                                 })}
                             </ul>
                         </section>

@@ -79,7 +79,7 @@ async function getCurrent(id) {
         'x-api-key': x_api_key,
         'Content-Type': 'text/plain'
       },
-      data: `fields name, cover.url, genres.name, platforms.name, involved_companies.company.name, summary, videos.name, screenshots.url, release_dates.human; where id = ${id};`
+      data: `fields name, cover.url, genres.name, platforms.name, involved_companies.company.name, summary, videos.name, screenshots.url, release_dates.human, websites.url, websites.category; where id = ${id};`
     });
     return (res.data);
   } catch (e) {

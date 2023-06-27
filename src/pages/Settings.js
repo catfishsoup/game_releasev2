@@ -44,6 +44,8 @@ const Settings = () => {
             case 1: 
             updateProfile(user, {displayName: usernameRef.current.value}); 
             setalertText('User name updated successfully!')
+            break; 
+            
             case 2: 
             updateEmailForCurrentUser(emailRef.current.value)
             setalertText('Email updated successfully!')

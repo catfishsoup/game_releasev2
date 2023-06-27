@@ -9,6 +9,7 @@ const PositiveAlert = styled.p`
     padding: 1rem;
     width: fit-content;
     border-radius: 5px;
+    left: 45%;
 `
 const FalseAlert = styled.p`
     background-color: #999999;
@@ -19,6 +20,7 @@ const FalseAlert = styled.p`
     padding: 1rem;
     width: fit-content;
     border-radius: 5px;
+    left: 50%;
 `
 export const AddedFavorite = ({favoriteStatus}) => {
     if(favoriteStatus === true) {
