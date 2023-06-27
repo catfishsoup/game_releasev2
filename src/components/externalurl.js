@@ -10,6 +10,7 @@ import reddit from '../img/external_links/reddit.svg'
 import epicgames from '../img/external_links/epicgames.svg'
 import gog from '../img/external_links/gog.svg'
 import discord from '../img/external_links/discord.svg'
+import fandom from '../img/external_links/fandom.svg'
 export const externalurl = [
     {
         name: 'Official Website',
@@ -19,7 +20,7 @@ export const externalurl = [
     {
         name: 'Wikia', 
         id: 2, 
-        icon: ''
+        icon: fandom
     },
     {
         name: 'Wikipedia', 

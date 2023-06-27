@@ -68,7 +68,13 @@ const Screenshot = ({data}) => {
 
 const Media = ({data}) => {
     return(
-        <></>
+        <div>
+         <iframe width="555" height="312" src={`https://www.youtube.com/embed/${data.video_id}`}
+        title={`${data.name}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; 
+        encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen
+        ></iframe>   
+        </div>
+        
     )
 }
 
@@ -163,8 +169,6 @@ const Template = () => {
         setTimeout(() => 
         setaddList(false), 2000)
     }
-
-    console.log(info[0].websites)
     // 
     return(
         <>
@@ -280,11 +284,11 @@ const Template = () => {
 
                         <section className="screenshots"> 
                         <h2>Videos</h2>
-                        {/* <div className="modal-cont">
-                           {info[0].videos.map((picture) => {
-                            return(<Screenshot data={picture}/>)
+                        <div className="video-cont">
+                           {info[0].videos.map((video) => {
+                            return(<Media data={video}/>)
                             })}  
-                        </div> */}
+                        </div>
                               
                         </section>
                     </section>
