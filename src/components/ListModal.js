@@ -4,7 +4,7 @@ import { doc, setDoc, addDoc} from "firebase/firestore";
 import {auth, db} from '../firebase/firebase.js'
 import {ListAlert} from './Alert.js'
 import '../App.scss'
-const ListModal = (click) => {
+const ListModal = ({click}) => {
 
     const listName = useRef()
     const [finish, setFinish] = useState(false)
@@ -32,9 +32,10 @@ const ListModal = (click) => {
         <section className="create-list-modal">
             <section className="create-list-modal-main">
              <h1>New List</h1>
-             <input type="text" placeholder="Enter the list name" ref={listName} />
+             <label>New list name</label>
+             <input type="text" placeholder="List name" ref={listName} required/>
              <button onClick={() => createList()} className="save-btn">Save</button>
-             <button className="close-btn" onClick={() => click(false)}>Close X</button>   
+             <button className="close-btn" onClick={() => click(false)}>Close</button>   
             </section>
             {alert && <ListAlert text={listName.current.value}/>}
         </section>

@@ -250,7 +250,7 @@ const Template = () => {
                 </section> 
         </div>
         <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
-        {newList && <ListModal/>}
+        {newList && <ListModal click={setnewList}/>}
         </>
         
     )

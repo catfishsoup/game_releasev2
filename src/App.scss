@@ -458,13 +458,20 @@ nav {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    
+    h1 {
+        @include section-title;
+        
+        &::after {
+            @include purple-underline;
+            width: 10%;
+        }
+    }
     background-color: rgba(0, 0, 0, 0.5);
     .create-list-modal-main {
         margin-top: 20vh;
         background-color: white;
         padding: 2rem;
-        height: 10ch;
+        height: 20ch;
         width: 25ch;
         position: relative;
         border-radius: 5px;
@@ -485,8 +492,13 @@ nav {
 
         .close-btn {
             position: absolute;
-            top: 5%;
-            right: 5%;
+            bottom: 5%;
+            right: 25%;
+            @include purple-box;
+            border-radius: 5px;
+            padding: 0.5em;
+            color: black;
+            background-color: rgba(0, 0, 0, 0.4);
         }
     }
 }

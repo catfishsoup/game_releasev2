@@ -30,7 +30,7 @@ export const SettingAlert = ({text}) => {
 
 export const ListAlert = ({text}) => {
     return(
-      <PositiveAlert>List '{text}' created successfully!</PositiveAlert>
+      <PositiveAlert>List '{text}' created successfully! The page will be refresh shortly.</PositiveAlert>
   )    
 }
 

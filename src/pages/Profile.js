@@ -40,7 +40,6 @@ const ProfilePicture = styled.div`
 const Header = () =>  {
     /**
      * Header will includes - User Profile Picture, User Name, Cover Picture. 
-     * Should still display the user profile picture / name / cover if they are logged out. 
      **/    
     const { user, profilePiture} = UserAuth()
     const [coverPicture, setcoverPicture] = useState()
