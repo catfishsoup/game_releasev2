@@ -37,6 +37,20 @@ const FavoriteBtn = styled.button`
     border: none;
 `
 
+const ExternalLink = styled.a`
+    background: url(${props => props.$mini_icon}) no-repeat scroll 1px 1px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    margin-bottom: 0.5em;
+    transition: 0.2s;
+    &:hover {
+        color: #695ef5;
+    }
+`
+
 // 
 // Components
 const List = ({data}) => {
@@ -233,7 +247,7 @@ const Template = () => {
                                 {info[0].websites.map((website) => {
                                     let temp_value = externalurl.filter(data => data.id === website.category)
                                     if(temp_value !== undefined) {
-                                        return(<li><a href={website.url} target="_blank">{temp_value[0].name}</a></li>)
+                                        return(<li><ExternalLink href={website.url} target="_blank" $mini_icon={temp_value[0].icon}>{temp_value[0].name}</ExternalLink></li>)
                                     }
                                 })}
                             </ul>
