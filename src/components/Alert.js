@@ -31,20 +31,19 @@ export const AddedFavorite = ({favoriteStatus}) => {
 }
 
 
-export const SettingAlert = ({text}) => {
+export const GeneralPositiveAlert = ({text}) => {
       return(
-        <PositiveAlert>{text} updated!</PositiveAlert>
+        <PositiveAlert>{text}</PositiveAlert>
     )    
 }
-
+export const FailedAlert = ({text}) => {
+    return(
+        <FalseAlert>{text}</FalseAlert>
+    )
+}
 export const ListAlert = ({text}) => {
     return(
       <PositiveAlert>List '{text}' created successfully! The page will be refresh shortly.</PositiveAlert>
   )    
 }
 
-export const FailedAlert = ({text}) => {
-    return(
-        <FalseAlert>{text}</FalseAlert>
-    )
-}

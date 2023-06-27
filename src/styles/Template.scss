@@ -101,6 +101,10 @@
                     &:not(:last-child) {
                        border-bottom: 2px solid black; 
                     }
+
+                    &::first-letter {
+                        text-transform: capitalize;
+                    }
                 }
 
                 .new-user-list {

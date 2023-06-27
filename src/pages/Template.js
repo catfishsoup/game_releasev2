@@ -8,6 +8,7 @@ import { doc, setDoc, collection, getDoc, updateDoc, getDocs } from "firebase/fi
 import {auth, db} from '../firebase/firebase.js'
 import ModalImage from "react-modal-image";
 import ListModal from '../components/ListModal.js'
+import { FailedAlert, GeneralPositiveAlert } from "../components/Alert.js";
 // 
 // Styled components
 const ProfileHeader = styled.div`
@@ -65,11 +66,16 @@ const Template = () => {
     const [info, setInfo] = useState([])
     const [userData, setuserData] = useState([])
     const [userList, setuserList] = useState([])
+
     const [contained, setContained] = useState(false)
     const [openModal, setopenModal] = useState(false)
     const [favorited, setFavorited] = useState(false)
+
+    // List related states 
     const [openList, setopenList] = useState(false)
     const [newList, setnewList] = useState(false)
+    const [addList, setaddList] = useState(false)
+
     const userRef = doc(collection(db, 'users'), `${auth.currentUser?.uid}`, 'games', id)
     // Loads game data from IDGB
     useEffect(() => {
@@ -133,9 +139,15 @@ const Template = () => {
         setDoc(userListRef, {
             name: info[0].name,
             url: info[0].cover.url,
-        }, {merge: true})
+        }, {merge: true}).then(() => {
+            setaddList(true)
+        })
     }
 
+    if(addList) {
+        setTimeout(() => 
+        setaddList(false), 2000)
+    }
 
     // 
     return(
@@ -175,8 +187,11 @@ const Template = () => {
                                     </svg>
                                 </div>
                                 <div className="list-holder" style={{display: openList === true ? 'block' : 'none'}}>
-                                 {userList.map((data, i) => {
+                                    <div onClick={() => addtoList('wishlist')}>Wishlist</div>
+                                 {userList.map((data) => {
+                                    if(data !== 'wishlist') {
                                         return(<div onClick={() => addtoList(data)}>{data}</div>)
+                                    }      
                                  } )}
                                  <div onClick={() => setnewList(true)} className="new-user-list">New List</div>   
                                 </div>
@@ -258,6 +273,7 @@ const Template = () => {
         </div>
         <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
         {newList && <ListModal click={setnewList}/>}
+        {addList && <GeneralPositiveAlert text={'Added to list successfully!'}/>}
         </>
         
     )

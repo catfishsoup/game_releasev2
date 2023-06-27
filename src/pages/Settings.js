@@ -3,7 +3,7 @@ import '../styles/Settings.scss'
 import { useRef, useState } from 'react'; 
 import { UserAuth } from "../firebase/user_auth"
 import { updateProfile } from "firebase/auth"
-import {SettingAlert} from '../components/Alert.js'
+import {GeneralPositiveAlert} from '../components/Alert.js'
 const Settings = () => {
     /**
      * Allow user to: change user name, profile picture, email, password, delete the account. 
@@ -43,24 +43,24 @@ const Settings = () => {
         switch(id) {
             case 1: 
             updateProfile(user, {displayName: usernameRef.current.value}); 
-            setalertText('User name')
+            setalertText('User name updated successfully!')
             case 2: 
             updateEmailForCurrentUser(emailRef.current.value)
-            setalertText('Email')
+            setalertText('Email updated successfully!')
             break;
 
             case 3: 
             updateuserPassword(confirmpasswordRef.current.value)
-            setalertText('Passoword')
+            setalertText('Password updated successfully!')
             break;
 
             case 4: 
             uploadPicture(profileImage, 'pfp', 'user_pfp.jpg');
-            setalertText('Profile picture')
+            setalertText('Profile picture updated successfully!')
             break;
 
             case 5: uploadPicture(coverImage, 'cover', 'user_cover.jpg');
-            setalertText('Cover picture')
+            setalertText('Cover picture updated successfully!')
             break;
         }
         setopenAlert(true)
@@ -125,7 +125,7 @@ const Settings = () => {
                     <button type="button" onClick={(e) => delUserProfile(e)} className='delete-account-btn' >Delete User Account</button>
  
                 </section>
-                {openAlert && <SettingAlert text={alertText}/>}
+                {openAlert && <GeneralPositiveAlert text={alertText}/>}
         </section>
     )  
     }
