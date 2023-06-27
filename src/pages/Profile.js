@@ -41,7 +41,7 @@ const Header = () =>  {
     /**
      * Header will includes - User Profile Picture, User Name, Cover Picture. 
      **/    
-    const { user, profilePiture} = UserAuth()
+    const { user } = UserAuth()
     const [coverPicture, setcoverPicture] = useState()
     useEffect(() => {
         getDownloadURL(ref(storage, `${user.uid}/cover/user_cover.jpg`)).then((url) => {

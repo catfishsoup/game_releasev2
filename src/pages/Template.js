@@ -10,6 +10,7 @@ import ModalImage from "react-modal-image";
 import ListModal from '../components/ListModal.js'
 import { FailedAlert, GeneralPositiveAlert } from "../components/Alert.js";
 import { externalurl } from "../components/externalurl.js";
+import link from "../img/external_links/link.svg"
 // 
 // Styled components
 const ProfileHeader = styled.div`
@@ -38,7 +39,7 @@ const FavoriteBtn = styled.button`
 `
 
 const ExternalLink = styled.a`
-    background: url(${props => props.$mini_icon}) no-repeat scroll 1px 1px;
+    background: url(${props => props.$mini_icon || link}) no-repeat scroll 1px 1px;
     padding-left: 25px;
     padding-bottom: 5px;
     text-decoration: none;
@@ -250,8 +251,8 @@ const Template = () => {
                             <ul>
                                 {info[0].websites.map((website) => {
                                     let temp_value = externalurl.filter(data => data.id === website.category)
-                                    if(temp_value !== undefined) {
-                                        return(<li><ExternalLink href={website.url} target="_blank" $mini_icon={temp_value[0].icon}>{temp_value[0].name}</ExternalLink></li>)
+                                    if(temp_value.length > 0) {
+                                        return(<li><ExternalLink href={website.url} target="_blank" $mini_icon={temp_value[0]?.icon || link}>{temp_value[0]?.name}</ExternalLink></li>)
                                     }
                                 })}
                             </ul>
