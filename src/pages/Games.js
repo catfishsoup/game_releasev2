@@ -3,7 +3,6 @@ import gameService from '../services/gamereq.js'
 import Picture from '../components/Picture.js'
 import '../styles/Games.scss'
 import { Link } from "react-router-dom";
-import styled from 'styled-components'
 import computer from '../img/computer.svg'
 import switch_con from '../img/switch-fill.svg'
 import xbox from '../img/xbox-fill.svg'

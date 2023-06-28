@@ -32,7 +32,7 @@ let getTrendingconfig = {
   data : 'fields name, hypes, cover.url; where hypes >= 150; sort hypes asc;'
 };
 
-const getTrending = async() => await axios.request(getTrendingconfig)
+const getTrending = () => axios.request(getTrendingconfig)
 .then((response) => {
  return (response.data);
 })

@@ -19,6 +19,7 @@ import ProfileList from './pages/profile/ProfileList';
 import Settings from './pages/profile/Settings'
 import ProfileGames from './pages/profile/ProfileGames';
 import ProfileOverview from './pages/profile/ProfileOverview';
+import ProfileFavorite from './pages/profile/ProfileFavorite';
 // 
 
 //Ultility Pages import 
@@ -50,9 +51,10 @@ const App = () => {
     <Route path='/' element={<ProtectedRoute/>}>
       <Route path="/" element={<Profile/>}>
         <Route path="profile/:user_name" element={<ProfileOverview />}/>
-        <Route path="profile/:user_name/lists" element={<ProfileList />}/>
-        <Route path="profile/:user_name/games" element={<ProfileGames />}/>
         <Route path="profile/:user_name/overview" element={<ProfileOverview />}/>
+        <Route path="profile/:user_name/games" element={<ProfileGames />}/>
+        <Route path="profile/:user_name/lists" element={<ProfileList />}/>
+        <Route path="profile/:user_name/favorites" element={<ProfileFavorite />}/>
       </Route>
       <Route path="profile/:user_name/settings" element={<Settings/>}/>
     </Route>

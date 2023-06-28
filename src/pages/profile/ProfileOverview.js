@@ -3,7 +3,7 @@ import { collection, query, where, getCountFromServer } from "firebase/firestore
 import {auth, db } from '../../firebase/firebase.js'
 import Picture from "../../components/Picture.js";
 import styled from 'styled-components'
-
+import userService from '../../firebase/user_request'
 
 const StatusStyle = styled.div`
     background: ${props => props.$color};
@@ -14,7 +14,7 @@ const StatusStyle = styled.div`
 `
 
 
-const ProfileOverview = (favoriteGame) => {
+const ProfileOverview = () => {
     /**
      * List will includes 'Default' List and User generated Lists. 
      **/ 
@@ -45,10 +45,11 @@ const ProfileOverview = (favoriteGame) => {
         },
     ])
     const [done, setDone] = useState(false)
-    const fetchCount = useCallback(() => { 
+    const [favorites, setFavorites] = useState([])
+    const fetchCount = useCallback(async() => { 
         for(let x = 0; x < statusList.length; x++) {
                 const q = query(collection(db, 'users', `${auth.currentUser?.uid}`, 'games'), where('status', '==', statusList[x].name))
-                getCountFromServer(q).then((snapshot) => {
+                await getCountFromServer(q).then((snapshot) => {
                     statusList[x].count = snapshot.data().count
                 })
             }
@@ -57,9 +58,8 @@ const ProfileOverview = (favoriteGame) => {
     
     useEffect(() => {
         fetchCount()
-    }, [done])
-
-
+          userService.fetchFavorite().then((result) => setFavorites(result))  
+    }, [])
       return (
         <section className='overview-sect'>
             <section className='overview-sect-left'>
@@ -77,11 +77,10 @@ const ProfileOverview = (favoriteGame) => {
             <section className='favorite-overview'>
                 
                 <section className='picture-cont'>
-                    {favoriteGame.map((game) => {
-                        return(
-                            <Picture data={game} text={'t_cover_small'} key={game.id}/>
-                        )
-                    })}
+                    {favorites.map((data) => {
+                        return(<Picture data={data} text={'t_cover_small'} key={data.id}/>)
+                    }
+                    )}
                 </section>
             </section>
             </section>
