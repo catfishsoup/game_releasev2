@@ -44,12 +44,17 @@ nav {
     padding: 1em;
     .links-cont {
     list-style-type: none;
+    display: flex;
+    gap: 1em;
+    
         li {
             display: inline-block;
-            margin: 1em;
             font-weight: 500;
-            font-size: 1.2rem;
-            
+            margin-top: 0.5em;
+            a {
+                @include underline-nav;
+                font-size: 1.2rem;
+            }
         }
         
        

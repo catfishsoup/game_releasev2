@@ -1,6 +1,6 @@
 import Logo from './Logo'
 import { UserAuth } from "../firebase/user_auth"
-import { NavLink, Link, Outlet, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, Link } from "react-router-dom";
 import { useState } from 'react';
 import { motion } from "framer-motion"
 import user_pfp from '../img/user.png'
@@ -45,7 +45,7 @@ const AuthHeader = () => {
             <nav>
                 
                 <ul className='links-cont'>
-                    <li><Logo/></li>
+                    <Logo/>
                     <li className='link'><NavLink to={`profile/${user?.displayName}`} className='link'>Profile</NavLink></li>
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
                     <li className='link'><NavLink to='/contact' className='link'>Contact</NavLink></li>

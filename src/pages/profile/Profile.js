@@ -1,5 +1,5 @@
 import { UserAuth } from "../../firebase/user_auth"
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, NavLink } from "react-router-dom";
 import '../../styles/Profile.scss'
 import ProfileHeader from './ProfileHeader';
 
@@ -28,7 +28,7 @@ const Profile = () => {
         <ProfileHeader/>
         <div className='user-nav'>
             {profileTab.map((tab) => {
-               return(<Link key={tab.id} to={`/profile/${user.displayName}/${tab.name}`} className="user-nav-text">{tab.name}</Link>) 
+               return(<NavLink key={tab.id} to={`/profile/${user.displayName}/${tab.name}`} className="user-nav-text">{tab.name}</NavLink>) 
             })}
         </div>
 

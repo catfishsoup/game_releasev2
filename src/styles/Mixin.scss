@@ -74,3 +74,21 @@ $light-gray: rgba(210, 215, 211, 0.5);
         text-align: center;
     }
 }
+
+
+@mixin underline-nav {
+    &::after {
+        @include purple-underline;
+        width: 0%;
+        margin: 0;
+        transition: 0.5s;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+    &.active::after {
+        @include purple-underline;
+        width: 100%;
+}
+}
