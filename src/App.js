@@ -1,9 +1,9 @@
+// CSS / Library imports 
 import './App.scss';
 import { createBrowserRouter, Route, RouterProvider, createRoutesFromElements} from 'react-router-dom';
 import { UserAuth } from './firebase/user_auth';
-import Header from './components/Header'
-import Footer from './components/Footer'
-import AuthHeader from './components/AuthHeader'
+
+// Various Pages import 
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
@@ -11,12 +11,24 @@ import Signup from './pages/Signup'
 import Games from './pages/Games'
 import Home from './pages/Home'
 import Template from './pages/Template'
-import Profile from './pages/Profile'
 import Search from './pages/Search'
-import Settings from './pages/Settings'
-import UserHome from './pages/UserHome'
+
+// Profile Pages import 
+import Profile from './pages/profile/Profile'
+import ProfileList from './pages/profile/ProfileList';
+import Settings from './pages/profile/Settings'
+import ProfileGames from './pages/profile/ProfileGames';
+import ProfileOverview from './pages/profile/ProfileOverview';
+// 
+
+//Ultility Pages import 
 import { Empty } from './pages/Warning'
 import ProtectedRoute from './components/ProtectedRoute';
+import Header from './components/Header'
+import AuthHeader from './components/AuthHeader'
+import Footer from './components/Footer'
+
+
 const App = () => {
   const user = UserAuth()
 
@@ -36,8 +48,12 @@ const App = () => {
       <Route path="contact" element={<Contact />}/>
       
     <Route path='/' element={<ProtectedRoute/>}>
-      <Route path="home" element={<UserHome/>} />
-      <Route path="profile/:user_name" element={<Profile/>}/>
+      <Route path="/" element={<Profile/>}>
+        <Route path="profile/:user_name" element={<ProfileOverview />}/>
+        <Route path="profile/:user_name/lists" element={<ProfileList />}/>
+        <Route path="profile/:user_name/games" element={<ProfileGames />}/>
+        <Route path="profile/:user_name/overview" element={<ProfileOverview />}/>
+      </Route>
       <Route path="profile/:user_name/settings" element={<Settings/>}/>
     </Route>
 

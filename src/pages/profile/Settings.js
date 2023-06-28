@@ -1,9 +1,9 @@
 
-import '../styles/Settings.scss'
+import '../../styles/Settings.scss'
 import { useRef, useState } from 'react'; 
-import { UserAuth } from "../firebase/user_auth"
+import { UserAuth } from "../../firebase/user_auth"
 import { updateProfile } from "firebase/auth"
-import {GeneralPositiveAlert} from '../components/Alert.js'
+import {GeneralPositiveAlert} from '../../components/Alert.js'
 const Settings = () => {
     /**
      * Allow user to: change user name, profile picture, email, password, delete the account. 

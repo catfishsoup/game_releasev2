@@ -31,7 +31,7 @@ const ProfileHeader = styled.div`
 const FavoriteBtn = styled.button`
     background: red;
     border-radius: 5px;
-    display: inline;
+    display: inline-block;
     vertical-align: middle;
     margin-left: 1em;
     padding: 5px;
@@ -190,14 +190,17 @@ const Template = () => {
                         <section className="manage-games">
                             {/* Only allow log in user to perform action down here.  */}
                             <h2>Manage Game</h2>
-                            <button onClick={() => setopenModal(true)} className="log-btn">Log {`${info[0].name}`}</button> 
+                            <div>
+                               <button onClick={() => setopenModal(true)} className="log-btn">Log {`${info[0].name}`}</button> 
                     {/* Render on click, not on page refresh */}
                             <FavoriteBtn onClick={() => favoriteGame()}><svg xmlns="http://www.w3.org/2000/svg" width="24" 
                             height="20" viewBox="0 0 24 24">
                                 <path fill="white" 
                                 d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53L12 21.35Z"/>
                                 </svg>
-                                </FavoriteBtn>
+                                </FavoriteBtn> 
+                            </div>
+                            
                             <div className="user-lists" onClick={() => setopenList(!openList)}>
                                 {/* If not added to list, display 'Add to List' else display the belong list. */}
                                 <div className="add-to-list">
