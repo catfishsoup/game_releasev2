@@ -28,7 +28,7 @@ const Profile = () => {
         <ProfileHeader/>
         <div className='user-nav'>
             {profileTab.map((tab) => {
-               return(<Link key={tab.id} to={`/profile/${user.displayName}/${tab.name}`}>{tab.name}</Link>) 
+               return(<Link key={tab.id} to={`/profile/${user.displayName}/${tab.name}`} className="user-nav-text">{tab.name}</Link>) 
             })}
         </div>
 

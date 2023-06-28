@@ -46,11 +46,10 @@ main {
     padding: 1rem;
     border: 1px solid white;
     box-shadow: $basic-boxshadow;
-    div {
-        cursor: pointer;
-        &:hover {
-            color: purple;
-        }
+    .user-nav-text {
+        text-decoration: none;
+        color: black;
+        text-transform: capitalize;
     }
 }
 
