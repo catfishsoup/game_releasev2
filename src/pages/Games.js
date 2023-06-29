@@ -9,6 +9,8 @@ import xbox from '../img/xbox-fill.svg'
 import playstation from '../img/playstation-fill.svg'
 import arrow from '../img/arrow.svg'
 const Trending = ({trending}) => {
+
+    
          return(
         <section className='trending-cont'>
             <h1 className='cont-direct'>Trending Games</h1>
@@ -127,7 +129,7 @@ const Release = ({release}) => {
                         return(<Picture data={picture} text={'t_cover_big_2x'}/>)
                     }
                 }
-                    
+        
                 )}
             </section>
         </section>

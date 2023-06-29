@@ -4,7 +4,7 @@ import { useEffect, useState} from 'react'
 import gameService from '../services/gamereq.js'
 import GameLog from '../components/GameLog.js'
 import '../styles/Template.scss'
-import { doc, setDoc, collection, getDoc, updateDoc, getDocs } from "firebase/firestore"; 
+import { doc, setDoc, collection, getDoc, updateDoc, getDocs, increment } from "firebase/firestore"; 
 import {auth, db} from '../firebase/firebase.js'
 import ModalImage from "react-modal-image";
 import ListModal from '../components/ListModal.js'
@@ -159,11 +159,19 @@ const Template = () => {
     const addtoList = (list) => {
         const userListRef = doc(db, `users/${auth.currentUser?.uid}/lists/${list}/${id}/info`)
         setDoc(userListRef, {
+            id: id,
             name: info[0].name,
             url: info[0].cover.url,
         }, {merge: true}).then(() => {
             setaddList(true)
         })
+        //Keeping track number of games inside a document (because I can't query subcollections inside documents w/o a server)
+        setDoc(doc(db, `users/${auth.currentUser?.uid}/lists/${list}`), {
+            games: {
+                [id]: true
+            }, 
+            count: increment(1), 
+        }, {merge: true})
     }
 
     if(addList) {

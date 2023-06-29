@@ -1,5 +1,5 @@
 import { UserAuth } from "../../firebase/user_auth"
-import { Link, Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import '../../styles/Profile.scss'
 import ProfileHeader from './ProfileHeader';
 

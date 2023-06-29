@@ -65,9 +65,12 @@ const ProfileOverview = () => {
             <section className='overview-sect-left'>
                 <h2>Your List</h2><button>View More</button>
               <section className='list-overview'>
-                
-                <section></section>
                 {/* Render few of user lists here */}
+                <section className="indiv-list">
+                    <div>a</div>
+                    <div>Title - Games</div>
+                </section>
+                
             </section>  
 
 

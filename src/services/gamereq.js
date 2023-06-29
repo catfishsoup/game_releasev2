@@ -104,4 +104,22 @@ async function searchGame(name) {
   }
 }
 
-export default {getPopular, getTrending, getReleased, getCurrent, searchGame, getIncoming}
+async function getPicture(id) {
+  try {
+    const res = await axios.request({
+      method: 'post',
+      url: baseUrl,
+      headers: {
+        'x-api-key': x_api_key,
+        'Content-Type': 'text/plain'
+      },
+      data: `cover.url where id = ${id};`
+    });
+    return (res.data);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+
+export default {getPopular, getTrending, getReleased, getCurrent, searchGame, getIncoming, getPicture}
