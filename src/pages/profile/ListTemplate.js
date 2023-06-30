@@ -38,13 +38,21 @@ const ListTemplate = () => {
               setLoading(false)
         }).catch((e) => console.log(e))
     }, [])
+
+    const deleteLink = () => {
+        
+    }
+
+
+
     return (
-        <>
+        <section className="list-template-cont">
           <h1 className='sub-page-title'><Link to={`../profile/${user.displayName}/lists`} className="list-link">Lists</Link> / <Link className="list-link">{`${gameList.name}`}</Link> </h1> 
+          <button className="action-btn" onClick={() => deleteLink()}>Edit List</button>
           <section className="sub-list-sect">
             <DisplayList data={gameList.games} loading={loading}/>
           </section>
-        </>
+        </section>
     )
 }
 

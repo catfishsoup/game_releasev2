@@ -99,3 +99,12 @@ $light-gray: rgba(210, 215, 211, 0.5);
     margin: 0em 7rem 0em 7rem;
 
 }
+
+@mixin linebackdrop {
+    transition: 0.2s ease-in;
+    cursor: pointer;
+    &:hover {
+        transform: translate(-5px, -5px);
+        box-shadow: 5px 5px 0 -3px white, 5px 5px #695ef5;
+    }
+}
