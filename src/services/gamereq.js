@@ -113,7 +113,7 @@ async function getPicture(id) {
         'x-api-key': x_api_key,
         'Content-Type': 'text/plain'
       },
-      data: `cover.url where id = ${id};`
+      data: `fields name, cover.url; where id = ${id};`
     });
     return (res.data);
   } catch (e) {

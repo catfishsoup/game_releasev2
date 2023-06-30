@@ -20,6 +20,7 @@ import Settings from './pages/profile/Settings'
 import ProfileGames from './pages/profile/ProfileGames';
 import ProfileOverview from './pages/profile/ProfileOverview';
 import ProfileFavorite from './pages/profile/ProfileFavorite';
+import ListTemplate from './pages/profile/ListTemplate';
 // 
 
 //Ultility Pages import 
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="profile/:user_name/overview" element={<ProfileOverview />}/>
         <Route path="profile/:user_name/games" element={<ProfileGames />}/>
         <Route path="profile/:user_name/lists" element={<ProfileList />}/>
+        <Route path="profile/:user_name/lists/:list_name" element={<ListTemplate />}/>
         <Route path="profile/:user_name/favorites" element={<ProfileFavorite />}/>
       </Route>
       <Route path="profile/:user_name/settings" element={<Settings/>}/>

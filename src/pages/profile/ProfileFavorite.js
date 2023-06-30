@@ -10,7 +10,7 @@ const ProfileFavorite = () => {
     }, [])
        return (
         <section className='fav-sect'>
-            <h1>Favorite Games</h1>
+            <h1 className='sub-page-title'>Favorite Games</h1>
            <section className='favorite-main-sect'>
             
            {favorites.map((game) => {

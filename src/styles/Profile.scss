@@ -15,11 +15,20 @@ $neutral-bg: rgb(242,242,242);
     
 }
 
+.sub-page-title {
+    @include section-title;
+    margin-left: 7rem;
+    margin-top: 1em;
+    display: inline-block;
+    &:after {
+        @include purple-underline;
+    }
+}
+
 
 main {
     overflow: hidden;
 }
-
 .profile-picture, .user-name {
     display: inline-block;
 }
@@ -117,13 +126,13 @@ main {
 }
 
 
+
+// Games Section 
 .game-sect {
-    padding: 1em 7rem 1em 7rem;
+    padding: 0em 7rem 0em 7rem;
     display:grid;
     grid-template-columns: 1fr 5fr;
     gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
     // 
     .filter-list {
         display: flex;
@@ -136,7 +145,7 @@ main {
             @include section-title;
             &:after {
                 @include purple-underline;
-                width: 20%;
+                width: 10%;
             }
         }
         .search-bar {
@@ -204,27 +213,50 @@ main {
 
 }
 
-//List overview 
+//List Section 
+.list-cont {
+    display: flex;
+    flex-direction: row;
+    @include profile-neutral-bg;
+    gap: 2em;
 
+}
+.list-desc {
+    display: flex;
+    justify-content: space-between;
+    .list-name, .list-count {
+        display: inline-block;
+        margin: 0.5em 3px 0 3px;
+        font-size: 0.9rem;
+    }   
+}
 
+    .list-link {
+        text-transform: capitalize;
+        text-decoration: none;
+        font-weight: 500;
+        color: black;
+        &:hover {
+            color: #b34886;
+        }
+    }
+
+    // Sub-list
+    .sub-list-sect {
+        @include profile-neutral-bg;
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        img {
+            height: auto
+        }
+    }
 
 // Favorite Main Sect 
 .fav-sect {
-    h1 {
-        margin-left: 7rem;
-        margin-top: 1em;
-        @include section-title;
-            display: inline-block;
-            margin-right: 5px;
-            &:after {
-                @include purple-underline;
-              width: 50%;  
-            }
-    }
    .favorite-main-sect {
-    @include neutral-bg-theme;
+    @include profile-neutral-bg;
     display: flex;
-    margin: 0em 7rem 0em 7rem;
     gap: 1em;
     img {
         height: auto;

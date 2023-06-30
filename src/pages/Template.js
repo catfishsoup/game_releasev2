@@ -120,7 +120,13 @@ const Template = () => {
         // Check the list from the user
             getDocs(collection(db, `users/${auth.currentUser?.uid}/lists`)).then((docs) => {
                 const tempArray = []
-                docs.forEach((data) => {tempArray.push(data.id)}
+                docs.forEach((data) => {
+                    const listObject = {
+                        id: data.id,
+                        name: data.data().name
+                    }
+                    tempArray.push(listObject)
+                }
                 )
                 setuserList(tempArray)
             })
@@ -157,18 +163,14 @@ const Template = () => {
     }
 
     const addtoList = (list) => {
-        const userListRef = doc(db, `users/${auth.currentUser?.uid}/lists/${list}/${id}/info`)
-        setDoc(userListRef, {
-            id: id,
-            name: info[0].name,
-            url: info[0].cover.url,
-        }, {merge: true}).then(() => {
-            setaddList(true)
-        })
+        const userListRef = doc(db, `users/${auth.currentUser?.uid}/lists/${list}`)
         //Keeping track number of games inside a document (because I can't query subcollections inside documents w/o a server)
-        setDoc(doc(db, `users/${auth.currentUser?.uid}/lists/${list}`), {
+        setDoc(userListRef, {
             games: {
-                [id]: true
+                [id]: {
+                    name: info[0].name,
+                    url: info[0].cover.url
+                }
             }, 
             count: increment(1), 
         }, {merge: true})
@@ -221,8 +223,8 @@ const Template = () => {
                                 <div className="list-holder" style={{display: openList === true ? 'block' : 'none'}}>
                                     <div onClick={() => addtoList('wishlist')}>Wishlist</div>
                                  {userList.map((data) => {
-                                    if(data !== 'wishlist') {
-                                        return(<div onClick={() => addtoList(data)}>{data}</div>)
+                                    if(data.id !== 'wishlist') {
+                                        return(<div onClick={() => addtoList(data.id)}>{data.name}</div>)
                                     }      
                                  } )}
                                  <div onClick={() => setnewList(true)} className="new-user-list">New List</div>   

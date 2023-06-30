@@ -23,12 +23,13 @@ const fetchLists = async() => {
     const querySnapshot = await getDocs(query)
     querySnapshot.forEach((document) => {
         const listObject = {
-            name: document.id
+            name_id: document.id
         }
         const listRef = doc(db, 'users', `${auth.currentUser?.uid}`, 'lists', `${document.id}`);
         getDoc(listRef).then((datas) => {
            listObject.count = datas.data().count
            listObject.games = datas.data().games
+           listObject.name = datas.data().name
            tempArr.push(listObject)
         })
         
@@ -37,8 +38,4 @@ const fetchLists = async() => {
     return tempArr
 }
 
-
-const readCollection = () => {
-    
-}
 export default {fetchFavorite, fetchLists}

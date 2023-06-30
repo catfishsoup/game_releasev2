@@ -92,3 +92,10 @@ $light-gray: rgba(210, 215, 211, 0.5);
         width: 100%;
 }
 }
+
+
+@mixin profile-neutral-bg {
+    @include neutral-bg-theme;
+    margin: 0em 7rem 0em 7rem;
+
+}

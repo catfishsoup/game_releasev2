@@ -13,9 +13,9 @@ const ListModal = ({click}) => {
     const createList = (e) => {
         e.preventDefault()
         if(listName.current.value !== '') {
-           const userListRef = doc(db, `users/${auth.currentUser?.uid}/lists/${listName.current.value}`)
+           const userListRef = doc(db, `users/${auth.currentUser?.uid}/lists/${listName.current.value.replace(/\s/g, "")}`)
         setDoc(userListRef, {
-            exist: true,
+            name: listName.current.value,
         }).then(() => {
             setFinish(true)
             setAlert(true)
