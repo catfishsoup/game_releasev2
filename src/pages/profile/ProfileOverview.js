@@ -63,7 +63,7 @@ const ProfileOverview = () => {
       return (
         <section className='overview-sect'>
             <section className='overview-sect-left'>
-                <h2>Your List</h2><button>View More</button>
+                <h2>Your List</h2><button className="action-btn">View More</button>
               <section className='list-overview'>
                 {/* Render few of user lists here */}
                 <section className="indiv-list">
@@ -76,7 +76,7 @@ const ProfileOverview = () => {
 
 
             {/*****/}
-            <h2>Favorited Games</h2><button>View More</button>
+            <h2>Favorited Games</h2><button className="action-btn">View More</button>
             <section className='favorite-overview'>
                 
                 <section className='picture-cont'>
