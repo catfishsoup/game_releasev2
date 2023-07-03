@@ -307,8 +307,8 @@ const Template = () => {
                         </section>
                     </section>
                 </section> 
+                <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
         </div>
-        <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
         {newList && <ListModal click={setnewList}/>}
         {addList && <GeneralPositiveAlert text={'Added to list successfully!'}/>}
         </>

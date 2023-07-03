@@ -291,17 +291,18 @@ nav {
 // GameLog.js
 .modal-tab {
     padding: 1rem;
-    position: relative;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 10%;
     border-radius: 5px;
-    border: none;
     .mini-title {
         font-size: 1.5rem;
     }
     .fav-btn {
             padding: 0.5em 2em 0.5em 2em;
             background: #D83E4F;
-            color: #f3f3f3;
-            border-radius: 0.5em;
+            border-radius: 3px;
             border: 2px solid black;
             display: inline-block;
         }
@@ -316,7 +317,9 @@ nav {
             display: block;
             padding: 0.5em 2em 0.5em 5px;
             margin-bottom: 1em;
-            border-radius: 0.5em;
+            border-radius: 3px;
+            border: 2px solid black;
+            width: 100%;
         }
 
         img {
@@ -334,12 +337,30 @@ nav {
             right: 5px;
             background: none;
             border: none;
+            cursor: pointer;
         }
     .two-btn {
         margin-top: 1em;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    .label-input {
+        font-size: 0.9rem;
+
+    }
+
+    .date-picker {
+        display: inline-block;
+        margin-right: 0.5em;
+    }
+
+    .save-btn {
+        @include purple-box;
+        padding: 0.5rem;
+        color: black;
+        border-radius: 3px;
     }
 }
 
@@ -450,14 +471,14 @@ nav {
 
 .create-list-modal {
     z-index: 5;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 10%;
+    margin-left: auto; 
+    margin-right: auto; 
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    border: 1px solid red;
     h1 {
         @include section-title;
         
