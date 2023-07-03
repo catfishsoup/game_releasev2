@@ -1,9 +1,6 @@
-import { useRef, createRef } from 'react'
+import { useRef } from 'react'
 import '../App.scss'
-import { useEffect, useState } from 'react'
-import {db} from '../firebase/firebase.js'
-import {auth} from '../firebase/firebase.js'
-import { doc, setDoc, collection, getDoc, deleteDoc, updateDoc } from "firebase/firestore"; 
+import { useState } from 'react'
 
 
 

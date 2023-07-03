@@ -4,7 +4,7 @@ import {auth, db } from '../../firebase/firebase.js'
 import Picture from "../../components/Picture.js";
 import styled from 'styled-components'
 import userService from '../../firebase/user_request'
-
+import ProfileList from "./ProfileList.js";
 const StatusStyle = styled.div`
     background: ${props => props.$color};
     padding: 5px; 
@@ -66,7 +66,7 @@ const ProfileOverview = () => {
                 <h2>Your List</h2><button className="action-btn">View More</button>
               <section className='list-overview'>
                 {/* Render few of user lists here */}
-                <section className="indiv-list">
+               <section className="indiv-list">
                     <div>a</div>
                     <div>Title - Games</div>
                 </section>

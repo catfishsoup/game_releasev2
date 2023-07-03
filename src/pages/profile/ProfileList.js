@@ -57,6 +57,7 @@ const ProfileList = () => {
      **/ 
     const [list, setList] = useState([])
     const [load, setLoad] = useState(true)
+    
     const { user } = UserAuth();
     useEffect(() => {
             userService.fetchLists().then((result) => {
