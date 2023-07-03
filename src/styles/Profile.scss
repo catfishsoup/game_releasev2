@@ -146,6 +146,16 @@ main {
         section {
             @include neutral-bg-theme();
         }
+        .status-filter {
+            li {
+                padding: 0.3rem;
+                cursor: pointer;
+                &:hover {
+                    background-color: $base-purple;
+                    
+                }
+            }
+        }
         h2 {
             @include section-title;
             &:after {
@@ -160,6 +170,8 @@ main {
             background: url(../img/search-thin.svg) no-repeat scroll 5px 10px, white;
             padding-left:25px;
             padding-top: 12px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         
