@@ -48,6 +48,8 @@ const ProfileGames = () => {
         setgamesCopy(search)
         if(e.target.value === '' && filter) {
             setgamesCopy(preSearch)
+        } else if(e.target.value === '' && !filter) {
+            setgamesCopy(games)
         }
     }
     return (
