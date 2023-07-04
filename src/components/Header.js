@@ -8,7 +8,7 @@ const Header = () => {
         <header>
             <nav>
                 <ul className='links-cont'>
-                    <li><Logo/></li>
+                    <Logo/>
                     <li className='link'><NavLink to='/' className='link'>Home</NavLink></li>
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
                     <li className='link'><NavLink to='/contact' className='link'>Contact</NavLink></li>

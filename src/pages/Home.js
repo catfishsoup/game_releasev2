@@ -63,7 +63,7 @@ const Discover = () => {
                     Simply enter your desired keywords, such as game titles, genres, 
                      and watch a treasure trove of gaming possibilities unfolds before your eyes. 
                     </p>
-                    <button className='action-btn'>Check out the game section</button>
+                    <button className='action-btn'>Check out game section</button>
                 </section>
             </section>
     )

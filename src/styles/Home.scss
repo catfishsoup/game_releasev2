@@ -149,9 +149,13 @@
     
 .action-btn {
         margin-top: 1em;
-        color: black;
-        background-color: $base-purple;
+        color: white;
+        border: 2px solid $base-purple;
         padding: 0.7rem;
+        transition: 0.2s ease;
+        &:hover {
+            background-color: $base-purple;
+        }
     }
 }
 .picture-grid {
