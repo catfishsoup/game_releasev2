@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import gameService from '../services/gamereq.js'
 import Picture from '../components/Picture.js'
 import '../styles/Home.scss'
@@ -7,6 +7,12 @@ import divider from '../img/wave-haikei.svg'
 
 
 const Home = () => {
+    const [page, setPage] = useState(1)
+    const sum = useRef(page)
+    const getPage = (count_input) => {
+        sum.current = page + count_input; 
+        setPage(sum.current)
+    }
        return(
         <section className='home-cont'>
             <section className='intro-cont'>
@@ -18,9 +24,11 @@ const Home = () => {
             <img src={divider} className='spacer'/>
             <section className='feature-cont'>
                 <h2 className='subsection-title'> Website Features</h2>
-                    <button className='left-arrow'><img src={require('../img/arrow_left.png')} alt="left-arrow" /></button> 
-                    <button className='right-arrow'><img src={require('../img/arrow-right.png')} alt="right-arrow" /></button>
-                    <Discover/>
+                    <button className={`left-arrow ${page !== 1 ? 'active' : 'not-active'}`}><img src={require('../img/arrow_left.png')} alt="left-arrow" onClick={() => getPage(-1)}/></button> 
+                    <button className={`right-arrow ${page !== 3 ? 'active' : 'not-active'}`}><img src={require('../img/arrow-right.png')} alt="right-arrow" onClick={() => getPage(1)} /></button>
+                    { page === 1 && <Discover/>}
+                    { page === 2 && <Collect/>}
+                    { page === 3 && <Track/>}
             </section>
         </section>
     ) 
@@ -63,11 +71,23 @@ const Discover = () => {
 
 const Collect = () => {
     return(
-        <section className='feature-sub-sect'>
-            <section>
+        <section className='feature-sub-sect collect-sect'>
+            <section className='collect-picture-grid'>
+                <div className='picture-grid'>a</div>
+                <div className='picture-grid'>b</div>
             </section>
-                <section>
-                    <h3>Collect</h3>
+                <section className='desc-section'>
+                    <h3 className='feature-sub-title' style={{color: '#8e53bd' }}>Collect</h3>
+                    <p>
+                        Powered by IGDB, Videa empowers you with the tools to navigate through a vast library of titles, genres, and platforms. 
+                        Whether you're a seasoned gamer or just beginning your gaming adventures, 
+                        our feature is designed to cater to every level of expertise and interest.
+                    </p>
+
+                    <p>
+                    Simply enter your desired keywords, such as game titles, genres, 
+                     and watch a treasure trove of gaming possibilities unfolds before your eyes. 
+                    </p>
                 </section>
             </section>
     )
@@ -77,8 +97,21 @@ const Collect = () => {
 const Track = () => {
     return(
         <section className='feature-sub-sect'>
-            <section>
-                <h3>Track</h3>
+            <section className='collect-picture-grid'>
+                <div className='picture-grid'>a</div>
+                <div className='picture-grid'>b</div>
+            </section>
+            <section className='desc-section'>
+                <h3 className='feature-sub-title' style={{color: '#d83e4f' }}>Track</h3>
+                <p>
+                From beloved classics to the latest releases, our feature empowers you to effortlessly organize, monitor, and update your personal gaming library in one centralized hub.
+                    </p>
+
+                    <p>
+                    Simply create a personalized account, and you'll gain access to a powerful suite of tracking tools. 
+                    Add games to your collection with a few clicks, and watch as our system automatically retrieves crucial information such as title, platform, genre, and release date. 
+                    No more worrying about forgotten games or misplaced discs—the days of manual lists and spreadsheets are over. 
+                    </p>
             </section>
         </section>
     )

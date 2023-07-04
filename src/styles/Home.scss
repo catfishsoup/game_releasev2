@@ -78,6 +78,14 @@
         }
 
     }
+//Toggle Display 
+.active {
+    visibility: visible;
+}
+
+.not-active {
+    visibility: hidden;
+}
 }
 
 
@@ -122,6 +130,14 @@
         
     }
 
+
+
+    //Collect Sect
+
+    
+
+
+
 .desc-section {
     width: 50%;
     .feature-sub-title {
@@ -131,10 +147,15 @@
         line-height: 2;
     }
     
-    .action-btn {
+.action-btn {
         margin-top: 1em;
         color: black;
         background-color: $base-purple;
         padding: 0.7rem;
     }
 }
+.picture-grid {
+            width: 676px;
+            border: 1px solid red;
+            border-radius: 3px;
+        }
