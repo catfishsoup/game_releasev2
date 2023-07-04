@@ -44,12 +44,18 @@ const ProfileGames = () => {
     }
 
     const searchGame = (e) => {
-        const search = gamesCopy.filter(game => game.name.toLowerCase().includes(e.target.value.toLowerCase()))
-        setgamesCopy(search)
-        if(e.target.value === '' && filter) {
+        if(filter) {
+          const search = gamesCopy.filter(game => game.name.toLowerCase().includes(e.target.value.toLowerCase()))
+          setgamesCopy(search)  
+          if(e.target.value === '') {
             setgamesCopy(preSearch)
-        } else if(e.target.value === '' && !filter) {
-            setgamesCopy(games)
+          }
+        } else {
+            const search = games.filter(game => game.name.toLowerCase().includes(e.target.value.toLowerCase()))
+            setgamesCopy(search)
+            if(e.target.value === '') {
+                setgamesCopy(games)
+            }
         }
     }
     return (
