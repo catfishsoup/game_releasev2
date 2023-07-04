@@ -11,7 +11,7 @@ let getPopularconfig = {
     'x-api-key': x_api_key, 
     'Content-Type': 'text/plain'
   },
-  data : 'fields cover.url; where hypes > 120; limit 6;'
+  data : 'fields name, cover.url; where hypes > 120; limit 6;'
 };
 const getPopular = () => axios.request(getPopularconfig)
 .then((response) => {

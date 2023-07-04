@@ -2,7 +2,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { UserAuth } from "../../firebase/user_auth";
 import { useEffect, useRef, useState } from "react";
-import { deleteDoc, doc, getDoc } from "firebase/firestore";
+import { deleteDoc, deleteField, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import '../../App.scss'
 import { GeneralPositiveAlert } from "../../components/Alert";
@@ -43,20 +43,27 @@ const DeleteList = ({click, user, query, showModal}) => {
         
     </dialog>)
 }
-const DisplayList = ({data, loading}) => {
-    if(data === undefined) {
+const DisplayList = ({data, loading, query}) => {
+    if(!data) {
         return undefined
+    }
+
+    const removeGames = (game_id) => {
+        updateDoc(query, {
+            [`games.${game_id}`]: deleteField()
+        }, {merge: true});
     }
     if(!loading) {
       return(
         <>
         {Object.entries(data).map((key) => {
             return(
-                <Link className='indv-pic-cont' to={`../games/${key}`} target="_blank">
-                    <div id={key}>
+                <Link className='indv-pic-cont' to={`../games/${key[0]}`} target="_blank">
+                    <div key={key[0]}>
                        <img src={key[1].url.replace('t_thumb','t_cover_small')} className='img-test' alt="game-cover"/>
                         <p>{key[1].name}</p> 
                         <div className='img-overlay'></div>
+                        <button className="del-game" onClick={() => removeGames(key[0])}>X</button>
                     </div>
                 </Link>
             )
@@ -87,7 +94,7 @@ const ListTemplate = () => {
           <h1 className='sub-page-title'><Link to={`../profile/${user.displayName}/lists`} className="list-link">Lists</Link> / <Link className="list-link">{`${gameList.name}`}</Link> </h1> 
           <button className="action-btn" onClick={()=>setdeleteList(true)}>Delete List</button>
           <section className="sub-list-sect">
-            <DisplayList data={gameList.games} loading={loading}/>
+            <DisplayList data={gameList.games} loading={loading} query={query}/>
           </section>
           
        <DeleteList click={setdeleteList} user={user} query={query} showModal={deleteList}/>

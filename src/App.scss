@@ -267,10 +267,26 @@ nav {
             text-overflow: ellipsis;
             }
             &:hover {
-                p, .img-overlay {
+                p, .img-overlay, .del-game {
                     opacity: 1;
                     
                 }
+            }
+
+            .del-game {
+                opacity: 0;
+                right: 0;
+                margin: 5px;
+                cursor: pointer;
+                position: absolute;
+                z-index: 2;
+                background-color: red;
+                border-radius: 3px;
+                border: none;
+                width: 25px;
+                height: 25px;
+                color: white;
+                font-weight: bold;
             }
        }
 
