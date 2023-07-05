@@ -1,5 +1,5 @@
 import {db, auth} from '../firebase/firebase.js'
-import { collection, query, where, getDoc, doc } from "firebase/firestore"; 
+import { collection, query, where, getDoc, doc, setDoc } from "firebase/firestore"; 
 import { getDocs } from "firebase/firestore"; 
 
 const fetchFavorite = async() => {
@@ -38,4 +38,16 @@ const fetchLists = async() => {
     return tempArr
 }
 
-export default {fetchFavorite, fetchLists}
+async function postData(id, name, gamestatus, dates, url) {
+    await setDoc(doc(collection(db, 'users'), `${auth.currentUser?.uid}`, 'games', id), {
+        id: id,
+        name: name,
+        url: url,
+        status: `${gamestatus}` || '',
+        start_date: `${dates.startdate}` || '',
+        finish_date: `${dates.enddate}` || '',
+    }, {merge: true})
+}
+
+
+export default {fetchFavorite, fetchLists, postData}

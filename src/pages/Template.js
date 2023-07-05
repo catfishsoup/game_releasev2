@@ -89,7 +89,6 @@ const Template = () => {
     const [userData, setuserData] = useState([])
     const [userList, setuserList] = useState([])
 
-    const [contained, setContained] = useState(false)
     const [openModal, setopenModal] = useState(false)
     const [favorited, setFavorited] = useState(false)
 
@@ -105,21 +104,16 @@ const Template = () => {
          setInfo(data)
          setLoading(false)
         })
-      }, [])
-
-    // Check if the document is bookmarked by user. 
-    useEffect(() => {
-        // Check the information about the game from user.
-            getDoc(userRef).then((doc) => {
-                if(doc.data() !== undefined) {
+        
+        getDoc(userRef).then((doc) => {
+                if(doc.exists()) {
                     setuserData(doc.data())
                     setFavorited(doc.data().favorite)
-                    setContained(true)
                 }
             })
-        // Check the list from the user
-            getDocs(collection(db, `users/${auth.currentUser?.uid}/lists`)).then((docs) => {
-                const tempArray = []
+
+        getDocs(collection(db, `users/${auth.currentUser?.uid}/lists`)).then((docs) => {
+            const tempArray = []
                 docs.forEach((data) => {
                     const listObject = {
                         id: data.id,
@@ -130,15 +124,14 @@ const Template = () => {
                 )
                 setuserList(tempArray)
             })
-    }, [])
-    // Once we get the id, fetch the data to display under here 
-    if(loading) {
-        return <>Loading...</>
-    }
-// Use Params - take in the param in the URL as data to use. Have to use the same param  define in path.    
+      }, [])
+
+
+
+
     async function favoriteGame() {
         // If data is contained and favorite is false. 
-        if(contained === true) {
+        if(userData !== null) {
             setFavorited(!favorited)
             await updateDoc(userRef, {
                 favorite: !favorited
@@ -150,16 +143,6 @@ const Template = () => {
                 url: info[0].cover.url,
             }, {merge: true})
         }
-    }
-
-    async function postData(gamestatus, dates) {
-        await setDoc(userRef, {
-            name: info[0].name,
-            url: info[0].cover.url,
-            status: `${gamestatus}` || '',
-            start_date: `${dates.startdate}` || '',
-            finish_date: `${dates.enddate}` || '',
-        }, {merge: true})
     }
 
     const addtoList = (list) => {
@@ -181,6 +164,11 @@ const Template = () => {
         setaddList(false), 2000)
     }
     // 
+    
+    if(loading) {
+        return <>Loading...</>
+    }
+
     return(
         <>
         <div className="game-info">
@@ -307,7 +295,7 @@ const Template = () => {
                         </section>
                     </section>
                 </section> 
-                <GameLog modalValue={openModal} setOpen={setopenModal} info={info} id={id} setFavorite={favoriteGame} postData={postData} userData={userData}/>
+                <GameLog modalValue={openModal} setOpen={setopenModal} setFavorite={favoriteGame} userData={userData}/>
         </div>
         {newList && <ListModal click={setnewList}/>}
         {addList && <GeneralPositiveAlert text={'Added to list successfully!'}/>}

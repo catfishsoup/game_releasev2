@@ -1,32 +1,26 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import '../App.scss'
 import { useState } from 'react'
+import userService from '../firebase/user_request'
 
 
-
-const GameLog = ({modalValue, info, setOpen, setFavorite, postData, userData}) => {
-
-
+const GameLog = ({modalValue, setOpen, setFavorite, userData}) => {
     // Initializing variables 
     const [dates, setDates] = useState([ 
-        { startdate: userData.start_date || '', enddate: userData.finish_date || ''}
+        { startdate: userData?.start_date || '', enddate: userData?.finish_date || ''}
     ])
-    const [gamestatus, setGameStatus] = useState(userData.status || '')
+    const [gamestatus, setGameStatus] = useState()
     const statuses = [ 
         {id: 1, text: 'Interested'}, {id: 2,text: 'On Hold'}, {id: 3, text: 'Dropped'}, 
         {id: 4, text: 'In Progress'}, {id: 5, text: 'Completed'}, 
     ]
     // 
     const modal = useRef()
-        if(modalValue === true) {
+        if(modalValue) {
             modal.current?.removeAttribute('open')
             modal.current?.showModal()
-        }
-
-        const closeModal = (e) => {
-            e.preventDefault()
+        } else {
             modal.current?.close()
-            setOpen(false)
         }
 
         const handleGameStatus = (e) => {
@@ -39,12 +33,12 @@ const GameLog = ({modalValue, info, setOpen, setFavorite, postData, userData}) =
     return(
         <dialog ref={modal} className='modal-tab'>
             <h1>Log Game</h1>
-            <div className='mini-title'>{info[0].name}</div>
-            <form method="">
-                <img src={`${info[0].cover.url.replace('t_thumb', 't_logo_med')}`}></img>
+            <div className='mini-title'>{userData.name}</div>
+            <form >
+                <img src={`${userData.url?.replace('t_thumb', 't_logo_med')}`}></img>
                 <div>
                     <label className='label-input'>Game Status</label>
-                    <select name="game-status" onChange={handleGameStatus} defaultValue={gamestatus}>
+                    <select name="game-status" key={userData.status} onChange={handleGameStatus} defaultValue={userData.status}>
                         {statuses.map((status) => <option key={status.id} 
                            value={status.text}>{status.text}</option>)}
                     </select>
@@ -65,9 +59,9 @@ const GameLog = ({modalValue, info, setOpen, setFavorite, postData, userData}) =
             </form>
             <div className='two-btn'>
                 <button className='fav-btn' onClick={() => setFavorite()}>Favorite</button> 
-                <button onClick={() => postData(gamestatus, dates)} className='save-btn'>Save</button>
+                <button onClick={() => userService.postData(userData.id, userData.name, gamestatus, dates, userData.url)} className='save-btn'>Save</button>
             </div>
-            <button onClick={(e) => closeModal(e)} className='close-btn'>Close</button>
+            <button onClick={() => setOpen(false)} className='close-btn'>Close</button>
         </dialog>
     )
 }

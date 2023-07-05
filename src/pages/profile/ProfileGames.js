@@ -2,7 +2,8 @@ import { useState, useEffect } from "react"
 import { getDocs, collection } from "firebase/firestore"; 
 import { UserAuth } from "../../firebase/user_auth"
 import { db } from '../../firebase/firebase.js'
-
+import { Link } from "react-router-dom";
+import GameLog from "../../components/GameLog";
 const ProfileGames = () => {
     //Keep the original data here 
     const [games, setGames] = useState([])
@@ -10,6 +11,8 @@ const ProfileGames = () => {
     //Modify the data here 
     const [gamesCopy, setgamesCopy] = useState([])
     const [preSearch, setpreSearch] = useState([])
+    const [openModal, setOpenModal] = useState(false)
+    const [currGame, setcurrGame] = useState([])
     const [filter, setFilter] = useState(false)
     const {user} = UserAuth()
     const statuses = [ 
@@ -58,6 +61,13 @@ const ProfileGames = () => {
             }
         }
     }
+
+    const gameModal = (game) => {
+        console.log(game)
+        setcurrGame(game)
+        setOpenModal(true)
+    }
+
     return (
         <>
         <h1 className='sub-page-title'>Game List</h1>
@@ -86,30 +96,32 @@ const ProfileGames = () => {
                                     <th>Status</th>
                                     <th>Start Date</th>
                                      <th>Finish Date</th>
-                                    <th>Action</th>
                                 </tr> 
 
                                 {gamesCopy.map((game) => {
                                     return(
                                         <tr key={game.id} className='indv-game-row'>
-                                            <td className='img-col'><img src={game.url.replace('t_thumb', 't_micro')} alt="game-logo"/></td>
-                                            <td className='name-col'>{game.name}</td>
-                                            <td className='status-col'>{game.status}</td>
-                                            <td className='start-col'>{game.start_date === 'undefined' ? '-': game.start_date}</td>
-                                            <td className='end-col'>{game.finish_date === 'undefined' ? '-' : game.finish_date}</td>
-                                            <td className='action-col'><button><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-                                                <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                                                <circle cx="7" cy="7" r="6.5"/><circle cx="7" cy="7" r=".5"/><circle cx="4" cy="7" r=".5"/>
-                                                <circle cx="10" cy="7" r=".5"/></g></svg>
-                                                </button>
+                                            <td className='img-col'>
+                                                <div className="img-cont">
+                                                <img src={game.url.replace('t_thumb', 't_micro')} alt="game-logo"/>
+                                                <div className="overlay" onClick={() => gameModal(game)}></div>   
+                                                </div>
+                                                
                                             </td>
+                                            <td className='name-col'><Link to={`../games/${game.id}`} target="_blank">{game.name}</Link></td>
+                                            <td className='status-col'>{game.status}</td>
+                                            <td className='start-col'>{!game.start_date || game.start_date === 'undefined' ? '-': game.start_date}</td>
+                                            <td className='end-col'>{!game.finish_date || game.finish_date === 'undefined' ? '-' : game.finish_date}</td>
+                    
                                         </tr>
                                     )
                                 })}
                                 </tbody>
                             </table>
                         </section>
+                        <GameLog modalValue={openModal} setOpen={setOpenModal} userData={currGame}/>
                     </section>
+                    
         </>
         
         

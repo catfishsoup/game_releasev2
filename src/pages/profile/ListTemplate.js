@@ -49,6 +49,7 @@ const DisplayList = ({data, loading, query}) => {
     }
 
     const removeGames = (game_id) => {
+        //Set modal before delete 
         updateDoc(query, {
             [`games.${game_id}`]: deleteField()
         }, {merge: true});
