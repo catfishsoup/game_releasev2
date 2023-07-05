@@ -7,7 +7,7 @@ import userService from '../firebase/user_request'
 const GameLog = ({modalValue, setOpen, setFavorite, userData}) => {
     // Initializing variables 
     const [dates, setDates] = useState([ 
-        { startdate: userData?.start_date || '', enddate: userData?.finish_date || ''}
+        { startdate: '', enddate: ''}
     ])
     const [gamestatus, setGameStatus] = useState()
     const statuses = [ 
@@ -46,11 +46,11 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData}) => {
                         <div>Completion Status</div>
                         <div className='date-picker'>
                         <label className='label-input'>Start Date</label><br/>
-                        <input type="date" name="startdate" defaultValue={`${dates[0].startdate}`} onChange={handleDate}></input>   
+                        <input type="date" name="startdate" key={userData.start_date} defaultValue={userData.start_date} onChange={handleDate}></input>   
                         </div>
                       <div className='date-picker'>
                        <label className='label-input'>End Date</label><br/>
-                       <input type="date" name="enddate" defaultValue={`${dates[0].enddate}`} onChange={handleDate}></input>   
+                       <input type="date" name="enddate" key={userData.finish_date} defaultValue={userData.finish_date} onChange={handleDate}></input>   
                       </div>
                     
                     </div>
