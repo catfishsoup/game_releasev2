@@ -223,14 +223,14 @@ const Template = () => {
                         {/**/}
                         <section className="release-dates">
                             <h2>Release Date</h2>
-                            <p>{info[0].release_dates[0].human}</p>
+                            <p>{info[0].release_dates[0]?.human}</p>
                         </section>
 
                         {/**/}
                         <section className="platforms">
                             <h2>Platforms</h2>
                             <ul>
-                                {info[0].platforms.map((platform) => {
+                                {info[0].platforms?.map((platform) => {
                                 return(<List data={platform}/>)
                                 })}
                             </ul>
@@ -240,7 +240,7 @@ const Template = () => {
                         <section className="developers">
                             <h2>Created By</h2>
                             <ul>
-                                {info[0].involved_companies.map((curr_company) => {
+                                {info[0].involved_companies?.map((curr_company) => {
                                 return(<List data={curr_company.company}/>)
                                 })}
                             </ul>
@@ -250,7 +250,7 @@ const Template = () => {
                         <section className="ext-links">
                             <h2>External Links</h2>
                             <ul>
-                                {info[0].websites.map((website) => {
+                                {info[0].websites?.map((website) => {
                                     let temp_value = externalurl.filter(data => data.id === website.category)
                                     if(temp_value.length > 0) {
                                         return(<li><ExternalLink href={website.url} target="_blank" $mini_icon={temp_value[0]?.icon || link}>{temp_value[0]?.name}</ExternalLink></li>)
@@ -265,7 +265,7 @@ const Template = () => {
                     <section className="main-section">
                         
                         <section className="genre">
-                            <ul> {info[0].genres.map((genre) => {return(<List data={genre}/>)})}
+                            <ul> {info[0].genres?.map((genre) => {return(<List data={genre}/>)})}
                             </ul>
                         </section>
 
@@ -277,7 +277,7 @@ const Template = () => {
                         <section className="screenshots"> 
                         <h2>Screenshots</h2>
                         <div className="modal-cont">
-                           {info[0].screenshots.map((picture) => {
+                           {info[0].screenshots?.map((picture) => {
                             return(<Screenshot data={picture}/>)
                             })}  
                         </div>
@@ -287,7 +287,7 @@ const Template = () => {
                         <section className="screenshots"> 
                         <h2>Videos</h2>
                         <div className="video-cont">
-                           {info[0].videos.map((video) => {
+                           {info[0].videos?.map((video) => {
                             return(<Media data={video}/>)
                             })}  
                         </div>

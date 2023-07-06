@@ -34,6 +34,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
         const handleDate = (e) => {
             let today = formatDate()
             if(e.target.value > today) {
+                //Create Alert 
                 console.log('Date set cannot be in the future.')
             } else {
               setDates({...dates, [e.target.name] : e.target.value})  
@@ -53,7 +54,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
     return(
         <dialog ref={modal} className='modal-tab'>
             <h1>Log Game</h1>
-            <div className='mini-title'>{userData.name}</div>
+            <div className='mini-title'>{userData.name || info[0]?.name}</div>
             <form >
                 <img src={ userData.url !== undefined 
                     ? `${userData.url?.replace('t_thumb', 't_logo_med')}` : info[0]?.cover.url.replace('t_thumb', 't_logo_med')}></img>
