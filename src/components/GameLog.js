@@ -6,6 +6,9 @@ import userService from '../firebase/user_request'
 
 const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
     // Initializing variables 
+    if(!info) {
+        info = ''
+    }
     const [dates, setDates] = useState([ 
         { startdate: '', enddate: ''}
     ])
@@ -15,7 +18,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
         {id: 4, text: 'In Progress'}, {id: 5, text: 'Completed'}, 
     ]
     // 
-
+    
     const modal = useRef()
         if(modalValue) {
             modal.current?.removeAttribute('open')
@@ -29,7 +32,22 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
         }
 
         const handleDate = (e) => {
-            setDates({...dates, [e.target.name] : e.target.value})
+            let today = formatDate()
+            if(e.target.value > today) {
+                console.log('Date set cannot be in the future.')
+            } else {
+              setDates({...dates, [e.target.name] : e.target.value})  
+            }
+        }
+ 
+        const validateData = () => {
+            
+            if(gamestatus === undefined) {
+                console.log('Please enter a game status before saving')
+            } else {
+              userService.postData(userData.id, userData.name, gamestatus, dates, userData.url)  
+            }
+                   
         }
 
     return(
@@ -37,7 +55,8 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
             <h1>Log Game</h1>
             <div className='mini-title'>{userData.name}</div>
             <form >
-                <img src={`${userData.url?.replace('t_thumb', 't_logo_med')}`}></img>
+                <img src={ userData.url !== undefined 
+                    ? `${userData.url?.replace('t_thumb', 't_logo_med')}` : info[0]?.cover.url.replace('t_thumb', 't_logo_med')}></img>
                 <div>
                     <label className='label-input'>Game Status</label>
                     <select name="game-status" key={userData.status} onChange={handleGameStatus} defaultValue={userData.status}>
@@ -61,7 +80,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
             </form>
             <div className='two-btn'>
                 <button className='fav-btn' onClick={() => setFavorite()}>Favorite</button> 
-                <button onClick={() => userService.postData(userData.id, userData.name, gamestatus, dates, userData.url)} className='save-btn'>Save</button>
+                <button onClick={() => validateData()} className='save-btn'>Save</button>
             </div>
             <button onClick={() => setOpen(false)} className='close-btn'>Close</button>
         </dialog>
@@ -69,3 +88,16 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
 }
 
 export default GameLog
+
+function formatDate() {
+    const date = new Date()
+   let month = '' + (date.getMonth() + 1),
+    day = '' + date.getDate(),
+    year = date.getFullYear();
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
