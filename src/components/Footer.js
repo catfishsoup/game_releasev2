@@ -1,12 +1,13 @@
 
 
-import { NavLink, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from './Logo'
 import styled from 'styled-components'
 import '../styles/Footer.scss'
 import marker from '../img/address-marker.svg'
 import printer from '../img/printer-fill.svg'
 import phone from '../img/round-phone.svg'
+
 const Address = styled.p` 
     margin-bottom: 1em;
     &:before {
@@ -57,8 +58,8 @@ const Footer = () => {
             <section className="footer-nav">
                 <section className="footer-nav-content">
                     <ul>
-                        <li>About Us</li>
-                        <li>Contact Us</li>
+                        <li><Link to='/about'>About Us</Link></li>
+                        <li><Link to='/contact'>Contact Us</Link></li>
                         <li>Help</li>
                         <li>Privacy Policy</li>
                         <li>Disclaimer</li>

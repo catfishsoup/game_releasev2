@@ -8,6 +8,8 @@ import switch_con from '../img/switch-fill.svg'
 import xbox from '../img/xbox-fill.svg'
 import playstation from '../img/playstation-fill.svg'
 import arrow from '../img/arrow.svg'
+import Loading from '../components/Loading.js';
+
 const Trending = ({trending}) => {
 
     
@@ -169,7 +171,7 @@ const Games = () => {
     }, [loading])
        
 if(loading) {
-    return <>Loading...</>
+    return <Loading/>
 }
 if(!loading) {
      return(

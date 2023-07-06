@@ -45,7 +45,7 @@ const AuthHeader = () => {
             <nav>
                 
                 <ul className='links-cont'>
-                    <Logo/>
+                    <Logo link={`profile/${user?.displayName}`}/>
                     <li className='link'><NavLink to={`profile/${user?.displayName}`} className='link'>Profile</NavLink></li>
                     <li><NavLink to='/games' className='link'>Games</NavLink></li>
                     <li className='link'><NavLink to='/contact' className='link'>Contact</NavLink></li>

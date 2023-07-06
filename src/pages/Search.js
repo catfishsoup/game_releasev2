@@ -3,6 +3,9 @@ import {useEffect, useState} from 'react'
 import Picture from '../components/Picture'
 import gameService from '../services/gamereq.js'
 import '../App.scss'
+import Loading from "../components/Loading";
+
+
 const Search = () => {
     const { name } = useParams();
     const [game, setGame] = useState([])
@@ -15,7 +18,7 @@ const Search = () => {
       }, [name])
 
       if(loading) {
-        return <>Loading...</>
+        return <Loading/>
     }
         return (
             <> 

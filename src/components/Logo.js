@@ -2,10 +2,10 @@
 
 import { NavLink } from "react-router-dom";
 import '../App.scss'
-const Logo = () => {
+const Logo = ({link}) => {
     return(
         <div>
-            <NavLink to='/home' className='logo-name'>VIDEA</NavLink>
+            <NavLink to={link} className='logo-name'>VIDEA</NavLink>
         </div>
     )
 }

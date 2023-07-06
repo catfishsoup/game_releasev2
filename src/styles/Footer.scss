@@ -54,6 +54,7 @@ footer {
             padding: 1em;
             color: rgba(210, 215, 211, 0.5);
         }
+
     }
     
     ul {
@@ -63,6 +64,13 @@ footer {
             display: inline-block; 
             padding: 1em;
             text-transform: uppercase;
+            a {
+                text-decoration: none;
+                color: white;
+                &:hover {
+                    color: $base-purple;
+                }
+            }
         }
     }
 }
