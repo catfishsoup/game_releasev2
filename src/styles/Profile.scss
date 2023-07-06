@@ -128,6 +128,18 @@ main {
         margin: 0;
     }
     
+    .list-overview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            display: none;
+        }
+        section {
+            margin: 0;
+            padding: 0;
+        }
+    }
 }
 
 
@@ -197,7 +209,7 @@ main {
             }
             border-collapse: collapse;
             tr:not(:first-child):hover {
-                transform: translate(-3px, -3px);
+                transform: translate(1px, -3px);
                 box-shadow: $basic-boxshadow;
                 .overlay {
                     visibility: visible;
@@ -333,9 +345,11 @@ main {
     color: white;
     padding: 0.5em;
     border-radius: 5px;
+    font-size: 0.8em;
     border: none;
     cursor: pointer;
     float: right;
+    text-decoration: none;
 }
 
 .confirm-modal {

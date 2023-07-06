@@ -17,8 +17,12 @@ const ProfileGames = () => {
     const {user} = UserAuth()
     const statuses = [ 
         {id: 1, text: 'All'}, {id: 2, text: 'Interested'}, 
-        {id: 3, text: 'On Hold', color: '#F4C431'}, {id: 4, text: 'Dropped', color: '#E44D2E'}, 
-        {id: 5, text: 'In Progress', color: '#32CD32'}, {id: 6, text: 'Completed', color: '#318CE7'}, 
+        {id: 3, text: 'On Hold', }, {id: 4, text: 'Dropped', }, 
+        {id: 5, text: 'In Progress', }, {id: 6, text: 'Completed', },      
+    ]
+
+    const status_color = [
+        
     ]
     useEffect(() => {
         const fetchGame = () => {

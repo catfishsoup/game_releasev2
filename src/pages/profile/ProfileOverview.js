@@ -5,6 +5,9 @@ import Picture from "../../components/Picture.js";
 import styled from 'styled-components'
 import userService from '../../firebase/user_request'
 import ProfileList from "./ProfileList.js";
+import { Link } from "react-router-dom";
+import { UserAuth } from "../../firebase/user_auth.js";
+
 const StatusStyle = styled.div`
     background: ${props => props.$color};
     padding: 5px; 
@@ -46,6 +49,7 @@ const ProfileOverview = () => {
     ])
     const [done, setDone] = useState(false)
     const [favorites, setFavorites] = useState([])
+    const { user } = UserAuth();
     const fetchCount = useCallback(async() => { 
         for(let x = 0; x < statusList.length; x++) {
                 const q = query(collection(db, 'users', `${auth.currentUser?.uid}`, 'games'), where('status', '==', statusList[x].name))
@@ -63,20 +67,17 @@ const ProfileOverview = () => {
       return (
         <section className='overview-sect'>
             <section className='overview-sect-left'>
-                <h2>Your List</h2><button className="action-btn">View More</button>
+                <h2>Your List</h2><Link to={`/profile/${user.displayName}/lists`} className="action-btn">View More</Link>
               <section className='list-overview'>
                 {/* Render few of user lists here */}
-               <section className="indiv-list">
-                    <div>a</div>
-                    <div>Title - Games</div>
-                </section>
-                
+                    <ProfileList/>
             </section>  
 
 
 
             {/*****/}
-            <h2>Favorited Games</h2><button className="action-btn">View More</button>
+            <h2>Favorited Games</h2>
+            <Link to={`/profile/${user.displayName}/favorites`} className="action-btn">View More</Link>
             <section className='favorite-overview'>
                 
                 <section className='picture-cont'>
