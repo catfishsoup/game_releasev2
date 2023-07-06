@@ -2,7 +2,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { UserAuth } from "../../firebase/user_auth";
 import { useEffect, useRef, useState } from "react";
-import { deleteDoc, deleteField, doc, getDoc, updateDoc } from "firebase/firestore";
+import { deleteDoc, deleteField, doc, getDoc, increment, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import '../../App.scss'
 import { GeneralPositiveAlert } from "../../components/Alert";
@@ -51,7 +51,8 @@ const DisplayList = ({data, loading, query}) => {
     const removeGames = (game_id) => {
         //Set modal before delete 
         updateDoc(query, {
-            [`games.${game_id}`]: deleteField()
+            [`games.${game_id}`]: deleteField(), 
+            count: increment(-1), 
         }, {merge: true});
     }
     if(!loading) {
@@ -59,14 +60,14 @@ const DisplayList = ({data, loading, query}) => {
         <>
         {Object.entries(data).map((key) => {
             return(
-                <Link className='indv-pic-cont' to={`../games/${key[0]}`} target="_blank">
+                <div className='indv-pic-cont'>
                     <div key={key[0]}>
                        <img src={key[1].url.replace('t_thumb','t_cover_small')} className='img-test' alt="game-cover"/>
-                        <p>{key[1].name}</p> 
+                        <Link to={`../games/${key[0]}`} target="_blank">{key[1].name}</Link> 
                         <div className='img-overlay'></div>
                         <button className="del-game" onClick={() => removeGames(key[0])}>X</button>
                     </div>
-                </Link>
+                </div>
             )
         })}
         

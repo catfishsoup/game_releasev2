@@ -28,11 +28,10 @@ const ListThumbnail = ({data}) => {
     const [url, setUrl] = useState()
     useEffect(() => {
         let collectkeys = [];
-        if(data.games !== undefined) {
+        if(data.games !== undefined && JSON.stringify(data.games) !== '{}') {
        collectkeys = Object.keys(data.games) 
-       
        gameService.getPicture(collectkeys[0]).then((data) => {
-            setUrl(data[0].cover.url.replace('t_thumb', 't_screenshot_med'))
+            setUrl(data[0].cover.url?.replace('t_thumb', 't_screenshot_med'))
         })
     }
         

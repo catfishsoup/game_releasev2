@@ -109,7 +109,7 @@ const Template = () => {
                 if(doc.exists()) {
                     setuserData(doc.data())
                     setFavorited(doc.data().favorite)
-                }
+                } 
             })
 
         getDocs(collection(db, `users/${auth.currentUser?.uid}/lists`)).then((docs) => {

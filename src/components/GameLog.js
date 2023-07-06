@@ -4,7 +4,7 @@ import { useState } from 'react'
 import userService from '../firebase/user_request'
 
 
-const GameLog = ({modalValue, setOpen, setFavorite, userData}) => {
+const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
     // Initializing variables 
     const [dates, setDates] = useState([ 
         { startdate: '', enddate: ''}
@@ -15,6 +15,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData}) => {
         {id: 4, text: 'In Progress'}, {id: 5, text: 'Completed'}, 
     ]
     // 
+
     const modal = useRef()
         if(modalValue) {
             modal.current?.removeAttribute('open')
@@ -30,6 +31,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData}) => {
         const handleDate = (e) => {
             setDates({...dates, [e.target.name] : e.target.value})
         }
+
     return(
         <dialog ref={modal} className='modal-tab'>
             <h1>Log Game</h1>

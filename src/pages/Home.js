@@ -18,8 +18,8 @@ const Home = () => {
             <section className='intro-cont'>
                 <h1 className='home-title'>
                     <span style={{color: '#8e53bd'}}>Tr</span>ack new gam<span style={{color: '#d83e4f'}}>es</span>. <br/> 
-                    Redu<span style={{color: '#b34886'}}>ce</span> your ba<span style={{color: '#8e53bd'}}>ckl</span>og. 
-                    <br/> Cr<span style={{color: '#b34886'}}>eat</span>e game col<span style={{color: '#d83e4f'}}>le</span>ctions.
+                    Redu<span style={{color: '#b34886'}}>ce</span> your backlog. 
+                    <br/> Create game collections.
                 </h1>
                 <p className='small-desc'>Videa got your back to conquer the 'Video Games Backlog' boss!</p>
                <button className='demo-btn'>Try Demo Account</button> <button className='sign-up-btn'>Get Started</button>

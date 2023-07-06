@@ -182,6 +182,9 @@ main {
     .game-display-sect {
         @include neutral-bg-theme();
         padding: 0;
+        border-radius: 3px;
+        border: 2px solid rgba(210, 215, 211, 0.5);
+        height: fit-content;
         .game-display-table {
             th, td {
                 padding: 1.5rem 0.5rem 1rem 0.5rem;
@@ -189,11 +192,15 @@ main {
             tr {
                 transition: 0.2s ease;
             }
+            tr:nth-child(even) {
+                background-color: white;
+            }
             border-collapse: collapse;
             tr:not(:first-child):hover {
-                background-color: $base-purple;
+                transform: translate(-3px, -3px);
+                box-shadow: $basic-boxshadow;
                 .overlay {
-                    display: block;
+                    visibility: visible;
                 }
             }
             // 
@@ -201,10 +208,7 @@ main {
                 text-align: left;
 
             }
-            a {
-                text-decoration: none;
-                color: black;
-            }
+            
             // 
             .indv-game-row {
                 .img-col {
@@ -222,7 +226,7 @@ main {
                         width: 100%;
                         height: 100%;
                         color: white;
-                        display: none;
+                        visibility: hidden;
                         text-align: center;
                         border-radius: 3px;
                     }
@@ -234,6 +238,13 @@ main {
 
                 .name-col {
                     width: 70%;
+                    a {
+                text-decoration: none;
+                color: black;
+                &:hover {
+                        color: $base-purple;
+                    }
+            }
                 }
             }
 
