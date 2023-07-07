@@ -18,7 +18,7 @@ const SearchBar = () => {
     }, [directPage])
 
     return(
-        <input placeholder='Search for game' ref={inputRef} type="text" onKeyDown={(e) => directPage(e)}/>
+        <input className="search-bar" placeholder='Search for game' ref={inputRef} type="text" onKeyDown={(e) => directPage(e)}/>
     )
 }
 

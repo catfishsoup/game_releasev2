@@ -8,13 +8,6 @@ $neutral-bg: rgb(242,242,242);
 
 // Mixin themes
 
-
-* {
-    padding: 0;
-    margin: 0;
-    
-}
-
 .sub-page-title {
     @include section-title;
     margin-left: 7rem;

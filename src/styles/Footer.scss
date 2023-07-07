@@ -13,6 +13,8 @@ footer {
     flex-direction: column;
     padding: 1em;
     overflow-x: hidden;
+    width: 100%;
+    display: none;
     .footer-content {
         
         border-top: 3px solid $base-purple;
