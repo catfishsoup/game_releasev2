@@ -102,11 +102,13 @@ header {
     .search-bar, .links-cont, .search-btn, .login-btn {
         display: none !important;
     }
+
+
     .nav-cont.active {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         position: fixed;
         gap: 1em;
         inset: 0 0 0 0;
@@ -129,6 +131,14 @@ header {
             list-style-type: none;
         }
 
+        .links-cont li {
+            display: block;
+        }
+
+        .search-btn {
+            margin-top: 0.5em;
+        }
+
     }
 
     
@@ -143,10 +153,7 @@ header {
         font-size: 1.5rem;
         text-decoration: none;
         color: black;
-        display: block;
-        
         margin-bottom: 1em;
     }
-    
 
 }
