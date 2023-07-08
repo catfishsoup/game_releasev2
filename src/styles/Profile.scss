@@ -1,384 +1,373 @@
 // Imports
-@import 'Mixin.scss';
+@import "Mixin.scss";
 
-// Variables 
-$basic-boxshadow: 0px 10px 8px -10px rgba(0,0,0,0.27);
-$neutral-bg: rgb(242,242,242);
-
+// Variables
+$basic-boxshadow: 0px 10px 8px -10px rgba(0, 0, 0, 0.27);
+$neutral-bg: rgb(242, 242, 242);
 
 // Mixin themes
 
 .sub-page-title {
-    @include section-title;
-    margin-left: 7rem;
-    margin-top: 1em;
-    display: inline-block;
-    &:after {
-        @include purple-underline;
-    }
+  @include section-title;
+  margin-left: 7rem;
+  margin-top: 1em;
+  display: inline-block;
+  &:after {
+    @include purple-underline;
+  }
 }
-
 
 main {
-    overflow: hidden;
+  overflow: hidden;
 }
-.profile-picture, .user-name {
-    display: inline-block;
+.profile-picture,
+.user-name {
+  display: inline-block;
 }
 
 .user-name {
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 0.5em;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 0.5em;
 }
 
 .user-asset {
-    width: fit-content;
-    position: absolute;
-    bottom: 0;
-    left: 5%;
+  width: fit-content;
+  position: absolute;
+  bottom: 0;
+  left: 5%;
 }
 
 .user-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid white;
+  box-shadow: $basic-boxshadow;
+  .user-nav-text {
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    @include underline-nav;
+  }
+}
+
+// Overview sect
+.overview-sect {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1em;
+  gap: 3rem;
+  margin-top: 2em;
+  .overview-sect-left,
+  .overview-sect-right {
+    .list-overview,
+    .favorite-overview,
+    .backlog-overview {
+      @include neutral-bg-theme;
+    }
+  }
+  .overview-sect-left {
+    margin-left: 7rem;
+  }
+
+  h2 {
+    @include section-title;
+    display: inline-block;
+    margin-right: 5px;
+    &:after {
+      @include purple-underline;
+      width: 50%;
+    }
+  }
+
+  .picture-cont {
+    img {
+      height: auto;
+    }
+  }
+  //
+
+  .overview-sect-right {
+    margin-right: 7rem;
+    .backlog-overview {
+      .game-status-list {
+        text-align: center;
+        li {
+          display: inline-block;
+          margin-right: 1em;
+        }
+      }
+
+      .active {
+        display: block;
+      }
+
+      .not-active {
+        display: none;
+      }
+    }
+  }
+
+  .overview-list {
+    margin: 0;
+  }
+
+  .list-overview {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid white;
-    box-shadow: $basic-boxshadow;
-    .user-nav-text {
-        text-decoration: none;
-        color: black;
-        text-transform: capitalize;
-        @include underline-nav;
+    h1 {
+      display: none;
     }
-
-    
+    section {
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
-
-
-// Overview sect 
-.overview-sect {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1em;
-    gap: 3rem;
-    margin-top: 2em;
-    .overview-sect-left, .overview-sect-right {
-        .list-overview, .favorite-overview, .backlog-overview {
-        @include neutral-bg-theme;
-       }
-    }
-    .overview-sect-left {
-        
-       margin-left: 7rem; 
-       
-    }
-
-        h2 {
-            @include section-title;
-            display: inline-block;
-            margin-right: 5px;
-            &:after {
-                @include purple-underline;
-              width: 50%;  
-            }
-            
-        }
-
-        .picture-cont {
-            img {
-                height: auto;
-            }
-        }
-    // 
-
-    .overview-sect-right {
-        margin-right: 7rem;
-        .backlog-overview {
-        .game-status-list {
-            text-align: center;
-            li {
-                display: inline-block;
-                margin-right: 1em;
-            }
-        }
-    
-        .active {
-            display: block;
-        }
-
-        .not-active {
-            display: none;
-        }
-    }
-    }
-
-    .overview-list {
-        margin: 0;
-    }
-    
-    .list-overview {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        h1 {
-            display: none;
-        }
-        section {
-            margin: 0;
-            padding: 0;
-        }
-    }
-}
-
-
-
-// Games Section 
+// Games Section
 .game-sect {
-    padding: 0em 7rem 0em 7rem;
-    display:grid;
-    grid-template-columns: 1fr 5fr;
-    gap: 2rem;
-    // 
-    .filter-list {
-        display: flex;
-        flex-direction: column;
-        height: fit-content;
-        section {
-            @include neutral-bg-theme();
+  padding: 0em 7rem 0em 7rem;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 2rem;
+  //
+  .filter-list {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    section {
+      @include neutral-bg-theme();
+    }
+    .status-filter {
+      li {
+        padding: 0.3rem;
+        cursor: pointer;
+        &:hover {
+          background-color: $base-purple;
         }
-        .status-filter {
-            li {
-                padding: 0.3rem;
-                cursor: pointer;
-                &:hover {
-                    background-color: $base-purple;
-                    
-                }
-            }
+      }
+    }
+    h2 {
+      @include section-title;
+      &:after {
+        @include purple-underline;
+        width: 10%;
+      }
+    }
+    .search-bar {
+      padding: 1em;
+      border: none;
+      border-radius: 0.2em;
+      background: url(../img/search-thin.svg) no-repeat scroll 5px 10px, white;
+      padding-left: 25px;
+      padding-top: 12px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  //
+  .game-display-sect {
+    @include neutral-bg-theme();
+    padding: 0;
+    border-radius: 3px;
+    border: 2px solid rgba(210, 215, 211, 0.5);
+    height: fit-content;
+    .game-display-table {
+      th,
+      td {
+        padding: 1.5rem 0.5rem 1rem 0.5rem;
+      }
+      tr {
+        transition: 0.2s ease;
+      }
+      tr:nth-child(even) {
+        background-color: white;
+      }
+      border-collapse: collapse;
+      tr:not(:first-child):hover {
+        transform: translate(1px, -3px);
+        box-shadow: $basic-boxshadow;
+        .overlay {
+          visibility: visible;
         }
-        h2 {
-            @include section-title;
-            &:after {
-                @include purple-underline;
-                width: 10%;
-            }
-        }
-        .search-bar {
-            padding: 1em;
-            border: none;
-            border-radius: 0.2em;
-            background: url(../img/search-thin.svg) no-repeat scroll 5px 10px, white;
-            padding-left:25px;
-            padding-top: 12px;
+      }
+      //
+      .table-header-row {
+        text-align: left;
+      }
+
+      //
+      .indv-game-row {
+        .img-col {
+          .img-cont {
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+          }
+
+          img {
+            border-radius: 3px;
+            vertical-align: bottom;
+          }
+          .overlay {
+            background: url(../img/dots-x.svg) no-repeat scroll 8px 8px #b34886;
+            position: absolute;
+            top: 0;
             width: 100%;
-            box-sizing: border-box;
+            height: 100%;
+            color: white;
+            visibility: hidden;
+            text-align: center;
+            border-radius: 3px;
+          }
+        }
+        .start-col,
+        .end-col {
+          width: 10%;
+          text-align: center;
         }
 
-        
-
-    }
-
-    // 
-    .game-display-sect {
-        @include neutral-bg-theme();
-        padding: 0;
-        border-radius: 3px;
-        border: 2px solid rgba(210, 215, 211, 0.5);
-        height: fit-content;
-        .game-display-table {
-            th, td {
-                padding: 1.5rem 0.5rem 1rem 0.5rem;
+        .name-col {
+          width: 70%;
+          a {
+            text-decoration: none;
+            color: black;
+            &:hover {
+              color: $base-purple;
             }
-            tr {
-                transition: 0.2s ease;
-            }
-            tr:nth-child(even) {
-                background-color: white;
-            }
-            border-collapse: collapse;
-            tr:not(:first-child):hover {
-                transform: translate(1px, -3px);
-                box-shadow: $basic-boxshadow;
-                .overlay {
-                    visibility: visible;
-                }
-            }
-            // 
-            .table-header-row {
-                text-align: left;
-
-            }
-            
-            // 
-            .indv-game-row {
-                .img-col {
-                    .img-cont {
-                        border-radius: 3px;
-                        position: relative;
-                        cursor: pointer;
-                    }
-                    
-                    img{border-radius: 3px; vertical-align: bottom;}
-                    .overlay {
-                        background: url(../img/dots-x.svg) no-repeat scroll 8px 8px #b34886;
-                        position: absolute;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        color: white;
-                        visibility: hidden;
-                        text-align: center;
-                        border-radius: 3px;
-                    }
-                }
-                .start-col, .end-col {
-                    width: 10%;
-                    text-align: center;
-                }
-
-                .name-col {
-                    width: 70%;
-                    a {
-                text-decoration: none;
-                color: black;
-                &:hover {
-                        color: $base-purple;
-                    }
-            }
-                }
-            }
-
+          }
         }
+      }
     }
-    
-    .list-overview {
+  }
+
+  .list-overview {
     display: flex;
     flex-direction: row;
     gap: 1em;
     .indiv-list {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid red;
-    div {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid red;
+      div {
         border: 1px solid red;
+      }
     }
-}
-  
-}
-
+  }
 }
 
-//List Section 
+//List Section
 .list-cont {
-    display: flex;
-    flex-direction: row;
-    @include profile-neutral-bg;
-    gap: 2em;
-
+  display: flex;
+  flex-direction: row;
+  @include profile-neutral-bg;
+  gap: 2em;
 }
 .list-desc {
-    display: flex;
-    justify-content: space-between;
-    .list-name, .list-count {
-        display: inline-block;
-        margin: 0.5em 3px 0 3px;
-        font-size: 0.9rem;
-    }   
+  display: flex;
+  justify-content: space-between;
+  .list-name,
+  .list-count {
+    display: inline-block;
+    margin: 0.5em 3px 0 3px;
+    font-size: 0.9rem;
+  }
 }
 
-    .list-link {
-        text-transform: capitalize;
-        text-decoration: none;
-        font-weight: 500;
-        color: black;
-        &:hover {
-            color: #b34886;
-        }
-    }
+.list-link {
+  text-transform: capitalize;
+  text-decoration: none;
+  font-weight: 500;
+  color: black;
+  &:hover {
+    color: #b34886;
+  }
+}
 
-    // Sub-list
-    .list-template-cont {
-        margin: 2em 7em 0em 7em;
-        h1 {
-            margin: 0;
-            margin-bottom: 1em;
-        }
-    }
-    .sub-list-sect {
-        @include profile-neutral-bg;
-        margin: 0;
-        display: flex;
-        flex-direction: row;
-        gap: 1em;
-        img {
-            height: auto
-        }
-    }
+// Sub-list
+.list-template-cont {
+  margin: 2em 7em 0em 7em;
+  h1 {
+    margin: 0;
+    margin-bottom: 1em;
+  }
+}
+.sub-list-sect {
+  @include profile-neutral-bg;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  img {
+    height: auto;
+  }
+}
 
-// Favorite Main Sect 
+// Favorite Main Sect
 .fav-sect {
-   .favorite-main-sect {
+  .favorite-main-sect {
     @include profile-neutral-bg;
     display: flex;
     gap: 1em;
     img {
-        height: auto;
+      height: auto;
     }
-
-} 
+  }
 }
 
 .action-btn {
-    background-color: black;
-    color: white;
-    padding: 0.5em;
-    border-radius: 5px;
-    font-size: 0.8em;
-    border: none;
-    cursor: pointer;
-    float: right;
-    text-decoration: none;
+  background-color: black;
+  color: white;
+  padding: 0.5em;
+  border-radius: 5px;
+  font-size: 0.8em;
+  border: none;
+  cursor: pointer;
+  float: right;
+  text-decoration: none;
 }
 
 .confirm-modal {
-    position: absolute; 
-    background-color: rgb(255, 255, 255);
-    top: 10%;
-    margin-left: auto; 
-    margin-right: auto; 
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 3px;
+  padding: 5rem;
+  box-shadow: $basic-boxshadow;
+  text-align: center;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  h2 {
+    margin-bottom: 0.5em;
+    font-size: 2rem;
+  }
+  .close-btn,
+  .save-btn {
     border-radius: 3px;
-    padding: 5rem;
-    box-shadow: $basic-boxshadow;
-    text-align: center;
-    img {
-        width: 100px;
-        height: 100px;
-    }
-    h2 {
-        margin-bottom: 0.5em;
-        font-size: 2rem;
-        
-    }
-    .close-btn, .save-btn {
-        border-radius: 3px;
-        margin: 1em;
-        padding: 0.7em;
-        display: inline-block;
-        border: none;
-        cursor: pointer;
-    }
-    .close-btn {
-        background: none;
-        border: 1px solid gray;
-    }
+    margin: 1em;
+    padding: 0.7em;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+  }
+  .close-btn {
+    background: none;
+    border: 1px solid gray;
+  }
 
-    .save-btn {
-        background-color:#d83e4f ;
-        color: white;
-    }
+  .save-btn {
+    background-color: #d83e4f;
+    color: white;
+  }
 }
