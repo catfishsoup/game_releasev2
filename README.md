@@ -5,4 +5,4 @@ Improvised version two of my first website, [Game Release](https://github.com/ca
 The web application purpose is helping user keep track of game releases and managing their library. 
 Check out the demo of Game Release version 2, Videa, to demonstrate my growth as a developer: game-releasev2.vercel.app
 
-* Please note: the project is still in development, hence some things may break 
+* Please note: the project is still in development, hence some things may break :smile:
