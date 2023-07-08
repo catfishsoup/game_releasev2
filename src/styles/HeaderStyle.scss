@@ -1,6 +1,6 @@
 @import 'Mixin.scss';
 * {
-    overflow-x: visible;
+    overflow: visible;
 }
 .logo-name {
     font-family: 'Archivo Black', sans-serif;
@@ -26,7 +26,6 @@ header {
     justify-content: space-evenly;
     padding: 1em;
 }
-
 .links-cont {
     display: inline-block;
     margin-right: 1em;
@@ -43,6 +42,8 @@ header {
 }
 .user-sl {
     display: inline-flex;
+    position: relative;
+    z-index: 5;
     .search-bar {
         @include searchbar;
         background: url(../img/search-thin.svg) no-repeat scroll 7px 10px $base-purple;
@@ -75,23 +76,69 @@ header {
             box-shadow: 5px 5px 0 -3px white, 5px 5px $base-purple,
         }
     }
+
+
+.user-pfp {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    margin-left: 1em;
+    cursor: pointer;
+    position: relative;
+}
 }
 
+.user-option-lists {
+    position: absolute;
+    list-style-type: none;
+    right: 0;
+    border-radius: 5px;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border: 2px solid black;
+    background-color: $base-purple;
+    box-shadow: $basic-boxshadow;
+    li {
+        text-align: center;
+        padding: 0em 1em 0em 1em;
+        position: relative;
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
 
+    li:last-child {
+        border-top: 2px solid black;
+        padding: 0.5em;
+        cursor: pointer;
+        transition: 0.3s ease-in;
+        &:hover {
+            background-color: black;
+            color: white;
+        }
+    }
+
+    li:first-child {
+        padding-top: 1em;
+    }
+
+}
 //Hides 
 .search-btn {
     display: none;
 }
 
-
+.hamburger-menu {
+    display: none;
+}
 
 
 //Media queries
 //Nav Bar Media Queries
 @media (max-width: 45em) {
-    * {
-        overflow-x: hidden;
-    }
     .logo-name {
         padding: 0;
     }
@@ -112,11 +159,8 @@ header {
         position: fixed;
         gap: 1em;
         inset: 0 0 0 0;
-        height: 100%;
-
         background-color: rgb(242,242,242);
         z-index: 5;
-        
         .links-cont, .search-btn, .login-btn {                         
             display: block !important;
         }
@@ -139,15 +183,27 @@ header {
             margin-top: 0.5em;
         }
 
+        .user-pfp {
+            display: none;
+        }
+
+        .user-option-lists {
+            display: none;
+        }
     }
 
-    
+    .user-sl {
+        vertical-align: top;
+        margin-right: 1em;
+        margin-top: 3px;
+        width: fit-content;
+    }
 
     .hamburger-menu {
-        display: block;
-        border: none;
+        display: inline-block;
         background: none;
-        padding-top: 1em;
+        border: none;
+        padding-top: 0.75em;
     }
     .link {
         font-size: 1.5rem;
@@ -155,5 +211,11 @@ header {
         color: black;
         margin-bottom: 1em;
     }
+    // .user-option-lists {
+    //     position: fixed;
+    //     background-color: $base-purple;
+    //     padding: 1em;
+    // }
 
 }
+

@@ -14,6 +14,7 @@ const ProfileHeaderStyled = styled.section`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 0;
 `
 const ProfilePicture = styled.div` 
     background: url(${props => props.$pfp_pic});
@@ -35,7 +36,7 @@ const ProfileHeader = () =>  {
         }).catch((e) => {console.log(e)})
     }, [])
     return(
-        <ProfileHeaderStyled $cover_pic={coverPicture || cover}>
+        <ProfileHeaderStyled className='pfp-header' $cover_pic={coverPicture || cover}>
             <div className='user-asset'>
                <ProfilePicture $pfp_pic={user.photoURL || user_pfp}/>   
                <h1 className='user-name'>{user.displayName}</h1> 
