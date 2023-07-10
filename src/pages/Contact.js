@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import marker from '../img/address-marker.svg'
 import printer from '../img/outline-email.svg'
 import phone from '../img/round-phone.svg'
+import '../styles/Contact.scss'
+
 const Address = styled.p` 
     margin-bottom: 1em;
     &:before {
@@ -35,11 +37,9 @@ const Contact = () => {
                 <div className='basic-info'>
                    <label>Name</label>
                     <input type='text'/> 
-                </div>
-                   
-                <div className='basic-info'>
+                </div><div className='basic-info'>
                    <label>Email Address *</label>
-                    <input type='email' required/>  
+                   <input type='email' required/>  
                 </div>
                     
                 
