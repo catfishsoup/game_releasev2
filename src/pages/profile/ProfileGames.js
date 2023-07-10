@@ -43,7 +43,7 @@ const ProfileGames = () => {
     }, [])
 
     const filterStatus = (genre) => {
-        const filtered = games.filter(game => game.status == genre)
+        const filtered = games.filter(game => game.status === genre)
         setgamesCopy(filtered)
         setpreSearch(filtered)
         setFilter(true)

@@ -4,7 +4,6 @@ const x_api_key = process.env.REACT_APP_X_API_KEY;
 let currDate = Math.round(new Date().setHours(0, 0, 0, 0) / 1000) - 14400;
 const last5 = (5 * 24 * 60 * 60);
 
-console.log(Math.floor(currDate - last5))
 //
 let getPopularconfig = {
   method: "post",
@@ -13,7 +12,7 @@ let getPopularconfig = {
     "x-api-key": x_api_key,
     "Content-Type": "text/plain",
   },
-  data: `fields name, cover.url, release_dates.date; where hypes > 120 & release_dates.date > ${currDate}; limit 6;`
+  data: `fields name, cover.url; where hypes > 120; limit 6;`
 };
 const getPopular = () =>
   axios
@@ -33,7 +32,7 @@ let getTrendingconfig = {
     "x-api-key": x_api_key,
     "Content-Type": "text/plain",
   },
-  data: "fields name, hypes, cover.url; where hypes >= 150; sort hypes asc;",
+  data: `fields name, hypes, cover.url, release_dates.date; where hypes >= 150; sort hypes asc;`,
 };
 
 const getTrending = () =>
