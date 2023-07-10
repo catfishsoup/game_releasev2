@@ -1,43 +1,48 @@
-@import './Mixin.scss';
+@import "./Mixin.scss";
 
 @mixin color-card {
-    width: 235px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    flex-direction: column;
-    background-color: #695ef5;
-    box-shadow: $basic-boxshadow;
-    text-decoration: none;
-    color: black;
-    p {
-        font-size: 1.5rem;
-        vertical-align: center;
-        text-align: center;
-        
-        &:hover {
-            transform: scale(2); zoom: 1;
-            animation: movers 0.45s infinite alternate;
-        }
+  width: 235px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: column;
+  background-color: #695ef5;
+  box-shadow: $basic-boxshadow;
+  text-decoration: none;
+  color: black;
+  p {
+    font-size: clamp(2.5rem, 2.5vw, 1rem);
+    vertical-align: center;
+    text-align: center;
+
+    &:hover {
+      transform: scale(2);
+      zoom: 1;
+      animation: movers 0.45s infinite alternate;
     }
-}    
-.see-more-cont{
-        @include color-card()
+  }
+}
+.see-more-cont {
+  @include color-card();
+  .view-more {
+    margin-top: 0.5em;
+    width: 35px;
+    height: 35px;
+  }
 }
 
-
 .games-cont {
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-    align-items: center;
-    gap: 4em;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  align-items: center;
+  gap: 4em;
 }
 
 // Trending section
 .trending-cont {
-    .trending-img {
+  .trending-img {
     display: grid;
     grid-template-columns: repeat(3, auto);
     row-gap: 1em;
@@ -46,102 +51,169 @@
       grid-column-start: 3;
     }
 
-    .child-1, .child-5 {
-        display: flex;
-        gap: 1em;
+    .child-1,
+    .child-5 {
+      display: flex;
+      gap: 1em;
     }
 
-    .child-2, .child-4 {
-        div {
-            width: 485px;
-        }
+    .child-2,
+    .child-4 {
+      div {
+        width: 485px;
+      }
     }
     .child-4 {
-        grid-column-start: 1;
-        grid-column-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 2;
     }
-
-
-}
+  }
 }
 
-// Platform Sect 
+// Platform Sect
 .platform-sect {
-    h1 {
-        text-align: center;
-    }
-    .platform-card-sect {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        white-space: nowrap;
-        .platform-card {
-            
-            background: black;
-            max-width: 5ch;
-            height: 10ch;
-            display: flex;
-            position: relative;
-            flex-direction: column;
-            align-items: center;
-            padding: 6rem;
-            margin: 1em;
-            border-radius: 1em;
-            h2 {
-                font-family: 'Archivo Black', sans-serif;
-                color: black;
-            }
+  h1 {
+    text-align: center;
+  }
+  .platform-card-sect {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    .platform-card {
+      background: black;
+      max-width: 5ch;
+      box-sizing: content-box;
+      height: 7ch;
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      padding: 6rem;
+      margin: 1em;
+      border-radius: 1em;
+      h2 {
+        font-family: "Archivo Black", sans-serif;
+        color: black;
+      }
 
-            .card-count, .card-icon, .card-title, .card-link {
-                position: absolute;
-                left: 10%;
-            }
+      .card-count,
+      .card-icon,
+      .card-title,
+      .card-link {
+        position: absolute;
+        left: 10%;
+      }
 
-            .card-title {
-                bottom: 20%;
-                left: 10%;
-            }
+      .card-title {
+        bottom: 20%;
+        left: 10%;
+      }
 
-            .card-link {
-                bottom: 10%;
-                text-decoration: none;
-                color: rgba(0, 0, 0, 0.7);
-                display: inline-block;
-                img {
-                    vertical-align: bottom;
-                }
-                &:hover {
-                    transform: scale(2); zoom: 1;
-                    animation: movers 0.45s infinite alternate;
-                }
-            }
-
-            .card-count {
-                top: 5%;
-            }
-
-            .card-icon {
-                bottom: 35%;
-            }
+      .card-link {
+        bottom: 10%;
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.7);
+        display: inline-block;
+        img {
+          vertical-align: bottom;
         }
+        &:hover {
+          transform: scale(2);
+          zoom: 1;
+          animation: movers 0.45s infinite alternate;
+        }
+      }
+
+      .card-count {
+        top: 5%;
+      }
+
+      .card-icon {
+        bottom: 35%;
+      }
     }
-    
+  }
 }
 
-.release-sect, .upcoming-sect {
-    section {
-        display: flex;
-        gap: 1em;
-    }
+.release-sect,
+.upcoming-sect {
+  section {
+    display: flex;
+    gap: 1em;
+  }
 }
 
+.cont-direct {
+  font-size: clamp(1rem, 10vw, 2.5rem);
+  margin-bottom: 0.5em;
+}
 
 // Animations
 @keyframes movers {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-1px); }
-    40% { transform: translateX(-2px); }
-    60% { transform: translateX(-3px); }
-    100% { transform: translateX(-5px); }
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-1px);
+  }
+  40% {
+    transform: translateX(-2px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(-5px);
+  }
+}
+
+@media screen and (max-width: 55em) {
+  .trending-cont {
+    .trending-img {
+      display: block;
+
+      .child-4,
+      .child-1 {
+        display: none;
+      }
+
+      .child-2 {
+        div {
+          width: 100%;
+          margin-bottom: 1em;
+        }
+      }
+
+      .child-5 {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  .release-sect,
+  .upcoming-sect {
+    section {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 100%;
+      overflow-x: scroll;
+      .img-test {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .see-more-cont {
+    width: 100%;
+    .view-more {
+      margin-top: 0.5em;
+      width: 35px;
+      height: 35px;
+    }
+  }
 }

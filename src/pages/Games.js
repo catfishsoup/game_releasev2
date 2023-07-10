@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import gameService from '../services/gamereq.js'
 import Picture from '../components/Picture.js'
 import '../styles/Games.scss'
@@ -18,13 +18,8 @@ const Trending = ({trending}) => {
             <h1 className='cont-direct'>Trending Games</h1>
             <section className='trending-img'>
                 <div className='child-1'>
-                        <Picture data={trending[0]} text={'t_cover_big_2x'} alt='game-cover'/>
-                
-                    <div>
-                     <Picture data={trending[1]} text={'t_cover_big_2x'} alt='game-cover'/>   
-                    </div>
-                    
-                    
+                    <Picture data={trending[0]} text={'t_cover_big_2x'} alt='game-cover'/>
+                    <Picture data={trending[1]} text={'t_cover_big_2x'} alt='game-cover'/>   
                 </div>
                  <div className='child-2'>
                  <Picture data={trending[2]} text={'t_screenshot_med_2x'} alt='game-cover'/>  
@@ -41,7 +36,7 @@ const Trending = ({trending}) => {
                   <Picture data={trending[4]} text={'t_cover_big_2x'} alt='game-cover'/> 
                   <Link className='see-more-cont'>
                     <p>See More</p>
-                    <img src={arrow} alt="arrow"/>
+                    <img src={arrow} alt="arrow" className='view-more'/>
                     </Link> 
                 </div>
                 
@@ -64,7 +59,7 @@ const Upcoming = ({upcoming}) => {
                     } else if(index === upcoming.length-1) {
                         return(<Link className='see-more-cont'>
                         <p>See More</p>
-                        <img src={arrow} alt="arrow"/>
+                        <img src={arrow} alt="arrow" className='view-more'/>
                     </Link>)
                     }
                     
@@ -125,7 +120,7 @@ const Release = ({release}) => {
                     } else if(index === release.length-1) {
                         return(<Link className='see-more-cont'>
                         <p>See More</p>
-                        <img src={arrow} alt="arrow"/>
+                        <img src={arrow} alt="arrow" className='view-more'/>
                     </Link>)
                     } else {
                         return(<Picture data={picture} text={'t_cover_big_2x'}/>)
@@ -161,14 +156,14 @@ const Games = () => {
             setUpcoming(value)
         })
 
-        const results = await Promise.all([getReleased, getTrending, getUpcoming]).then(() => {
+        await Promise.all([getReleased, getTrending, getUpcoming]).then(() => {
                 setLoading(false)
         }).catch((e) => console.log(e))
     }
 
     useEffect(() => {
         fetchData()
-    }, [loading])
+    }, [])
        
 if(loading) {
     return <Loading/>
