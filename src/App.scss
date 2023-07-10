@@ -439,8 +439,14 @@ html {
   }
 }
 
-@media screen and (max-width: 55em) {
+
+@media screen and (max-width: 60em) {
   html {
     padding-bottom: 50rem;
+  }
+}
+@media screen and (min-width: 60em) and (max-width: 100em) {
+  html {
+    padding-bottom: 35rem;
   }
 }
