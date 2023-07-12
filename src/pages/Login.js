@@ -25,7 +25,7 @@ const Login = () => {
         }, [])
 
         const demoLogin = () => {
-            emailRef.current.value = 'demo@gmail.com'
+            emailRef.current.value = 'demo4@gmail.com'
             passwordRef.current.value = '123456'
         }
     return(
@@ -53,7 +53,6 @@ const Login = () => {
             <section className="demo-account">
                 <small style={{display: 'block', textAlign: 'center'}}>Or login with</small>
                 <button type="button" className="btn" onClick={() => demoLogin()}>Demo Account</button>
-                <button type="button">Google</button>
             </section>
             
         </form>

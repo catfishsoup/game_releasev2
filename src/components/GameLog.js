@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import {  useRef } from 'react'
 import '../App.scss'
 import { useState } from 'react'
 import userService from '../firebase/user_request'
@@ -57,7 +57,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
             <div className='mini-title'>{userData.name || info[0]?.name}</div>
             <form >
                 <img src={ userData.url !== undefined 
-                    ? `${userData.url?.replace('t_thumb', 't_logo_med')}` : info[0]?.cover.url.replace('t_thumb', 't_logo_med')}></img>
+                    ? `${userData.url?.replace('t_thumb', 't_logo_med')}` : info[0]?.cover.url.replace('t_thumb', 't_logo_med')} alt="game-thumbnail"></img>
                 <div>
                     <label className='label-input'>Game Status</label>
                     <select name="game-status" key={userData.status} onChange={handleGameStatus} defaultValue={userData.status}>
