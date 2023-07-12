@@ -21,7 +21,7 @@ const Search = () => {
         return <Loading/>
     }
         return (
-            <> 
+            <section className="search-result"> 
             <h1>Search result: {name}</h1>
             <section className='search-cont'>
                {game.map((data) => {
@@ -30,7 +30,7 @@ const Search = () => {
                     }
                 })}
             </section>
-            </>
+            </section>
            
         )
 }
