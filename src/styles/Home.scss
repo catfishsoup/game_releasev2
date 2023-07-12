@@ -31,12 +31,16 @@
         border-radius: 3px;
         margin: 0.5em;
         font-weight: 500;
+        line-height: 1.5;
+        display: inline-block;
+        text-decoration: none;
     }
 
     .demo-btn {
         background: none;
         border: 2px solid $base-purple;
         cursor: pointer;
+        color: black;
         &:hover {
             background-color: rgba(105, 94, 245, 0.7);
         }
@@ -46,7 +50,13 @@
         background-color: black;
         color: white;
         border: 2px solid black;
-        @include linebackdrop;
+        
+        height: fit-content;
+        transition: 0.2s ease;
+        &:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 5px 5px 0 -3px white, 5px 5px #695ef5;
+        }
     }
 
     .small-desc {

@@ -3,6 +3,7 @@ import gameService from '../services/gamereq.js'
 import Picture from '../components/Picture.js'
 import '../styles/Home.scss'
 import divider from '../img/wave-haikei.svg'
+import { Link } from 'react-router-dom'
 
 
 
@@ -22,7 +23,7 @@ const Home = () => {
                     <br/> Create game collections.
                 </h1>
                 <p className='small-desc'>Videa got your back to conquer the 'Video Games Backlog' boss!</p>
-               <button className='demo-btn'>Try Demo Account</button> <button className='sign-up-btn'>Get Started</button>
+                <Link to="/login" className='demo-btn'>Try Demo Account</Link> <Link to="/signup" className='sign-up-btn'>Get Started</Link>
             </section>
 
             <img src={divider} className='spacer'/>
