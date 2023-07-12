@@ -12,15 +12,19 @@ const Header = () => {
 
     const hamburgerMenu = () => {
         setmobileNav(!mobileNav)
-        if(!mobileNav) {
         document.body.style.overflow = 'hidden';
-    } else {
+    }
+    
+    if(!mobileNav) {
         document.body.style.overflow = 'visible';
     }
-    }
+    
     useEffect(() => {
         setmobileNav(false)
+        document.body.style.overflow = 'visible';
     }, [pathname])
+
+    
     return (
         <>
         <header>

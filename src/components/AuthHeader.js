@@ -50,14 +50,16 @@ const AuthHeader = () => {
 
   const hamburgerMenu = () => {
     setmobileNav(!mobileNav);
-    if (!mobileNav) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "visible";
-    }
+    document.body.style.overflow = "hidden";
   };
+
+  if (!mobileNav) {
+    document.body.style.overflow = "visible";
+  }
+
   useEffect(() => {
     setmobileNav(false);
+    document.body.style.overflow = "visible";
   }, [pathname]);
   return (
     <>
