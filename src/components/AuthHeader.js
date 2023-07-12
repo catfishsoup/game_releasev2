@@ -93,6 +93,7 @@ const AuthHeader = () => {
               onClick={openUserTab}
               className="user-pfp"
               src={user.photoURL !== undefined ? user.photoURL : user_pfp}
+              alt="user-profile"
             />
             <UserOption
               open={openUP}
@@ -111,8 +112,8 @@ const AuthHeader = () => {
               <path
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeWidth="2"
                 d="M5 6h14M5 12h14M5 18h14"
               />
             </svg>
