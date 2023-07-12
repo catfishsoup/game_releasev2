@@ -19,7 +19,7 @@
         h1 {
             font-family: 'Archivo Black', sans-serif;
             vertical-align: bottom;
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 2.5vw, 3rem);
         }
         p {
             border: 1px solid red;
@@ -31,8 +31,9 @@
 }
 
 .info-body {
-    display: grid;
-    grid-template-columns: minmax(min-content, 0.21fr) 1fr;
+    display: flex;
+    gap: 2.5em;
+    padding: 1em;
     h2 {
         @include section-title;
         display: inline-block;
@@ -49,14 +50,16 @@
 .left-section {
     display: flex;
     flex-direction: column;
-    margin: 1em 2.5em 0em 2em;
+    margin: 1em 0em 0em 2em;
     height: fit-content;
+    min-width: 30ch;
 
     section {
         @include neutral-bg-theme()
     }
 
     .manage-games {
+         
        .log-btn {
         
         @include purple-box;
@@ -191,4 +194,24 @@
     iframe {
         width: 100%;border-radius: 5px;
     }
+}
+
+@media screen and (max-width: 35rem) {
+    .info-body {
+        flex-wrap: wrap;
+    }
+
+    .header-cont {
+        .header-cont-2 {
+            h1 {
+                margin-left: 3rem;
+            }
+        }   
+    }
+
+    .left-section {
+        margin-left: 0;
+        width: 100%;
+    }
+
 }
