@@ -26,7 +26,7 @@ const Home = () => {
                 <Link to="/login" className='demo-btn'>Try Demo Account</Link> <Link to="/signup" className='sign-up-btn'>Get Started</Link>
             </section>
 
-            <img src={divider} className='spacer'/>
+            <img src={divider} className='spacer' alt='spacer'/>
             <section className='feature-cont'>
                 <h2 className='subsection-title'> Website Features</h2>
                     <button className={`left-arrow ${page !== 1 ? 'active' : 'not-active'}`}><img src={require('../img/arrow_left.png')} alt="left-arrow" onClick={() => getPage(-1)}/></button> 

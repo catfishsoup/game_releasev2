@@ -39,7 +39,7 @@ const DeleteList = ({ click, user, query, showModal }) => {
   return (
     <dialog className="confirm-modal" ref={modal}>
       <div>
-        <img src={warning} />
+        <img src={warning} alt="warning-icon" />
         <h2>Are you sure?</h2>
         <p>You will not be able to access this list anymore. </p>
         <button onClick={() => click(false)} className="close-btn">
@@ -77,7 +77,7 @@ const DisplayList = ({ data, loading, query }) => {
       <>
         {Object.entries(data).map((key) => {
           return (
-            <div className="indv-pic-cont">
+            <div className="ind-pic-cont">
               <div key={key[0]}>
                 <img
                   src={key[1].url.replace("t_thumb", "t_cover_small")}
