@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import user_pfp from "../img/user.png";
 import "../styles/HeaderStyle.scss";
 import SearchBar from "./SearchBar";
+import { auth } from "../firebase/firebase";
 
 const UserOption = ({ open, handleLogOut, displayName }) => {
   if (open === true) {
@@ -68,7 +69,7 @@ const AuthHeader = () => {
         <nav className={`nav-cont ${mobileNav ? "active" : "not-active"}`}>
           <ul className="links-cont">
             <li>
-              <NavLink to={`profile/${user?.displayName}`} className="link">
+              <NavLink to={`profile/${auth.currentUser.displayName}`} className="link">
                 Profile
               </NavLink>
             </li>
@@ -98,7 +99,7 @@ const AuthHeader = () => {
             <UserOption
               open={openUP}
               handleLogOut={handleLogOut}
-              displayName={`${user?.displayName}`}
+              displayName={`${auth.currentUser.displayName}`}
             />
           </section>
 

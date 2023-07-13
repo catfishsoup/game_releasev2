@@ -85,8 +85,11 @@ const DisplayList = ({ data, query }) => {
       { merge: true }
     )
   }
-
-  
+  if (alert) {
+    setTimeout(() => {
+      setAlert(false);
+    }, 1500);
+  }
     return (
       <>
         {Object.entries(gameList).map((key) => {

@@ -118,14 +118,15 @@ main {
 
   .list-overview {
     display: flex;
-    justify-content: center;
-    align-items: center;
     h1 {
       display: none;
     }
     section {
       margin: 0;
       padding: 0;
+    }
+    button {
+      display: none;
     }
   }
 }
