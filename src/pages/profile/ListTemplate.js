@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../firebase/user_auth";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   deleteDoc,
   deleteField,
@@ -37,7 +37,8 @@ const DeleteList = ({ click, user, query, showModal }) => {
     });
   };
   return (
-    <dialog className="confirm-modal" ref={modal}>
+    <div>
+     <dialog className="confirm-modal" ref={modal}>
       <div>
         <img src={warning} alt="warning-icon" />
         <h2>Are you sure?</h2>
@@ -48,21 +49,33 @@ const DeleteList = ({ click, user, query, showModal }) => {
         <button onClick={() => delList()} className="save-btn">
           Delete it!
         </button>
-        {alert && (
-          <GeneralPositiveAlert text="List deleted successfully! You will be navigated shortly." />
-        )}
+        
       </div>
-    </dialog>
+    </dialog> 
+    {alert && (
+      <GeneralPositiveAlert text="List deleted successfully! You will be navigated shortly." />
+    )}
+    </div>
+    
   );
 };
 
-const DisplayList = ({ data, loading, query }) => {
+const DisplayList = ({ data, query }) => {
+  const [alert, setAlert] = useState(false)
+  const [gameList, setgameList] = useState(data)
+
   if (!data) {
     return undefined;
   }
+  
 
   const removeGames = (game_id) => {
-    //Set modal before delete
+    const filtered = Object.keys(gameList).filter(game => game !== game_id).reduce((object, key) => {
+        object[key] = gameList[key]
+        return object
+    }, {})
+      setgameList(filtered)
+      setAlert(true)
     updateDoc(
       query,
       {
@@ -70,17 +83,18 @@ const DisplayList = ({ data, loading, query }) => {
         count: increment(-1),
       },
       { merge: true }
-    );
-  };
-  if (!loading) {
+    )
+  }
+
+  
     return (
       <>
-        {Object.entries(data).map((key) => {
+        {Object.entries(gameList).map((key) => {
           return (
             <div className="ind-pic-cont">
               <div key={key[0]}>
                 <img
-                  src={key[1].url.replace("t_thumb", "t_cover_small")}
+                  src={key[1].url?.replace("t_thumb", "t_cover_small")}
                   className="img-test"
                   alt="game-cover"
                 />
@@ -98,9 +112,12 @@ const DisplayList = ({ data, loading, query }) => {
             </div>
           );
         })}
+        {alert && (
+      <GeneralPositiveAlert text="Removed from list." />
+    )}
       </>
     );
-  }
+  
 };
 
 const ListTemplate = () => {
@@ -120,7 +137,8 @@ const ListTemplate = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  return (
+  if(!loading) {
+    return (
     <section className="list-template-cont">
       <h1 className="sub-page-title">
         <Link to={`../profile/${user.displayName}/lists`} className="list-link">
@@ -143,6 +161,8 @@ const ListTemplate = () => {
       />
     </section>
   );
+  }
+  
 };
 
 export default ListTemplate;

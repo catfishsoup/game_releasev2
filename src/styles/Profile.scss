@@ -270,6 +270,7 @@ main {
   flex-direction: row;
   @include profile-neutral-bg;
   gap: 2em;
+  margin: 0;
 }
 .list-desc {
   display: flex;
@@ -333,6 +334,7 @@ main {
   cursor: pointer;
   float: right;
   text-decoration: none;
+  @include linebackdrop;
 }
 
 .confirm-modal {
@@ -372,3 +374,4 @@ main {
     color: white;
   }
 }
+

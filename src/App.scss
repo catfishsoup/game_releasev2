@@ -356,6 +356,19 @@ html {
   }
 }
 
+.new-list-tab {
+  padding: 1rem;
+}
+.create-list-modal-main {
+  display: flex;
+  flex-direction: column;
+  input {
+    @include searchbar;
+    width: 100%;
+    margin: 1em 0em 1em 0em;
+  }
+}
+
 // Animations
 @keyframes mover {
   0% {

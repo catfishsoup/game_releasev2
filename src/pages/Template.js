@@ -390,7 +390,7 @@ const Template = () => {
           info={info}
         />
       </div>
-      {newList && <ListModal click={setnewList} />}
+      <ListModal click={setnewList} modalValue={newList} />
       {addList && <GeneralPositiveAlert text={"Added to list successfully!"} />}
     </>
   );
