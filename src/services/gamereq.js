@@ -123,6 +123,42 @@ async function getPicture(id) {
   }
 }
 
+async function getCount(id) {
+  try {
+    const res = await axios.request({
+      method: "post",
+      url: `${baseUrl}/count`,
+      headers: {
+        "x-api-key": x_api_key,
+        "Content-Type": "text/plain",
+      }, 
+      data: 'fields platforms; where platforms = [48, 167];'
+    })
+    return res.data
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
+async function getPlatforms(offset) {
+  try {
+    const res = await axios.request({
+      method: "post",
+      url: `${baseUrl}`,
+      headers: {
+        "x-api-key": x_api_key,
+        "Content-Type": "text/plain",
+      }, 
+      data: `fields name, cover.url, platforms; where platforms = [48, 167]; limit 30; offset ${offset};`
+    })
+    return res.data
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
 export default {
   getPopular,
   getTrending,
@@ -131,4 +167,6 @@ export default {
   searchGame,
   getIncoming,
   getPicture,
+  getCount, 
+  getPlatforms
 };

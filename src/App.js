@@ -12,6 +12,7 @@ import Games from './pages/Games'
 import Home from './pages/Home'
 import Template from './pages/Template'
 import Search from './pages/Search'
+import GenreTemplate from './pages/GenreTemplate';
 
 // Profile Pages import 
 import Profile from './pages/profile/Profile'
@@ -31,6 +32,7 @@ import AuthHeader from './components/AuthHeader'
 import Footer from './components/Footer'
 
 
+
 const App = () => {
   const user = UserAuth()
 
@@ -45,7 +47,7 @@ const App = () => {
       <Route path="games" element={<Games />}/>
       <Route path="login" element={<Login />}/>
       <Route path="games/:id" element={<Template />}/>
-      <Route path="games/:platforms" element={<Template />}/>
+      <Route path="games/platforms" element={<GenreTemplate />}/>
       <Route path="signup" element={<Signup />}/>
       <Route path="contact" element={<Contact />}/>
       

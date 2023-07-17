@@ -85,7 +85,7 @@ const Platform = () => {
                     <h2 className='card-title'>Xbox</h2>
                     <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/></Link>   
                 </Link>
-                <Link style={{background: '#8e53bd'}} className='platform-card'>
+                <Link style={{background: '#8e53bd'}} to='/games/platforms/' className='platform-card'>
                 <img className='card-icon' src={playstation} alt='platform-icon'/>
                     <small className='card-count'>02</small>
                    <h2 className='card-title'>Playstation</h2> 
