@@ -1,3 +1,5 @@
+@import 'Mixin.scss';
+
 .platform-cont {
     display: flex;
     flex-direction: column;
@@ -8,5 +10,34 @@
 
 .pagination-cont {
     margin-block-start: 1em;
-    border: 1px solid red;
+    padding: 1em;
+}
+
+.pagination-btn {
+    padding: 1em;
+    border: none;
+    background-color: black;
+    cursor: pointer;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.pagination-btn-l {
+    background: url('../img/arrow_left.png') no-repeat black scroll 1px 1px;
+}
+
+.pagination-btn-r {
+    background: url('../img/arrow-right.png') no-repeat black scroll 1px 1px;
+}
+
+.page-number {
+    padding: 0.7em;
+    background: none;
+    border: none;
+    margin-inline-start: 0.5em;
+    cursor: pointer;
+    transition: 0.2s ease;
+    &:hover {
+        border-radius: 2px;
+        background-color: $base-purple;
+    }
 }

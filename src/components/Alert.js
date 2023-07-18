@@ -32,15 +32,7 @@ const FalseAlert = styled.p`
   left: 50%;
   transform: translate(-50%, 0);
 `;
-export const AddedFavorite = ({ favoriteStatus }) => {
-  if (favoriteStatus === true) {
-    return (
-      <PositiveAlert className="alert-pass">Added to favorites</PositiveAlert>
-    );
-  } else {
-    return <FalseAlert>Removed from favorites</FalseAlert>;
-  }
-};
+
 
 export const GeneralPositiveAlert = ({ text }) => {
   return (

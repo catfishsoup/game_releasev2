@@ -4,8 +4,8 @@ import Picture from '../components/Picture.js'
 import '../styles/Home.scss'
 import divider from '../img/wave-haikei.svg'
 import { Link } from 'react-router-dom'
-
-
+import search_video from '../videos/search-func.mp4'
+import favoritevideo from '../videos/addfavorite.mp4'
 
 const Home = () => {
     const [page, setPage] = useState(1)
@@ -78,8 +78,9 @@ const Collect = () => {
     return(
         <section className='feature-sub-sect collect-sect'>
             <section className='collect-picture-grid'>
-                <div className='picture-grid'>a</div>
-                <div className='picture-grid'>b</div>
+                <video width="676" height="640" loop autoplay="" muted>
+                    <source src={search_video} type="video/mp4"/>
+                </video>
             </section>
                 <section className='desc-section'>
                     <h3 className='feature-sub-title' style={{color: '#8e53bd' }}>Collect</h3>
@@ -103,8 +104,9 @@ const Track = () => {
     return(
         <section className='feature-sub-sect'>
             <section className='collect-picture-grid'>
-                <div className='picture-grid'>a</div>
-                <div className='picture-grid'>b</div>
+            <video width="676" height="640" loop autoplay="" muted>
+                    <source src={favoritevideo} type="video/mp4"/>
+                </video>
             </section>
             <section className='desc-section'>
                 <h3 className='feature-sub-title' style={{color: '#d83e4f' }}>Track</h3>

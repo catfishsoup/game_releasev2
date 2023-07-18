@@ -144,7 +144,12 @@
 
 
 
-    //Collect Sect
+.collect-picture-grid {
+    object-fit: cover;
+    video {
+        object-fit: cover;
+    }
+}
 
     
 

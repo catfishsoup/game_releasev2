@@ -123,7 +123,7 @@ async function getPicture(id) {
   }
 }
 
-async function getCount(id) {
+async function getCount(platforms) {
   try {
     const res = await axios.request({
       method: "post",

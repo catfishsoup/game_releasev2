@@ -16,7 +16,7 @@ import {
 import { auth, db } from "../firebase/firebase.js";
 import ModalImage from "react-modal-image";
 import ListModal from "../components/ListModal.js";
-import { GeneralPositiveAlert } from "../components/Alert.js";
+import { FailedAlert, GeneralPositiveAlert } from "../components/Alert.js";
 import { externalurl } from "../components/externalurl.js";
 import link from "../img/external_links/link.svg";
 //
@@ -104,7 +104,7 @@ const Template = () => {
 
   const [openModal, setopenModal] = useState(false);
   const [favorited, setFavorited] = useState(false);
-
+  const [alert, setAlert] = useState(false)
   // List related states
   const [openList, setopenList] = useState(false);
   const [newList, setnewList] = useState(false);
@@ -145,6 +145,14 @@ const Template = () => {
     );
   }, []);
 
+  useEffect(() => {
+    if(favorited || addList || !favorited) {
+      setAlert(true)
+    }
+    setTimeout(() => {
+        setAlert(false)
+    }, 1500);
+  }, [favorited, addList])
   async function favoriteGame() {
     // If data is contained and favorite is false.
     if (userData.length !== 0) {
@@ -190,6 +198,8 @@ const Template = () => {
   if (addList) {
     setTimeout(() => setaddList(false), 2000);
   }
+
+
   //
 
   if (loading) {
@@ -391,7 +401,9 @@ const Template = () => {
         />
       </div>
       <ListModal click={setnewList} modalValue={newList} />
-      {addList && <GeneralPositiveAlert text={"Added to list successfully!"} />}
+      {addList && alert && <GeneralPositiveAlert text={"Added to list successfully!"} />}
+      {favorited && alert && <GeneralPositiveAlert text={"Added as favorited"} />}
+      {!favorited && alert && <FailedAlert text={"Removed as favorite"} />}
     </>
   );
 };
