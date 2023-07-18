@@ -30,7 +30,7 @@ const GenreTemplate = () => {
             setTest([1, 'DOTS', page, 'DOTS', totalPage.current])
         } else {
            let rightRange = range(totalPage.current - 3, totalPage.current)
-           setTest([1, 'DOTS', ...rightRange]) 
+           setTest([1, 'DOTS', ...rightRange, totalPage.current]) 
         } 
 
 
