@@ -132,7 +132,7 @@ async function getCount(platforms) {
         "x-api-key": x_api_key,
         "Content-Type": "text/plain",
       }, 
-      data: 'fields platforms; where platforms = [48, 167];'
+      data: `fields platforms; where platforms = [${platforms}];`
     })
     return res.data
   } catch (e) {
@@ -141,7 +141,7 @@ async function getCount(platforms) {
 }
 
 
-async function getPlatforms(offset) {
+async function getPlatforms(offset, platforms) {
   try {
     const res = await axios.request({
       method: "post",
@@ -150,7 +150,7 @@ async function getPlatforms(offset) {
         "x-api-key": x_api_key,
         "Content-Type": "text/plain",
       }, 
-      data: `fields name, cover.url, platforms; where platforms = [48, 167]; limit 30; offset ${offset};`
+      data: `fields name, cover.url, platforms; where platforms = [${platforms}]; limit 30; offset ${offset};`
     })
     return res.data
   } catch (e) {

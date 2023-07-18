@@ -79,17 +79,17 @@ const Platform = () => {
         <section className='platform-sect'>
             <h1 className='cont-direct'>Browse by Platform</h1>
             <section className='platform-card-sect'>
-                <Link style={{background: '#695ef5'}} className='platform-card'>
+                <Link style={{background: '#695ef5'}} to='/games/platforms/' className='platform-card'>
                 <img className='card-icon' src={xbox} alt='platform-icon'/>
                     <small className='card-count'>01</small>
                     <h2 className='card-title'>Xbox</h2>
                     <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/></Link>   
                 </Link>
-                <Link style={{background: '#8e53bd'}} to='/games/platforms/' className='platform-card'>
+                <Link style={{background: '#8e53bd'}} to='/games/platforms/48,167' className='platform-card'>
                 <img className='card-icon' src={playstation} alt='platform-icon'/>
                     <small className='card-count'>02</small>
                    <h2 className='card-title'>Playstation</h2> 
-                   <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/></Link> 
+                   <Link className='card-link' to='/games/platforms/48,167'>View More <img src={arrow} alt='arrow'/></Link> 
                 </Link>
                 <Link style={{background: '#b34886'}} className='platform-card'>
                     <small className='card-count'>03</small>

@@ -1,15 +1,16 @@
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import gameService from '../services/gamereq.js'
 import Picture from '../components/Picture.js'
 import '../styles/Pagination.scss'
 import Loading from '../components/Loading.js'
-import Pagination from '../components/Pagination.js'
+import { useParams } from 'react-router-dom'
 
 
 const GenreTemplate = () => {
 
     const [page, setPage] = useState(1)
+    const genre = useParams()
     const [content, setContent] = useState([])
     const [loading , setLoading] = useState(true)
     const [test, setTest] = useState()
@@ -17,12 +18,14 @@ const GenreTemplate = () => {
     let offset = useRef(0)
     //Count how many data there are and divide them into pages 
     useEffect(() => {
-        gameService.getCount().then((value) => {
+        //add params 
+        gameService.getCount(genre.platform).then((value) => {
             totalPage.current = Math.ceil(value.count / 30)
+            setLoading(false)
         })
-    }, [])
+    }, [genre.platform])
 
-    const paginationRange = useMemo(() => {
+    useMemo(() => {
         setLoading(true)
         if(page >= 1 && page < 3) {
             setTest([1, 2, 3, 'DOTS', totalPage.current])
@@ -38,11 +41,11 @@ const GenreTemplate = () => {
             offset.current = (page - 1) * 30; 
         }
         
-        gameService.getPlatforms(offset.current).then((value) => {
+        gameService.getPlatforms(offset.current, genre.platform).then((value) => {
             setContent(value)
             setLoading(false)
         })
-    }, [page])
+    }, [page, genre.platform])
     
 
     const getNextPage = () => {
