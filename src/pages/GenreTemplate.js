@@ -69,14 +69,14 @@ const GenreTemplate = () => {
         </section>
         
         <section className='pagination-cont'>
-            <button onClick={() =>  getPreviousPage()} className='pagination-btn-l pagination-btn'></button>
+            <button onClick={() =>  getPreviousPage()} className='pagination-btn-l pagination-btn'>&#8592; Prev</button>
             {test.map((btn) => {
                 if(btn === 'DOTS') {
-                    return(<p >...</p>)
+                    return(<p className='dots'>...</p>)
                 }
-                return(<button onClick={() => setPage(btn)} className='page-number'>{btn}</button>)
+                return(<button onClick={() => setPage(btn)} className={`page-number ${page === btn ? 'active' : 'not-active'}`}>{btn}</button>)
             })}
-            <button onClick={() => getNextPage()} className='pagination-btn-r pagination-btn'></button>   
+            <button onClick={() => getNextPage()} className='pagination-btn-r pagination-btn'>Next &#8594;</button>   
         </section>
         
         </section>
