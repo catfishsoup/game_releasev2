@@ -79,11 +79,11 @@ const Platform = () => {
         <section className='platform-sect'>
             <h1 className='cont-direct'>Browse by Platform</h1>
             <section className='platform-card-sect'>
-                <Link style={{background: '#695ef5'}} to='/games/platforms/' className='platform-card'>
+                <Link style={{background: '#695ef5'}} to='/games/platforms/49,169' className='platform-card'>
                 <img className='card-icon' src={xbox} alt='platform-icon'/>
                     <small className='card-count'>01</small>
                     <h2 className='card-title'>Xbox</h2>
-                    <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/></Link>   
+                    <Link className='card-link' to='/games/platforms/49,169'>View More <img src={arrow} alt='arrow'/></Link>   
                 </Link>
                 <Link style={{background: '#8e53bd'}} to='/games/platforms/48,167' className='platform-card'>
                 <img className='card-icon' src={playstation} alt='platform-icon'/>
@@ -91,17 +91,17 @@ const Platform = () => {
                    <h2 className='card-title'>Playstation</h2> 
                    <Link className='card-link' to='/games/platforms/48,167'>View More <img src={arrow} alt='arrow'/></Link> 
                 </Link>
-                <Link style={{background: '#b34886'}} className='platform-card'>
+                <Link style={{background: '#b34886'}} to='/games/platforms/130' className='platform-card'>
                     <small className='card-count'>03</small>
                     <img className='card-icon' src={switch_con} alt='platform-icon' />
                     <h2 className='card-title'>Switch</h2>
-                    <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/></Link> 
+                    <Link className='card-link' to='/games/platforms/130'>View More <img src={arrow} alt='arrow'/></Link> 
                 </Link>
-                <Link style={{background: '#d83e4f'}} className='platform-card'>
+                <Link style={{background: '#d83e4f'}} to='/games/platforms/6' className='platform-card'>
                     <small className='card-count'>04</small>
                     <img className='card-icon' src={computer} alt='platform-icon'/>
                     <h2 className='card-title'>PC</h2>
-                    <Link className='card-link' to='/games/PC'>View More <img src={arrow} alt='arrow'/> </Link>           
+                    <Link className='card-link' to='/games/platforms/6'>View More <img src={arrow} alt='arrow'/> </Link>           
                 </Link>  
             </section>
             
