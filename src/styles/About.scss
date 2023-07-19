@@ -1,0 +1,57 @@
+
+@import "./Mixin.scss";
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+
+.about-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    h1 {
+        margin-inline-start: 26rem;
+    }
+}
+
+.about-sect-subtitle {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    display: inline-block;
+    width: fit-content;
+    font-size: xx-large;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.about-desc-sect {
+    display: flex;
+    padding: 1em;
+    margin-inline-start: 26rem;
+    margin-inline-end: 26rem;
+    margin-block-end: 1em;
+    
+}
+
+.desc-para-purpose {
+
+    margin-inline-end: 1em;
+
+}
+
+.desc-para-creator {
+    border-left: 2px solid rgba(210, 215, 211, 0.9);
+    margin-inline-start: 1em;
+}
+
+.desc-para {
+    line-height: 1.5;
+    font-size: large;     
+    padding: 1em;
+    width: 100%;
+    border-right: 2px solid rgba(210, 215, 211, 0.9);   
+    background-color: rgba(210, 215, 211, 0.2);
+    border: 1px solid rgba(210, 215, 211, 0.5);
+    border-radius: 3px;
+}
+
+.feedback {
+    text-align: center;
+}
