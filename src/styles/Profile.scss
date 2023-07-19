@@ -378,6 +378,9 @@ main {
 }
 
 @media screen and (max-width: 60em) {
+  .user-nav {
+    gap: 2em;
+  }
  .overview-sect {
   display: flex;
   flex-direction: column;
