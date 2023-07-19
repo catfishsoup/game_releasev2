@@ -3,7 +3,7 @@ import "../styles/About.scss";
 const About = () => {
   return (
     <main className="about-main">
-      <h1>About Videa</h1>
+      <h1 className="about-title">About Videa</h1>
       <section className="about-desc-sect">
         <p className="desc-para desc-para-purpose">
           Welcome to Videa. The platform focus on updating game releases and

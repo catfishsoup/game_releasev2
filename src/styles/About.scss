@@ -4,6 +4,7 @@
 
 .about-main {
     display: flex;
+    margin-block-start: 1em;
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
@@ -11,7 +12,13 @@
         margin-inline-start: 26rem;
     }
 }
-
+.about-title {
+    &:after {
+     @include purple-underline;
+     width: 7%;
+    }
+    
+}
 .about-sect-subtitle {
     writing-mode: vertical-lr;
     text-orientation: upright;
@@ -19,6 +26,7 @@
     width: fit-content;
     font-size: xx-large;
     font-family: 'Archivo Black', sans-serif;
+    color: $base-purple;
 }
 
 .about-desc-sect {
@@ -55,3 +63,4 @@
 .feedback {
     text-align: center;
 }
+

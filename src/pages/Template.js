@@ -146,9 +146,7 @@ const Template = () => {
   }, []);
 
   useEffect(() => {
-    if(favorited || addList || !favorited) {
       setAlert(true)
-    }
     setTimeout(() => {
         setAlert(false)
     }, 1500);
@@ -206,6 +204,7 @@ const Template = () => {
     return <>Loading...</>;
   }
 
+  console.log(auth.currentUser)
   return (
     <>
       <div className="game-info">
@@ -233,7 +232,7 @@ const Template = () => {
 
         <section className="info-body">
           <aside className="left-section">
-            <section className="manage-games">
+            {auth.currentUser !== null ? <section className="manage-games">
               {/* Only allow log in user to perform action down here.  */}
               <h2>Manage Game</h2>
               <div>
@@ -302,7 +301,7 @@ const Template = () => {
                   </div>
                 </div>
               </div>
-            </section>
+            </section> : null}
 
             {/**/}
             <section className="release-dates">
