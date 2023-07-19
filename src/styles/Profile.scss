@@ -78,6 +78,7 @@ main {
     @include section-title;
     display: inline-block;
     margin-right: 5px;
+    margin-block-start: 1em;
     &:after {
       @include purple-underline;
       width: 50%;
@@ -376,3 +377,18 @@ main {
   }
 }
 
+@media screen and (max-width: 60em) {
+ .overview-sect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  .overview-sect-right, .overview-sect-left {
+    margin: 0;
+  }
+
+  .list-overview {
+    overflow-x: scroll;
+  }
+ }
+}

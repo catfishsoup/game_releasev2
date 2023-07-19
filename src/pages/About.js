@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/About.scss";
 
 const About = () => {
@@ -12,15 +13,16 @@ const About = () => {
           platforms like PC, XBOX Series, Playstation 4 & 5, and Nintendo
           Switch. Although, you can still search for older game titles using our
           Search function!
-          
-          <p>Videa also includes customizable profile for you to store and track games via lists, favorites, and progress.
-            The profile will also have data visualization for easier backlog progress measurement!
+          <p>
+            Videa also includes customizable profile for you to store and track
+            games via lists, favorites, and progress. The profile will also have
+            data visualization for easier backlog progress measurement!
           </p>
           <br />
           <small>
             Fun fact: Videa is a 2nd version of a website called,{" "}
             <a
-              href="https://video-game.onrender.com/about.html"
+              href="https://video-game.onrender.com"
               target="_blank"
               rel="noreferrer"
             >
@@ -42,13 +44,28 @@ const About = () => {
         <p className="desc-para desc-para-creator">
           The website is created by Jen Nguyen, who also have a large backlog to
           get through. Feel free to check out the creator{" "}
-          <a href="https://github.com/jjxnn/game_releasev2" target="_blank" rel="noreferrer">GitHub repo</a> for
-          this project.
+          <a
+            href="https://github.com/jjxnn/game_releasev2"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub repo
+          </a>{" "}
+          for this project.
         </p>
       </section>
 
       <section>
-        <h2 className="feedback">Question or feedback? Get in touch!</h2>
+        <h2 className="feedback">
+          Questions or feedback?{" "}
+          <Link
+            to='/contact'
+            target="_blank"
+            rel="noreferrer"
+          >
+            Get in touch!
+          </Link>
+        </h2>
       </section>
     </main>
   );
