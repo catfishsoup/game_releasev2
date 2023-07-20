@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import { getDocs, collection } from "firebase/firestore"; 
 import { UserAuth } from "../../firebase/user_auth"
-import { db } from '../../firebase/firebase.js'
+import { auth, db } from '../../firebase/firebase.js'
 import { Link } from "react-router-dom";
 import GameLog from "../../components/GameLog";
+
 const ProfileGames = () => {
     //Keep the original data here 
     const [games, setGames] = useState([])
@@ -14,7 +15,6 @@ const ProfileGames = () => {
     const [openModal, setOpenModal] = useState(false)
     const [currGame, setcurrGame] = useState([])
     const [filter, setFilter] = useState(false)
-    const {user} = UserAuth()
     const statuses = [ 
         {id: 1, text: 'All'}, {id: 2, text: 'Interested'}, 
         {id: 3, text: 'On Hold', }, {id: 4, text: 'Dropped', }, 
@@ -26,7 +26,7 @@ const ProfileGames = () => {
     ]
     useEffect(() => {
         const fetchGame = () => {
-            getDocs(collection(db, 'users', `${user.uid}`, 'games')).then((docs) => {
+            getDocs(collection(db, 'users', `${auth.currentUser?.uid}`, 'games')).then((docs) => {
                 docs.forEach((data) => {
 
                     //Validate user form first!
@@ -71,7 +71,6 @@ const ProfileGames = () => {
     }
 
     const gameModal = (game) => {
-        console.log(game)
         setcurrGame(game)
         setOpenModal(true)
     }
