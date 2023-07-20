@@ -204,7 +204,6 @@ const Template = () => {
     return <>Loading...</>;
   }
 
-  console.log(auth.currentUser)
   return (
     <>
       <div className="game-info">

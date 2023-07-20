@@ -19,6 +19,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
     ]
     // 
     
+    console.log(info)
     const modal = useRef()
         if(modalValue) {
             modal.current?.removeAttribute('open')
@@ -46,7 +47,7 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
             if(gamestatus === undefined) {
                 console.log('Please enter a game status before saving')
             } else {
-              userService.postData(userData.id, userData.name, gamestatus, dates, userData.url)  
+              userService.postData(userData?.id || String(info[0]?.id), userData.name || info[0]?.name, gamestatus, dates, userData?.url || info[0]?.cover.url)  
             }
                    
         }
