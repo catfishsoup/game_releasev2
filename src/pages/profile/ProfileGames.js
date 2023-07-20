@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { getDocs, collection } from "firebase/firestore"; 
-import { UserAuth } from "../../firebase/user_auth"
 import { auth, db } from '../../firebase/firebase.js'
 import { Link } from "react-router-dom";
 import GameLog from "../../components/GameLog";
@@ -21,11 +20,10 @@ const ProfileGames = () => {
         {id: 5, text: 'In Progress', }, {id: 6, text: 'Completed', },      
     ]
 
-    const status_color = [
+    // const status_color = [
         
-    ]
+    // ]
     useEffect(() => {
-        const fetchGame = () => {
             getDocs(collection(db, 'users', `${auth.currentUser?.uid}`, 'games')).then((docs) => {
                 docs.forEach((data) => {
 
@@ -38,8 +36,6 @@ const ProfileGames = () => {
             }).catch(e => {
                 console.log(e)
             })
-        }
-        return fetchGame
     }, [])
 
     const filterStatus = (genre) => {
