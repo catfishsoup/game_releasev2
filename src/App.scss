@@ -185,6 +185,31 @@ html {
   }
 }
 
+@media screen and (max-width: 30rem) {
+  .search-cont {
+    grid-template-columns: repeat(1, auto);
+  }
+}
+@media screen and (min-width: 30rem) 
+and (max-width: 40rem) {
+  .search-cont {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@media screen and (min-width: 40rem) 
+and (max-width: 50rem) {
+  .search-cont {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media screen and (min-width: 50rem) 
+and (max-width: 70rem) {
+  .search-cont {
+    grid-template-columns: repeat(4, auto);
+  }
+}
 //
 // GameLog.js
 .modal-tab {

@@ -124,6 +124,7 @@
     padding: 0.1em;
     margin: 1em 1em 1em 0em;
     overflow: hidden;
+    width: 100%;
     section {
         margin-bottom: 1.5em;
     }
@@ -131,6 +132,7 @@
     .desc {
         @include neutral-bg-theme();
         p {
+            width: 100%;
             line-height: 1.5;
         }
     }
