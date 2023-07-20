@@ -21,6 +21,7 @@ const GenreTemplate = () => {
         //add params 
         gameService.getCount(genre.platform).then((value) => {
             totalPage.current = Math.ceil(value.count / 30)
+            setTest([1, 2, 3, 'DOTS', totalPage.current])
             setLoading(false)
         })
     }, [genre.platform])
