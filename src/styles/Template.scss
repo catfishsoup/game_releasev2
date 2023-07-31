@@ -59,15 +59,19 @@
     }
 
     .manage-games {
-         
+         .manage-game-settings {
+            margin-block-end: 1rem;
+            width: 100%;
+            gap: 0.5rem;
+            display: flex;
+         }
        .log-btn {
-        
         @include purple-box;
         color: black;
         border-radius: 5px;
         padding: 0.7em;
-        margin-bottom: 1em;
-        display: inline-block;
+        display: block;
+        width: 100%;
     } 
 
         .user-lists {

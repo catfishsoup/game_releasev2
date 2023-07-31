@@ -39,9 +39,7 @@ const ProfileHeader = styled.div`
 const FavoriteBtn = styled.button`
   background: red;
   border-radius: 5px;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 1em;
+  display: block;
   padding: 5px;
   border: none;
 `;
@@ -240,7 +238,7 @@ const Template = () => {
             {auth.currentUser !== null ? <section className="manage-games">
               {/* Only allow log in user to perform action down here.  */}
               <h2>Manage Game</h2>
-              <div>
+              <div className="manage-game-settings">
                 <button onClick={() => setopenModal(true)} className="log-btn">
                   Log {`${info[0].name}`}
                 </button>

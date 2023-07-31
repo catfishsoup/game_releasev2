@@ -18,8 +18,6 @@ const GameLog = ({modalValue, setOpen, setFavorite, userData, info }) => {
         {id: 4, text: 'In Progress'}, {id: 5, text: 'Completed'}, 
     ]
     // 
-    
-    console.log(info)
     const modal = useRef()
         if(modalValue) {
             modal.current?.removeAttribute('open')
