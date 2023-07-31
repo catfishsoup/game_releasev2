@@ -104,7 +104,7 @@ const Template = () => {
 
   const [openModal, setopenModal] = useState(false);
   const [favorited, setFavorited] = useState(false);
-  const [alert, setAlert] = useState(false)
+  const [alert, setAlert] = useState(null)
   // List related states
   const [openList, setopenList] = useState(false);
   const [newList, setnewList] = useState(false);
@@ -146,11 +146,14 @@ const Template = () => {
   }, []);
 
   useEffect(() => {
-      setAlert(true)
+  
     setTimeout(() => {
         setAlert(false)
     }, 1500);
+    
   }, [favorited, addList])
+
+
   async function favoriteGame() {
     // If data is contained and favorite is false.
     if (userData.length !== 0) {
@@ -173,6 +176,7 @@ const Template = () => {
         { merge: true }
       );
     }
+    setAlert(true)
   }
 
   const addtoList = (list) => {
@@ -191,6 +195,8 @@ const Template = () => {
       },
       { merge: true }
     );
+
+    setAlert(true)
   };
 
   if (addList) {
@@ -399,9 +405,9 @@ const Template = () => {
         />
       </div>
       <ListModal click={setnewList} modalValue={newList} />
-      {addList && alert && <GeneralPositiveAlert text={"Added to list successfully!"} />}
-      {favorited && alert && <GeneralPositiveAlert text={"Added as favorited"} />}
-      {!favorited && alert && <FailedAlert text={"Removed as favorite"} />}
+      {addList && alert === true && <GeneralPositiveAlert text={"Added to list successfully!"} />}
+      {favorited && alert === true && <GeneralPositiveAlert text={"Added as favorited"} />}
+      {!favorited && alert === true && <FailedAlert text={"Removed as favorite"} />}
     </>
   );
 };

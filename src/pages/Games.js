@@ -142,9 +142,8 @@ const Games = () => {
     const [released, setReleased] = useState([])
     const [loading, setLoading] = useState(true)
     const [upcoming, setUpcoming] = useState([])
-    // const [platform, setPlatform] = useState([])
 
-   async function fetchData() {
+    useEffect(() => {
         const getTrending = gameService.getTrending().then((value) => {
             setTrending(value)
         })
@@ -156,13 +155,9 @@ const Games = () => {
             setUpcoming(value)
         })
 
-        await Promise.all([getReleased, getTrending, getUpcoming]).then(() => {
+        Promise.all([getReleased, getTrending, getUpcoming]).then(() => {
                 setLoading(false)
         }).catch((e) => console.log(e))
-    }
-
-    useEffect(() => {
-        fetchData()
     }, [])
        
 if(loading) {
