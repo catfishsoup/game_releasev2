@@ -72,6 +72,12 @@
         padding: 0.7em;
         display: block;
         width: 100%;
+        cursor: pointer;
+        span {
+            font-family: "Asap", sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+        }
     } 
 
         .user-lists {

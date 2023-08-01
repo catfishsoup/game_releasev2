@@ -22,7 +22,6 @@ const Template = () => {
   const { id } = useParams();
   const [info, setInfo] = useState([]);
   const [userData, setuserData] = useState([]);
-  const [favorited, setFavorited] = useState(null)
   // List related states
 
   const userRef = doc(
@@ -41,7 +40,6 @@ const Template = () => {
     getDoc(userRef).then((doc) => {
       if (doc.exists()) {
         setuserData(doc.data());
-        setFavorited(doc.data().favorite);
       }
     });
   }, []);
@@ -56,8 +54,7 @@ const Template = () => {
     <>
 
       <main className="game-info">
-
-          <GameContext.Provider value={{ info, userData, userRef, id }}>
+          <GameContext.Provider value={{ info, userData, userRef, id}}>
             <TemplateHeader />
             <section className="info-body">
              <TemplateLeft />
