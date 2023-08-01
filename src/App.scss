@@ -10,6 +10,7 @@
   padding: 0;
   list-style-type: none;
 }
+
 body {
   font-family: "Asap", sans-serif;
   list-style-type: none;
@@ -30,16 +31,20 @@ html {
   margin: auto;
   width: 50ch;
   padding: 4rem 1rem 4rem 1rem;
+
   h1 {
     margin-bottom: 1em;
   }
+
   div {
     width: 45ch;
+
     label {
       display: block;
       @include section-title;
       margin-bottom: 1em;
       margin-top: 1em;
+
       &::after {
         @include purple-underline;
         width: 10%;
@@ -51,6 +56,7 @@ html {
       width: 45ch;
       border: 3px solid black;
       border-radius: 3px;
+
       &:focus:invalid {
         border: 3px solid red;
       }
@@ -62,30 +68,37 @@ html {
       font-size: 0.8rem;
     }
   }
+
   .submit-btn {
     @include searchbar;
     text-align: center;
     background-color: $base-purple;
     width: 45ch;
     margin-block-start: 2rem;
+
     &:hover {
       box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
       cursor: pointer;
     }
   }
+
+
   .sign-up-sect {
     border-bottom: 1px solid gray;
     width: 35ch;
     text-align: center;
+
     div {
       margin-bottom: 1em;
       font-size: 0.8rem;
     }
   }
+
   .demo-account {
     small {
       margin-top: 1em;
     }
+
     button {
       @include searchbar;
       width: 20ch;
@@ -96,6 +109,7 @@ html {
       color: white;
       transition: 0.2s ease-in;
       cursor: pointer;
+
       &:hover {
         transform: translate(-5px, -5px);
         box-shadow: 5px 5px 0 -3px white, 5px 5px $base-purple;
@@ -112,6 +126,7 @@ html {
 
 .ind-pic-cont {
   position: relative;
+
   img {
     border-radius: 5px;
     box-shadow: $basic-boxshadow;
@@ -120,6 +135,7 @@ html {
     max-width: 100%;
     object-fit: cover;
   }
+
   .img-overlay {
     position: absolute;
     width: 100%;
@@ -130,6 +146,7 @@ html {
     opacity: 0;
     border-radius: 5px;
   }
+
   p,
   a {
     position: absolute;
@@ -145,7 +162,9 @@ html {
     text-overflow: ellipsis;
     text-decoration: none;
   }
+
   &:hover {
+
     p,
     .img-overlay,
     .del-game,
@@ -194,26 +213,25 @@ html {
     grid-template-columns: repeat(1, auto);
   }
 }
-@media screen and (min-width: 30rem) 
-and (max-width: 40rem) {
+
+@media screen and (min-width: 30rem) and (max-width: 40rem) {
   .search-cont {
     grid-template-columns: repeat(2, auto);
   }
 }
 
-@media screen and (min-width: 40rem) 
-and (max-width: 50rem) {
+@media screen and (min-width: 40rem) and (max-width: 50rem) {
   .search-cont {
     grid-template-columns: repeat(3, auto);
   }
 }
 
-@media screen and (min-width: 50rem) 
-and (max-width: 70rem) {
+@media screen and (min-width: 50rem) and (max-width: 70rem) {
   .search-cont {
     grid-template-columns: repeat(4, auto);
   }
 }
+
 //
 // GameLog.js
 .modal-tab {
@@ -223,9 +241,11 @@ and (max-width: 70rem) {
   margin-right: auto;
   top: 10%;
   border-radius: 5px;
+
   .mini-title {
     font-size: 1.5rem;
   }
+
   .fav-btn {
     padding: 0.5em 2em 0.5em 2em;
     background: #d83e4f;
@@ -233,13 +253,16 @@ and (max-width: 70rem) {
     border: 2px solid black;
     display: inline-block;
   }
+
   form {
     display: flex;
     gap: 2em;
+
     button {
       display: block;
       padding: 0.5em;
     }
+
     select {
       display: block;
       padding: 0.5em 2em 0.5em 5px;
@@ -254,10 +277,12 @@ and (max-width: 70rem) {
       border-radius: 0.5em;
       box-shadow: $basic-boxshadow;
     }
+
     div {
       margin-top: 1em;
     }
   }
+
   .close-btn {
     position: absolute;
     top: 5px;
@@ -266,6 +291,7 @@ and (max-width: 70rem) {
     border: none;
     cursor: pointer;
   }
+
   .two-btn {
     margin-top: 1em;
     display: flex;
@@ -302,12 +328,15 @@ and (max-width: 70rem) {
   background: url(img/mhk_21.jpg);
 
   @include error-page;
+
   button {
     @include searchbar;
     background-color: $base-purple;
+
     &:hover {
       box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
     }
+
     a {
       text-decoration: none;
       color: black;
@@ -335,6 +364,7 @@ and (max-width: 70rem) {
   justify-content: center;
   align-items: flex-start;
   border: 1px solid red;
+
   h1 {
     @include section-title;
 
@@ -343,12 +373,15 @@ and (max-width: 70rem) {
       width: 10%;
     }
   }
+
   label {
     font-size: 0.9rem;
     display: block;
     padding-bottom: 0.5em;
   }
+
   background-color: rgba(0, 0, 0, 0.5);
+
   .create-list-modal-main {
     margin-top: 20vh;
     background-color: white;
@@ -357,6 +390,7 @@ and (max-width: 70rem) {
     width: 25ch;
     position: relative;
     border-radius: 5px;
+
     input {
       @include searchbar;
     }
@@ -388,9 +422,11 @@ and (max-width: 70rem) {
 .new-list-tab {
   padding: 1rem;
 }
+
 .create-list-modal-main {
   display: flex;
   flex-direction: column;
+
   input {
     @include searchbar;
     width: 100%;
@@ -403,6 +439,7 @@ and (max-width: 70rem) {
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-20px);
   }
@@ -414,6 +451,7 @@ and (max-width: 70rem) {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   p {
     font-size: 2rem;
   }
@@ -425,6 +463,7 @@ and (max-width: 70rem) {
     padding-bottom: 50rem;
   }
 }
+
 @media screen and (min-width: 60em) and (max-width: 100em) {
   html {
     padding-bottom: 35rem;
