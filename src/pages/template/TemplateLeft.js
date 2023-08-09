@@ -17,10 +17,11 @@ import {
 import { useEffect } from "react";
 import GameLog from "../../components/GameLog.js";
 import ListModal from "../../components/ListModal.js";
+import { Link } from "react-router-dom";
 
 const TemplateLeft = () => {
 
-  const { info, userData, userRef, id} = useContext(GameContext)
+  const { info, userData, userRef, id } = useContext(GameContext)
   const [favorite, setFavorite] = useState(null);
   const [openList, setopenList] = useState(false);
   const [userList, setuserList] = useState([]);
@@ -36,7 +37,7 @@ const TemplateLeft = () => {
           const listObject = {
             id: data.id,
             name: data.data().name,
-          }; 
+          };
           tempArray.push(listObject);
         });
         setuserList(tempArray);
@@ -91,7 +92,6 @@ const TemplateLeft = () => {
       { merge: true }
     );
   };
-
 
 
   return (
@@ -166,7 +166,9 @@ const TemplateLeft = () => {
               </div>
             </div>
           </div>
-        </section> : null}
+        </section> : <section>
+          <Link className="log-btn" to="/login" style={{ textDecoration: 'none', textAlign: 'center' }}><span>Sign in to log {info[0].name}</span></Link>
+        </section>}
 
         {/**/}
         <section className="release-dates">
