@@ -74,7 +74,7 @@
             display: flex;
         }
 
-        
+
 
         .user-lists {
             position: relative;
@@ -127,26 +127,32 @@
 
         }
     }
-.log-btn {
-            @include purple-box;
-            color: black;
-            border-radius: 5px;
-            padding: 0.7em;
-            display: block;
-            width: 100%;
-            cursor: pointer;
-            transition: 0.2s ease;
 
-            span {
-                font-family: "Asap", sans-serif;
-                font-size: 1rem;
-                font-weight: 500;
-            }
-
-            &:hover {
-                box-shadow: $focus-shadow;
-            }
+    .log-btn {
+        @include purple-box;
+        color: black;
+        border-radius: 5px;
+        padding: 0.7em;
+        display: block;
+        width: 25ch;
+        cursor: pointer;
+        transition: 0.2s ease;
+        height: 5ch;
+        overflow: hidden;
+        text-align: start;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        span {
+            font-family: "Asap", sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-overflow: ellipsis;
         }
+
+        &:hover {
+            box-shadow: $focus-shadow;
+        }
+    }
 }
 
 

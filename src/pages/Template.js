@@ -13,6 +13,7 @@ import { createContext } from "react";
 import TemplateHeader from "./template/TemplateHeader.js";
 import TemplateLeft from './template/TemplateLeft.js'
 import TemplateMain from "./template/TemplateMain.js";
+import Loading from "../components/Loading.js";
 
 
 export const GameContext = createContext('')
@@ -46,7 +47,7 @@ const Template = () => {
   //
 
   if (loading) {
-    return <>Loading...</>;
+    return <Loading/>;
   }
 
   if(!loading) {
