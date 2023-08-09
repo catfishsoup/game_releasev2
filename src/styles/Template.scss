@@ -1,5 +1,5 @@
 //Imports 
-@import 'Mixin.scss';
+@import './Mixin.scss';
 
 
 .header-cont {
@@ -8,35 +8,42 @@
     overflow: hidden;
 
     .header-cont-2 {
-        .game_thumbnail, h1 {
+
+        .game_thumbnail,
+        h1 {
             display: inline-block;
         }
+
         .game_thumbnail {
             margin: 2em 2em 0em 2em;
             box-shadow: $basic-boxshadow;
             border-radius: 5px;
         }
+
         h1 {
             font-family: 'Archivo Black', sans-serif;
             vertical-align: bottom;
             font-size: clamp(2.5rem, 2.5vw, 3rem);
         }
+
         p {
             border: 1px solid red;
             width: 75%;
         }
     }
-    
-   
+
+
 }
 
 .info-body {
     display: flex;
     gap: 2.5em;
     padding: 1em;
+
     h2 {
         @include section-title;
         display: inline-block;
+
         &:after {
             content: '';
             display: block;
@@ -46,6 +53,7 @@
         }
     }
 }
+
 // Aside section
 .left-section {
     display: flex;
@@ -59,40 +67,52 @@
     }
 
     .manage-games {
-         .manage-game-settings {
+        .manage-game-settings {
             margin-block-end: 1rem;
             width: 100%;
             gap: 0.5rem;
             display: flex;
-         }
-       .log-btn {
-        @include purple-box;
-        color: black;
-        border-radius: 5px;
-        padding: 0.7em;
-        display: block;
-        width: 100%;
-        cursor: pointer;
-        span {
-            font-family: "Asap", sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
         }
-    } 
 
-        .user-lists {
-            
-            position: relative;
-            .add-to-list {
-            cursor: pointer;
+        .log-btn {
             @include purple-box;
             color: black;
             border-radius: 5px;
-            padding: 0.5em;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 0.7em;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.2s ease;
+
+            span {
+                font-family: "Asap", sans-serif;
+                font-size: 1rem;
+                font-weight: 500;
             }
+
+            &:hover {
+                box-shadow: $focus-shadow;
+            }
+        }
+
+        .user-lists {
+            position: relative;
+
+            .add-to-list {
+                cursor: pointer;
+                @include purple-box;
+                color: black;
+                border-radius: 5px;
+                padding: 0.5em;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                &:hover {
+                    box-shadow: $focus-shadow;
+                }
+            }
+
             .list-holder {
                 display: none;
                 position: absolute;
@@ -102,11 +122,13 @@
                 @include purple-box;
                 color: black;
                 border-radius: 5px;
+
                 div {
                     cursor: pointer;
                     padding: 0.5em;
+
                     &:not(:last-child) {
-                       border-bottom: 2px solid black; 
+                        border-bottom: 2px solid black;
                     }
 
                     &::first-letter {
@@ -121,9 +143,10 @@
                 }
 
             }
+
         }
     }
-    
+
 }
 
 
@@ -135,17 +158,20 @@
     margin: 1em 1em 1em 0em;
     overflow: hidden;
     width: 100%;
+
     section {
         margin-bottom: 1.5em;
     }
-    
+
     .desc {
         @include neutral-bg-theme();
+
         p {
             width: 100%;
             line-height: 1.5;
         }
     }
+
     .genre {
         li {
             display: inline-block;
@@ -155,41 +181,46 @@
             border-radius: 7px;
         }
     }
-.screenshots {
-    @include neutral-bg-theme();
-    position: relative;
-    div {
-        flex-shrink: 0;
-    } 
 
-    .modal-cont {
-        overflow-x: scroll;
-        display: flex;
-        flex-wrap: nowrap;
+    .screenshots {
+        @include neutral-bg-theme();
+        position: relative;
+
+        div {
+            flex-shrink: 0;
+        }
+
+        .modal-cont {
+            overflow-x: scroll;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .modal-img {
+            transition: 0.5s;
+            cursor: pointer;
+            border-radius: 0.2em;
+            display: inline;
+            margin: 1em 1em 1em 0em;
+
+            &:hover {
+                box-shadow: $basic-boxshadow;
+                transform: translateY(-5px);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            height: 10px;
+            width: 10px;
+            border-radius: 1em;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 1);
+            border-radius: 10px;
+        }
+
     }
-    
-    .modal-img {
-        transition: 0.5s;
-        cursor:pointer;
-        border-radius: 0.2em;  
-        display: inline;
-        margin: 1em 1em 1em 0em;
-        &:hover {
-            box-shadow: $basic-boxshadow;
-            transform: translateY(-5px);
-        } 
-    }
-    ::-webkit-scrollbar {
-        height: 10px;             
-        width: 10px;
-        border-radius: 1em;             
-      }
-    ::-webkit-scrollbar-thumb {
-        background: rgba(0,0,0,1);
-        border-radius: 10px;
-    }    
-          
-}
 }
 
 
@@ -199,12 +230,15 @@
     overflow-x: scroll;
     gap: 2em;
     flex-wrap: nowrap;
+
     div {
         width: 555px;
         margin-bottom: 1em;
     }
+
     iframe {
-        width: 100%;border-radius: 5px;
+        width: 100%;
+        border-radius: 5px;
     }
 }
 
@@ -218,7 +252,7 @@
             h1 {
                 margin-left: 3rem;
             }
-        }   
+        }
     }
 
     .left-section {

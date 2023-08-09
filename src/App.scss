@@ -25,19 +25,21 @@ html {
 
 //
 // Login.js
+
+.user-login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .user-form {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 50ch;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  gap: 1em;
   padding: 4rem 1rem 4rem 1rem;
-
-  h1 {
-    margin-bottom: 1em;
-  }
-
   div {
-    width: 45ch;
 
     label {
       display: block;
@@ -95,9 +97,7 @@ html {
   }
 
   .demo-account {
-    small {
-      margin-top: 1em;
-    }
+
 
     button {
       @include searchbar;
@@ -126,7 +126,6 @@ html {
 
 .ind-pic-cont {
   position: relative;
-
   img {
     border-radius: 5px;
     box-shadow: $basic-boxshadow;

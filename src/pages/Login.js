@@ -22,7 +22,7 @@ const Login = () => {
             } else {
                 setLogged(false)
             }
-        }, [])
+        }, [user])
 
         const demoLogin = () => {
             emailRef.current.value = 'demo4@gmail.com'
@@ -31,7 +31,7 @@ const Login = () => {
     return(
         <>
         {isLogged && <Navigate to={`../profile/${user?.displayName}`} replace={true}/>}
-        <section>
+        <section className="user-login-form">
             
             <form onSubmit={handleSubmit} className="user-form">
                 <h1>Nice seeing you again</h1>

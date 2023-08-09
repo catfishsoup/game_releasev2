@@ -1,17 +1,16 @@
+import { useCallback } from "react";
 import { useEffect, useRef } from "react"
 import {useNavigate } from "react-router-dom";
+
 const SearchBar = () => {
     const inputRef = useRef()
     const navigate = useNavigate()
-    const directPage = (e) => {
+    const directPage = useCallback((e) => {
         if(e?.key === 'Enter') {
             navigate(`../search/${inputRef.current.value}`)
             inputRef.current.value = ''
         }
-
-        
-        
-    }
+    }, [navigate])
 
     useEffect(() => {
         directPage()

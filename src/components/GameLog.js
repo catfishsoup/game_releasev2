@@ -54,13 +54,13 @@ const GameLog = ({ modalValue, setOpen, setFavorite }) => {
     return (
         <dialog ref={modal} className='modal-tab'>
             <h1>Log Game</h1>
-            <div className='mini-title'>{userData.name || info[0]?.name}</div>
+            <div className='mini-title'>{userData?.name || info[0]?.name}</div>
             <form >
-                <img src={userData.url !== undefined
+                <img src={userData?.url !== undefined
                     ? `${userData.url?.replace('t_thumb', 't_logo_med')}` : info[0]?.cover.url.replace('t_thumb', 't_logo_med')} alt="game-thumbnail"></img>
                 <div>
                     <label className='label-input'>Game Status</label>
-                    <select name="game-status" key={userData.status} onChange={handleGameStatus} defaultValue={userData.status}>
+                    <select name="game-status" key={userData?.status} onChange={handleGameStatus} defaultValue={userData?.status}>
                         {statuses.map((status) => <option key={status.id}
                             value={status.text}>{status.text}</option>)}
                     </select>
@@ -68,11 +68,11 @@ const GameLog = ({ modalValue, setOpen, setFavorite }) => {
                         <div>Completion Status</div>
                         <div className='date-picker'>
                             <label className='label-input'>Start Date</label><br />
-                            <input type="date" name="startdate" key={userData.start_date} defaultValue={userData.start_date} onChange={handleDate}></input>
+                            <input type="date" name="startdate" key={userData?.start_date} defaultValue={userData?.start_date} onChange={handleDate}></input>
                         </div>
                         <div className='date-picker'>
                             <label className='label-input'>End Date</label><br />
-                            <input type="date" name="enddate" key={userData.finish_date} defaultValue={userData.finish_date} onChange={handleDate}></input>
+                            <input type="date" name="enddate" key={userData?.finish_date} defaultValue={userData?.finish_date} onChange={handleDate}></input>
                         </div>
 
                     </div>
